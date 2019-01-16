@@ -43,17 +43,23 @@ def readStdnts(s):
 
 def readFreeChoice(s):
 
+    # Creates an empty list
     students_free_choice = []
+
+    # Opens the file
     f = open(s, 'r')
 
+    # Iterates through the file, stripping the new line character, and appending each macid to the list
     for line in f:
         line = line.rstrip()
         students_free_choice.append(line)
 
+    # Closes the file
     f.close()
 
     print(students_free_choice)
 
+    # Returns the list
     return students_free_choice
 
 def readDeptCapacity(s):
