@@ -63,9 +63,28 @@ def readFreeChoice(s):
     return students_free_choice
 
 def readDeptCapacity(s):
-    print("Starting to read the department capacity")
+
+    # Create an empty dictionary
+    department_capacity = {}
+
+    # Opens the file
+    f = open(s, 'r')
+
+    for line in f:
+        line = line.rstrip()
+        list = line.split(' ')
+        department_capacity[list[0]] = int(list[1])
+
+    # Closes the file
+    f.close()
+
+    print(department_capacity)
+
+    # Returns a dictionary of the departments and their capacity
+    return department_capacity
 
 
 readStdnts('rawStudentData')
 readFreeChoice('freeChoice')
+readDeptCapacity('rawDepartmentData')
 
