@@ -36,7 +36,7 @@ def readStdnts(s):
     # Closes the file
     f.close()
 
-    print(student_info)
+    #print(student_info)
 
     # Return statement
     return student_info
@@ -57,7 +57,7 @@ def readFreeChoice(s):
     # Closes the file
     f.close()
 
-    print(students_free_choice)
+    #print(students_free_choice)
 
     # Returns the list
     return students_free_choice
@@ -78,7 +78,7 @@ def readDeptCapacity(s):
     # Closes the file
     f.close()
 
-    print(department_capacity)
+    #print(department_capacity)
 
     # Returns a dictionary of the departments and their capacity
     return department_capacity
