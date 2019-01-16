@@ -73,7 +73,7 @@ def readDeptCapacity(s):
     for line in f:
         line = line.rstrip()
         list = line.split(' ')
-        department_capacity[list[0]] = int(list[1])
+        department_capacity[list[0]] = int(list[1]) #https://docs.python.org/3/tutorial/datastructures.html#dictionaries
 
     # Closes the file
     f.close()
