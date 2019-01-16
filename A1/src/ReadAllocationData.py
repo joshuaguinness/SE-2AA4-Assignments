@@ -84,7 +84,7 @@ def readDeptCapacity(s):
     return department_capacity
 
 
-readStdnts('rawStudentData')
-readFreeChoice('freeChoice')
-readDeptCapacity('rawDepartmentData')
+#readStdnts('rawStudentData')
+#readFreeChoice('freeChoice')
+#readDeptCapacity('rawDepartmentData')
 
