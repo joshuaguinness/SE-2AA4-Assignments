@@ -7,13 +7,11 @@ from ReadAllocationData import *
 
 def sort(S):
 
-    #print(S[2].get('gpa')) #https://www.pythonforbeginners.com/dictionary/how-to-use-dictionaries-in-python
-
     # Sorts in students by GPA by highest to lowest
     # https://www.geeksforgeeks.org/python-program-for-bubble-sort/
     for i in range (len(S)):
         for j in range (0, len(S)-1-i):
-            if (S[j].get('gpa') < S[j+1].get('gpa')):
+            if (S[j].get('gpa') < S[j+1].get('gpa')): #https://www.pythonforbeginners.com/dictionary/how-to-use-dictionaries-in-python
                 swap(S, j, j+1)
     
     return S
@@ -36,11 +34,20 @@ def average(L, g):
 
 def allocate(S, F, C):
 
-    dictionary = 5
+    allocation_dictionary = {'civil': [], 'chemical': [], 'electrical': [], 'mechanical': [], 'software': [], 'materials': [], 'engphys': []}
 
-    return dicionary
+    # Students are now sorted from highest GPA to lowest
+    sorted_student_dictionaries = sort(S)
 
+    # Allocate students with free choice
+    for i in F:
+        student_choice = ""
+        for j in sorted_student_dictionaries:
+            if (i == j.get('macid')):
+                student_choice = j.get('choices')[0]
+                allocation_dictionary[student_choice] = [allocation_dictionary[student_choice], i]
 
+    return allocation_dictionary
 
 # Function to swap two elements in a list
 def swap(list, elem1, elem2):
@@ -57,7 +64,9 @@ students_with_free_choice = readFreeChoice('freeChoice')
 department_capacity = readDeptCapacity('rawDepartmentData')
 
 sorted_student_dictionaries = sort(student_dictionaries)
-average_gpa = average(student_dictionaries, 'female')
+average_gpa = average(student_dictionaries, 'male')
+allocation_dictionary = allocate(student_dictionaries, students_with_free_choice, department_capacity)
+print(allocation_dictionary)
                
 
 
