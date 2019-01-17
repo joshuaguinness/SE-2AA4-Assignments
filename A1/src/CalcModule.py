@@ -10,6 +10,7 @@ def sort(S):
     #print(S[2].get('gpa')) #https://www.pythonforbeginners.com/dictionary/how-to-use-dictionaries-in-python
 
     # Sorts in students by GPA by highest to lowest
+    # https://www.geeksforgeeks.org/python-program-for-bubble-sort/
     for i in range (len(S)):
         for j in range (0, len(S)-1-i):
             if (S[j].get('gpa') < S[j+1].get('gpa')):
@@ -28,6 +29,8 @@ def allocate(S, F, C):
     dictionary = 5
 
     return dicionary
+
+
 
 # Function to swap two elements in a list
 def swap(list, elem1, elem2):
