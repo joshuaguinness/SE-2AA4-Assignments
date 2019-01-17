@@ -46,6 +46,8 @@ def allocate(S, F, C):
             if (i == j.get('macid')):
                 student_choice = j.get('choices')[0]
                 allocation_dictionary[student_choice] = [allocation_dictionary[student_choice], i]
+                C[student_choice] = C[student_choice]-1
+            
 
     return allocation_dictionary
 
@@ -67,6 +69,7 @@ sorted_student_dictionaries = sort(student_dictionaries)
 average_gpa = average(student_dictionaries, 'male')
 allocation_dictionary = allocate(student_dictionaries, students_with_free_choice, department_capacity)
 print(allocation_dictionary)
+print(department_capacity)
                
 
 
