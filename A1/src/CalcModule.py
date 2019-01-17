@@ -20,9 +20,19 @@ def sort(S):
 
 def average(L, g):
 
-    average_gpa = 5
+    total_sum = 0
+    counter = 0
 
-    return average_gpa
+    for i in range(len(L)):
+        if (L[i].get('gender') == g):
+            total_sum += L[i].get('gpa')
+            counter += 1
+
+    if (counter == 0):
+        return None
+    else:
+        average_gpa = total_sum / counter
+        return average_gpa
 
 def allocate(S, F, C):
 
@@ -47,6 +57,7 @@ students_with_free_choice = readFreeChoice('freeChoice')
 department_capacity = readDeptCapacity('rawDepartmentData')
 
 sorted_student_dictionaries = sort(student_dictionaries)
+average_gpa = average(student_dictionaries, 'female')
                
 
 
