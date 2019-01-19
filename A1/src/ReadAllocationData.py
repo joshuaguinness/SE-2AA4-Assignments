@@ -23,7 +23,7 @@ def readStdnts(s):
         # Splits each line at each tab into a list
         student_string = line.split('\t') #https://www.pythoncentral.io/cutting-and-slicing-strings-in-python/
 
-        # Splits the choices at commans and spaces
+        # Splits the choices at commas and spaces
         choices = student_string[5].split(', ')
 
         # Transforms the current line student to a dictionary

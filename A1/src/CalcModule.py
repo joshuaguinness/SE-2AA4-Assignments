@@ -45,9 +45,25 @@ def allocate(S, F, C):
         for j in sorted_student_dictionaries:
             if (i == j.get('macid')):
                 student_choice = j.get('choices')[0]
-                allocation_dictionary[student_choice] = [allocation_dictionary[student_choice], i]
+                allocation_dictionary[student_choice] = [i]
                 C[student_choice] = C[student_choice]-1
-            
+                sorted_student_dictionaries.remove(j)
+
+    # Allocate all students with a gpa > 4
+    for i in sorted_student_dictionaries:
+        if (i.get('gpa') >= 4.0):
+            first_choice = i.get('choices')[0]
+            second_choice = i.get('choices')[1]
+            third_choice = i.get('choices')[2]
+            if (C.get(first_choice) >= 1):
+                allocation_dictionary.get(first_choice).append(i.get('macid'))
+                C[first_choice] = C[first_choice]-1
+            elif (C.get(second_choice) >= 1):
+                allocation_dictionary.get(second_choice).append(i.get('macid'))
+                C[second_choice] = C[second_choice]-1
+            elif (C.get(third_choice) >= 1):
+                allocation_dictionary.get(third_choice).append(i.get('macid'))
+                C[third_choice] = C[third_choice]-1
 
     return allocation_dictionary
 
@@ -57,8 +73,6 @@ def swap(list, elem1, elem2):
     list[elem1] = list[elem2]
     list[elem2] = temp
     return list
-    
-
 
 
 student_dictionaries = readStdnts('rawStudentData')
@@ -69,7 +83,10 @@ sorted_student_dictionaries = sort(student_dictionaries)
 average_gpa = average(student_dictionaries, 'male')
 allocation_dictionary = allocate(student_dictionaries, students_with_free_choice, department_capacity)
 print(allocation_dictionary)
+print("\n")
 print(department_capacity)
+print("\n")
+print(sorted_student_dictionaries)
                
 
 
