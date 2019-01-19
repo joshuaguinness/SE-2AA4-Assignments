@@ -128,7 +128,7 @@ def readDeptCapacity(s):
     return department_capacity
 
 
-#readStdnts('rawStudentData')
+#print(readStdnts('TestingData/rawStudentDatas'))
 #readFreeChoice('freeChoice')
 #readDeptCapacity('rawDepartmentDatas')
 
