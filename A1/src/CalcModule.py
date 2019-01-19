@@ -123,18 +123,3 @@ def swap(list, elem1, elem2):
 
     return list
 
-
-#student_dictionaries = readStdnts('TestingData/rawStudentData')
-#students_with_free_choice = readFreeChoice('TestingData/freeChoice')
-#department_capacity = readDeptCapacity('TestingData/rawDepartmentData')
-
-#sorted_student_dictionaries = sort(student_dictionaries)
-#average_gpa = average(student_dictionaries, 'male')
-#allocation_dictionary = allocate(student_dictionaries, students_with_free_choice, department_capacity)
-#print(sorted_student_dictionaries)
-#print("\n")
-#print(average_gpa)
-#print("\n")
-#print(allocation_dictionary)
-
-

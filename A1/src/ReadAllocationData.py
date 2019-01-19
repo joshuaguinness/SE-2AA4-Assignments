@@ -126,9 +126,3 @@ def readDeptCapacity(s):
 
     # Returns a dictionary of the departments and their capacity
     return department_capacity
-
-
-#print(readStdnts('TestingData/rawStudentDatas'))
-#readFreeChoice('freeChoice')
-#readDeptCapacity('rawDepartmentDatas')
-
