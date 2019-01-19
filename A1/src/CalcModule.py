@@ -115,6 +115,12 @@ def allocate(S, F, C):
 
 # Function to swap two elements in a list. This function is used to implement
 # bubble sort in the sort() function above
+
+## @brief A function which swaps two elements in a list
+#  @param a list
+#  @param p2 An element
+#  @param p3 An element
+#  @return The list
 def swap(list, elem1, elem2):
     
     temp = list[elem1]
