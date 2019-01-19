@@ -1,7 +1,7 @@
 ## @file ReadAllocationData.py
-#  @author 
-#  @brief 
-#  @date
+#  @Joshua Guinness, guinnesj
+#  @A module to open files, process, then store the data
+#  @January 14-18, 2019
 
 # For these functions I am making the assumption that the the contents in the file are accurate and the formatting is correct.
 # I am doing error checking on the opening files, but am assuming the rest is correct
@@ -9,6 +9,10 @@
 # Import for error raising and exiting
 import sys
 
+
+## @brief A function which reads in student data from a file and stores it in a list of dictionaries
+#  @param p1 A string corresponding to a filename
+#  @return Returns a list of dictionaries of student information
 def readStdnts(s):
 
     # Creates a new list which will store student dictionaries
@@ -56,6 +60,10 @@ def readStdnts(s):
     # Return statement
     return student_info
 
+
+## @brief A function which reads in data about students with free choice from a file and stores it in a list
+#  @param p1 A string corresponding to a filename
+#  @return Returns a list of macids of students with free choice
 def readFreeChoice(s):
 
     # Creates an empty list
@@ -84,6 +92,10 @@ def readFreeChoice(s):
     # Returns the list
     return students_free_choice
 
+
+## @brief A function which reads in data about department capacities from a file and stores it in a dictionary
+#  @param p1 A string corresponding to a filename
+#  @return Returns a dictionary of departments and their capacity
 def readDeptCapacity(s):
 
     # Create an empty dictionary

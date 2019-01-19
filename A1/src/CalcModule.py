@@ -1,13 +1,18 @@
 ## @file CalcModule.py
 #  @Joshua Guinness 
-#  @brief 
-#  @date
+#  @A to preform operations on the data got from the ReadAllocationData.py
+#  @January 14-18, 2019
 
 # Imports
 from ReadAllocationData import *
 import sys
 
+
 # For this function I am assuming that the information contained in S is corrected and formatted properly
+
+## @brief A function which sorts the students based on gpa from highest to lowest
+#  @param p1 A list of dictionaries of students
+#  @return Returns a list of dictionaries of students sorted by gpa
 def sort(S):
 
     # Sorts students by GPA from highest to lowest using Bubble Sort
@@ -21,8 +26,14 @@ def sort(S):
     
     return S
 
+
 # For this function I am assuming that the information contained in L is correct and formatted properly
 # and the value passed for g is either 'male' or 'female.'
+
+## @brief A function which gets the average gpa of either all the male or female students
+#  @param p1 A list of dictionaries of students
+#  @param p2 A string which is either 'male' or 'female'
+#  @return Returns the average gpa
 def average(L, g):
 
     total_sum = 0
@@ -43,9 +54,17 @@ def average(L, g):
         average_gpa = total_sum / counter
         return average_gpa
 
+
 # For this function I am assuming that the contents of S, F, and C are correct and formatted properly.
 # I am also assuming that their is enough department capacity to handle all the people with free choice
 # Finally I am assuming that their is enough department capacity to grant everyone at least their third choice
+
+## @brief A function which allocates the students into their streams.
+#  @details It first allocates those with free choice, then it allocates those without free choice in order of gpa
+#  @param p1 A list of dictionaries of students
+#  @param p2 A list of students with free choice
+#  @param p3 A dictionary of department capacities
+#  @return Returns a dictionary of allocated students
 def allocate(S, F, C):
 
     # Creation of the allocation dictionary
@@ -105,9 +124,9 @@ def swap(list, elem1, elem2):
     return list
 
 
-student_dictionaries = readStdnts('rawStudentData')
-students_with_free_choice = readFreeChoice('freeChoice')
-department_capacity = readDeptCapacity('rawDepartmentData')
+student_dictionaries = readStdnts('TestingData/rawStudentData')
+students_with_free_choice = readFreeChoice('TestingData/freeChoice')
+department_capacity = readDeptCapacity('TestingData/rawDepartmentData')
 
 sorted_student_dictionaries = sort(student_dictionaries)
 average_gpa = average(student_dictionaries, 'male')
