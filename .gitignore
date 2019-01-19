@@ -13,6 +13,8 @@
 *.pyc
 *.class
 
+access-token
+
 html/
 latex/
 
