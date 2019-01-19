@@ -3,6 +3,9 @@
 #  @brief 
 #  @date
 
+# For these functions I am making the assumption that the the contents in the file are accurate and the formatting is correct.
+# I am doing error checking on the opening files, but am assuming the rest is correct
+
 # Import for error raising and exiting
 import sys
 

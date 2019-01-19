@@ -1,12 +1,13 @@
 ## @file CalcModule.py
 #  @Joshua Guinness 
 #  @brief 
-#  @date 
+#  @date
 
 # Imports
 from ReadAllocationData import *
 import sys
 
+# For this function I am assuming that the information contained in S is corrected and formatted properly
 def sort(S):
 
     # Sorts students by GPA from highest to lowest using Bubble Sort
@@ -20,6 +21,8 @@ def sort(S):
     
     return S
 
+# For this function I am assuming that the information contained in L is correct and formatted properly
+# and the value passed for g is either 'male' or 'female.'
 def average(L, g):
 
     total_sum = 0
@@ -40,6 +43,9 @@ def average(L, g):
         average_gpa = total_sum / counter
         return average_gpa
 
+# For this function I am assuming that the contents of S, F, and C are correct and formatted properly.
+# I am also assuming that their is enough department capacity to handle all the people with free choice
+# Finally I am assuming that their is enough department capacity to grant everyone at least their third choice
 def allocate(S, F, C):
 
     # Creation of the allocation dictionary
