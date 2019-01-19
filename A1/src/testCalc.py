@@ -6,13 +6,16 @@
 # Imports
 from CalcModule import *
 from ReadAllocationData import *
+import unittest
 
 # Test Case 1:
-# Checks response of functions when the file names given are wrong.
-if (readStdnts('TestingData/rawStudentData1') == "Error opening the file of student data!"):
+# Checks response of functions when the files are empty.
+
+if (readStdnts('TestingData/rawStudentData2') == [] and readFreeChoice('TestingData/freeChoice2') == [] and readDeptCapacity('TestingData/rawDepartmentData2') == {}):
     print("Test Case 1: Pass")
 else:
     print("Test Case 1: Fail")
+    
 
 # Test Case 2:
 # Testing whether sort function sorts students by gpa properly
@@ -80,3 +83,13 @@ if (average_gpa > 9.21 and average_gpa < 9.23):
 else:
     print("Test Case 6: Fail")
 
+# Test Case 7:
+# Testing whether average function returns the correct average when there are no students of the gender called
+student_dictionaries = readStdnts('TestingData/rawStudentData4')
+
+average_gpa = average(student_dictionaries, 'female')
+
+if (average_gpa == None):
+    print("Test Case 7: Pass")
+else:
+    print("Test Case 7: Fail")
