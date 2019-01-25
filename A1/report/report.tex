@@ -23,19 +23,143 @@
 
 \maketitle
 
-Introductory blurb.
+In this assignment, a python program was created which automatically reads in data
+from various files, then allocates first year engineering students into their
+stream in order of free choice, then GPA. The program consists of three modules; 
+one to read in the student, departement, and free choice data, one to allocate
+the students and perform operations, and one which acts as a test driver, consisting
+of test cases.
+
+The rest of this document will outline the methodology behind the testing
+and serve as a reflection on the assignment.
 
 \section{Testing of the Original Program}
 
-Description of approach to testing.  Rationale for test case selection.  Summary
-of results.  Any problems uncovered through testing.
+In order to talk about testing results and the methodology used to design test cases,
+it is important to first talk about what was assumed while coding the program as
+the test cases exists, or don't exists, based on what was assumed. 
 
-Under testing you should list any assumptions you needed to make about the
-program's inputs or expected behaviour.
+The reason assumptions had to be taken is because the specification was not formal or
+specific enough on how the interface was meant to work. For example, the specification
+gave no instructions on program behaviour when the file does not exist. Either
+an assumption had to be made that the file will always exists, or the potential
+error had to be dealt with in the code, the later of which was done in this program.
+
+The assumptions used while programming are as follows.
+
+\begin{enumerate}
+	\item All The names and macid of the students are correct and match those in
+	other files such as freeChoice
+	\item All students have a gender that is either 'male' or 'female' and the 
+	gender is spelt correctly.
+	\item All students have a GPA that is between 1.0 and 12.0.
+	\item All students have three proper engineering streams that they would like
+	to go into, spelt correctly.
+	\item There is enough capacity in each department for every student with free choice
+	to be allocated to their first choice
+	\item There is enough capacity in each department for every student to be allocated
+	to at least one of their top three choices.
+	\item Every student with free choice passed first year engineering (GPA \
+	geqslant 4.0).
+\end{enumerate}
+
+Based on the assumptions outline above, there were two types of test cases designed.
+
+The first type of test cases checked for correctness of the functions. This type
+included the second, third, fourth, fifth, sixth, and eighth test cases. These cases
+were chosen to test the main functionality of each of the functions in CalcModule
+at least once. After these test cases, it can be confirmed that the implementation
+of the functions are correct. A description and rationale of each one will be 
+breifly discussed. All these test cases passed.
+
+The second test case checked to see whether the sort function sorted the students
+in order of GPA correctly. It just compared to the output of the function to
+a dictionary of sorted students which was known to be correct. 
+
+The third, fourth, fifth, and sixth test cases check to see whether a correct
+average was returned for males and females from two different data sets. The test
+case returned false when the exact float value was compared with the output so to
+solve the issue, a float value in a very small range was compared with the output.
+
+The eighth test case confirmed that the allocate properly placed students into
+their engineering streams first by free choice, then in order of GPA.
+
+The second type of test cases checked for correct behaviour of program when weird
+inputs, like missing files, or incomplete data was passed to the functions. This 
+type included the first, seventh, and ninth test cases. The number of test cases 
+of this type required to build a modest amount of confidence in the program depends
+on the amount of assumptions. Since quite a few things were assumed, less test
+cases of this type were needed. All these test cases passed after modification to the 
+the code. The rationale behind them, problems uncovered while testing, and a brief
+description of each test case will be discussed.
+
+In the first test case, the functions in ReadAllocationData were tested instead of
+those in CalcModule. It tested for program response when all the files were empty.
+The functions responded correctly by returnning empty dictionaries or lists.
+
+In the seventh test case, the average function was checked to see behaviour when
+tried to get the average of all the females, but there are no females in the data.
+Based on this test case failing for the first time, the code had to be modified to
+return 'None', as well as correctly deal with the fact that there is no one of that
+gender in the data.
+
+Finally, the ninth test case checked to see whether the allocation function worked 
+correctly when it was given student data and none of them had free choice. This was
+tested to ensure that the function still operated correctly when one of the files
+was empty.
+
+All this list of nine test cases covered quite a bit of program functionality and
+possible errors, building confidence in the robustness and correctless of it, 
+there is still more testing that could have been done to verify these things. This
+was what could be done in the timing given.
+
+%Description of approach to testing.  Rationale for test case selection.  Summary
+%of results.  Any problems uncovered through testing.
+
+%Under testing you should list any assumptions you needed to make about the
+%program's inputs or expected behaviour.
 
 \section{Results of Testing Partner's Code}
 
-Summary of results.
+A table outlining the summary of results after running the test script on the
+partners code is seen below.
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{lr}
+		\toprule
+		Test Case & Result\\
+		\midrule
+		1 & Pass\\
+		2 & Pass\\
+		3 & Pass\\
+		4 & Pass\\
+		5 & Pass\\
+		6 & Pass\\
+		7 & Fail - ZeroDivisionError\\
+		8 & Pass\\
+		9 & Pass\\
+		\bottomrule
+	\end{tabular}
+	\caption{Table outlining the results of testing partner code}
+	\label{Table:1}
+\end{table}
+
+As can be seen from the table all the test cases were passed except for the 
+seventh one. The seventh test case check to see how the program behaved when
+asked the caluclate the average GPA of all the females, yet there were no females
+in the data.
+
+The error that was gotten was a ZeroDivisionError at line 42 in the partners
+CalcModule program. This line of code is:
+
+\centerline{\textit{aveFemale = sumFemale /numFemale}}
+
+This line of code divides the total sum by the number of females. However, if there
+are zero females, the program tries to divide by zero, throwing an error, leading
+the this particular test case to fail.
+
+%Summary of results.
 
 \section{Discussion of Test Results}
 
