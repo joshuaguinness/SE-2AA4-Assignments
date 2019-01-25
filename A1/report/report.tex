@@ -223,7 +223,18 @@ thrown and the mistake could be corrected. If they were instead represented as b
 and the mistake was allowed to propagate, when the average function is called, it would
 miss the person with the spelling mistake representing their gender.
 
-\item 
+\item Dictionaries aren't the only option to implement records and structs in Python,
+some other options include tuples, a custom class, collections.namedtuple class, 
+typing.NamedTuple class, and the struct.Struct class. Based on the information I learned
+from: https://dbader.org/blog/records-structs-and-data-transfer-objects-in-python
+I would recomend changing the data structure to either collections.namedtuple or
+typing.NamedTuple. The reason for this is because similar to classes, both data
+structures allow for using the same format and ensuring that the fields and their 
+data are correct. The two structures are also immutable and can be accessed through
+unique identifiers. They have all the properties we want of dictionaries but are
+safer to use. In terms of implementation in the code, each student would be a
+collections.namedtuple, or typing.NamedTuple, and each student would be stored 
+in a list.
 
 \item Answer for f)
 
