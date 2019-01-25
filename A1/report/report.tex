@@ -182,9 +182,9 @@ Didn't I do this like 4 sections ago?
 
 \begin{enumerate}[(a)]
 
-\item 
+\item Answer for a)
 
-\item answer
+\item Answer for b)
 
 \item Even though the assignment did not require testing of ReadAllocationData, the 
 first test case tested how the function within that module respond to empty files. 
@@ -197,8 +197,27 @@ are:
 	\begin{itemize}
 	\item No filenames are passed to function
 	\item Filenames that are passed to function are incorrect
-	\item 
+	\item Files that are passed to the function are empty
+	\item Files that contain the correct data, but in a format that is not expected
+	by the function, e.g. tabs instead of newline characters, or missing the students 
+	macid
+	\item Files that are in the correct format, but contain incorrect info, e.g. two 
+	stream choices instead of three, or GPA greater than 12.o
 	\end
+
+Of the two modudles, CalcModule was chosen over ReadAllocationData to test because
+CalcModule requires ReadAllocationData to be correct. By testing just CalcModule,
+ReadAllocationData is also being tested at the same time because if the first doesn't
+work, the second one wouldn't function correctly either.
+
+Also, CalcModule does more interesthing things with the data and performs operations on it
+making the test cases that would come out of it more unique and less obvious.
+
+\item The problem with 
+
+\item Answer for e)
+
+\item Answer for f)
 
 \end{enumerate}
 
