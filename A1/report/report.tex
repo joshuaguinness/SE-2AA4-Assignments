@@ -213,9 +213,17 @@ work, the second one wouldn't function correctly either.
 Also, CalcModule does more interesthing things with the data and performs operations on it
 making the test cases that would come out of it more unique and less obvious.
 
-\item The problem with 
+\item The problem with using strings for a set of finite elements is that it leaves
+more room for error. Although the same functionality could be easily implemented with
+strings, using integers or something related would reduces the margin of error in the
+program. This new implementation would help catch errors early, rather than miss data
+when performing operations later. For example, having 0 = male, and 1 = female, means
+that when the data is read from the file, if it is not either a 1 or 0, an error is 
+thrown and the mistake could be corrected. If they were instead represented as before,
+and the mistake was allowed to propagate, when the average function is called, it would
+miss the person with the spelling mistake representing their gender.
 
-\item Answer for e)
+\item 
 
 \item Answer for f)
 
