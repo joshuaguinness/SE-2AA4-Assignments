@@ -194,16 +194,16 @@ functions responsible for getting the data work properly and perform as intended
 However some more test cases that could be done to build confidence in ReadAllocationData
 are:
 
-	\begin{itemize}
-	\item No filenames are passed to function
-	\item Filenames that are passed to function are incorrect
-	\item Files that are passed to the function are empty
-	\item Files that contain the correct data, but in a format that is not expected
-	by the function, e.g. tabs instead of newline characters, or missing the students 
-	macid
-	\item Files that are in the correct format, but contain incorrect info, e.g. two 
-	stream choices instead of three, or GPA greater than 12.o
-	\end
+\begin{itemize}
+\item No filenames are passed to function
+\item Filenames that are passed to function are incorrect
+\item Files that are passed to the function are empty
+\item Files that contain the correct data, but in a format that is not expected
+by the function, e.g. tabs instead of newline characters, or missing the students 
+macid
+\item Files that are in the correct format, but contain incorrect info, e.g. two 
+stream choices instead of three, or GPA greater than 12.o
+\end{itemize}
 
 Of the two modudles, CalcModule was chosen over ReadAllocationData to test because
 CalcModule requires ReadAllocationData to be correct. By testing just CalcModule,
@@ -236,7 +236,16 @@ safer to use. In terms of implementation in the code, each student would be a
 collections.namedtuple, or typing.NamedTuple, and each student would be stored 
 in a list.
 
-\item Answer for f)
+\item If the list of strings was changed to a tuple, the CalcModule would not to be
+changed as the implentation would work the same. If it were changed to another data structure
+that is indexed by values, it may not need to be changed, but changing it to one that isn't
+would most likely require the code to be altered.
+
+If students were implemented as a custom class or Abstract Data Type (ADT), if the data
+structure in the class was changed, the CalcModule code would not need to be altered
+because of abstraction. The client, which is the program running, does not need to know
+how the data structure is implemented, rather it just calls the method in the class and
+uses the value returned by it.
 
 \end{enumerate}
 
