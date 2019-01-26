@@ -36,8 +36,7 @@ and serve as a reflection on the assignment.
 \section{Testing of the Original Program}
 
 In order to talk about testing results and the methodology used to design test cases,
-it is important to first talk about what was assumed while coding the program as
-the test cases exists, or don't exists, based on what was assumed. 
+it is important to first talk about what was assumed while coding the program.
 
 The reason assumptions had to be taken is because the specification was not formal or
 specific enough on how the interface was meant to work. For example, the specification
@@ -48,9 +47,9 @@ error had to be dealt with in the code, the later of which was done in this prog
 The assumptions used while programming are as follows.
 
 \begin{enumerate}
-	\item All The names and macid of the students are correct and match those in
-	other files such as freeChoice
-	\item All students have a gender that is either 'male' or 'female' and the 
+	\item All the names and macid of the students are correct and match those in
+	other files such as freeChoice.
+	\item All students have a gender that is either `male' or `female' and the 
 	gender is spelt correctly.
 	\item All students have a GPA that is between 1.0 and 12.0.
 	\item All students have three proper engineering streams that they would like
@@ -59,8 +58,8 @@ The assumptions used while programming are as follows.
 	to be allocated to their first choice
 	\item There is enough capacity in each department for every student to be allocated
 	to at least one of their top three choices.
-	\item Every student with free choice passed first year engineering (GPA \
-	geqslant 4.0).
+	\item Every student with free choice passed first year engineering (GPA greater than or equal
+	to 4.0).
 \end{enumerate}
 
 Based on the assumptions outline above, there were two types of test cases designed.
@@ -73,7 +72,7 @@ of the functions are correct. A description and rationale of each one will be
 breifly discussed. All these test cases passed.
 
 The second test case checked to see whether the sort function sorted the students
-in order of GPA correctly. It just compared to the output of the function to
+in order of GPA correctly. It just compared the output of the function to
 a dictionary of sorted students which was known to be correct. 
 
 The third, fourth, fifth, and sixth test cases check to see whether a correct
@@ -142,10 +141,30 @@ partners code is seen below.
 		\bottomrule
 	\end{tabular}
 	\caption{Table outlining the results of testing partner code}
-	\label{Table:1}
+	\label{Table:Table 1}
 \end{table}
 
-As can be seen from the table all the test cases were passed except for the 
+The results of this table are further discussed in section 3.2
+
+%Summary of results.
+
+\section{Discussion of Test Results}
+
+The following two subsections will discuss and analyze the test results of the code
+written by the programmer, and the partners code.
+
+\subsection{Problems with Original Code}
+
+While doing the testing, two problems with the code became evident. The first is that
+if there are either no males, or no females, then the average function would divide by 0
+and would crash. This was solved by implementing a counter and checking to see if there were
+none of that particular gender. The second problem discovered is that in the dictionary of streams
+and the students in each stream, each student is supposed to represent a dictionary of a student,
+not just the macid. This was again solved by altering the code.
+
+\subsection{Problems with Partner's Code}
+
+As can be seen from \ref{Table:1} all the test cases were passed except for the 
 seventh one. The seventh test case check to see how the program behaved when
 asked the caluclate the average GPA of all the females, yet there were no females
 in the data.
@@ -153,28 +172,31 @@ in the data.
 The error that was gotten was a ZeroDivisionError at line 42 in the partners
 CalcModule program. This line of code is:
 
-\centerline{\textit{aveFemale = sumFemale /numFemale}}
+\centerline{\textit{aveFemale = sumFemale / numFemale}}
 
 This line of code divides the total sum by the number of females. However, if there
 are zero females, the program tries to divide by zero, throwing an error, leading
 the this particular test case to fail.
 
-%Summary of results.
-
-\section{Discussion of Test Results}
-
-No clue bro
-
-\subsection{Problems with Original Code}
-
-Thought I already did this
-
-\subsection{Problems with Partner's Code}
-
-Didn't I do this like 4 sections ago?
-
 \section{Critique of Design Specification}
 
+The design specification was good in some ways, but poor in others. 
+
+Since it had been the first time programming in python in a while, having restrictions 
+on the types of data structures to use, as well as a laid out module interface made it 
+simpler to begin programming. Also, since the specification was in natural language, 
+it made it easy to understand, then implement the basic idea of what the modules were 
+supposed to do.
+
+The specification was poor in that because it was given in natural language, the
+programmer had to make a lot of assumptions about things like operations on the data
+and how to deal with errors. The specification should have been made more specific
+and explicit in how exactly what the interace was so less assumptions would have to be made.
+
+A proposed change for the design is to give the specification both in natural language and
+in a formal way. This was the basic idea of the program can be understood easily, and
+the specifics can also be understood how to be dealt with. Specifying the implentation,
+especially for a first assignment is good and should be kept that way.
 
 %\newpage
 
@@ -189,9 +211,14 @@ would be able to return the average of all students with the same first stream i
 for example.
 
 Along the same line of thinking, a more general sort function would be able to sort students
-by any specified characteristic like last name, macid, first stream choice.
+by any specified characteristic like last name, macid, or first stream choice.
 
-\item In this context aliasing means
+\item In this context aliasing means you can have multiple names for the same dictionary.
+In general, aliasing could be a concern with dictionaries because the dictionary could
+be accidently modified or changed due to not knowing the same data structure is pointed
+to by two different names. This can be guarded against in two ways. The first is by using
+a non-mutable data stucture, like a tuple. This way it cannot be modified, only read from. The
+second is by creating copies of the dictionary and only modifiying the copies as needed.
 
 \item Even though the assignment did not require testing of ReadAllocationData, the 
 first test case tested how the function within that module respond to empty files. 
@@ -202,14 +229,14 @@ However some more test cases that could be done to build confidence in ReadAlloc
 are:
 
 \begin{itemize}
-\item No filenames are passed to function
-\item Filenames that are passed to function are incorrect
-\item Files that are passed to the function are empty
+\item No filenames are passed to function.
+\item Filenames that are passed to function are incorrect.
+\item Files that are passed to the function are empty.
 \item Files that contain the correct data, but in a format that is not expected
 by the function, e.g. tabs instead of newline characters, or missing the students 
-macid
+macid.
 \item Files that are in the correct format, but contain incorrect info, e.g. two 
-stream choices instead of three, or GPA greater than 12.o
+stream choices instead of three, or GPA greater than 12.0.
 \end{itemize}
 
 Of the two modudles, CalcModule was chosen over ReadAllocationData to test because
@@ -217,7 +244,7 @@ CalcModule requires ReadAllocationData to be correct. By testing just CalcModule
 ReadAllocationData is also being tested at the same time because if the first doesn't
 work, the second one wouldn't function correctly either.
 
-Also, CalcModule does more interesthing things with the data and performs operations on it
+Also, CalcModule does more interesting things with the data and performs operations on it
 making the test cases that would come out of it more unique and less obvious.
 
 \item The problem with using strings for a set of finite elements is that it leaves
