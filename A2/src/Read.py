@@ -38,8 +38,6 @@ def load_stdnt_data(s):
         final_info= SInfoT(student_info[0], student_info[1], student_info[2],
         student_info[3], student_info[4], student_info[5])
 
-        #final_info = SInfoT("first", "last", GenT.male, 12.0, SeqADT([DeptT.civil, DeptT.chemical]), True)
-
     SALst.add(temp[0], final_info)
 
     f.close()
