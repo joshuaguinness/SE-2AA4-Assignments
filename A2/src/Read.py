@@ -7,6 +7,9 @@ from StdntAllocTypes import *
 from DCapALst import *
 from SALst import *
 
+## @brief Loads in the student data and updates the state of the SALst module
+#  @param A filename of student data
+#  @return idk yet
 def load_stdnt_data(s):
 
 	SALst.init()
@@ -24,6 +27,9 @@ def load_stdnt_data(s):
 
 	f.close()
 
+## @brief Loads in the department data and updates the state of the DCapALst module
+#  @param p1 A filename of department data
+#  @return idk yet
 def load_dcap_data(s):
 
 	DCapALst.init()
