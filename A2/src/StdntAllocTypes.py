@@ -1,6 +1,7 @@
 # Created by Joshua Guinness
 
 import SeqADT
+from collections import namedtuple
 from enum import Enum
 #GenT use an enumerate type
 
@@ -17,10 +18,10 @@ class DeptT(Enum):
 	MATERIALS = 6
 	ENGPHYS = 7
 
-class SInfoT(NamedTuple):
-	fname: string
-	lname: string
+class SInfoT(namedtuple):
+	fname: str
+	lname: str
 	gender: GenT
 	gpa: float
-	choices: SeqADT(DeptT)
+	choices: SeqADT(DepT)
 	freechoice: bool
