@@ -1,6 +1,6 @@
 #Created by Joshua Guinness
 
-import StdntAllocTypes
+from StdntAllocTypes import *
 
 @staticmethod
 class DCapALst:

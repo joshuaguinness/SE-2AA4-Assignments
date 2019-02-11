@@ -1,6 +1,6 @@
 # Created by Joshua Guinness
 
-import SeqADT
+from SeqADT import *
 from collections import namedtuple
 from enum import Enum
 #GenT use an enumerate type
