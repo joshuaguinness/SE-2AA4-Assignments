@@ -23,7 +23,7 @@ class AALst:
 	#  @param p2 MacId of student
 	@staticmethod
 	def add_stdnt(dep, m):
-		for i in AALst.s
+		for i in AALst.s:
 			if (i[0] == dep):
 				i[1].append(m)
 

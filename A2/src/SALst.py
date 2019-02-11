@@ -38,7 +38,7 @@ class SALst:
 	def remove(m):
 		is_inside = False
 		for i in SALst.s:
-			if (i[0] == m)
+			if (i[0] == m):
 				is_inside = True
 				SALst.s.remove(i)
 
@@ -125,17 +125,17 @@ class SALst:
 	#  @param p1 The instance of the class
 	#  @return Boolean value about whether have reached end of sequence
 	@staticmethod
-	def allocate:
+	def allocate():
 		
 		AALst.init()
 
 		F = SALst.sort(lambda t: t.freechoice and t.gpa >= 4.0)
-		for all m in F:
+		for m in F:
 			ch = SALst.info(m).choices
 			AALst.add_stdnt(ch.next(), m)
 
 		S = SALst.sort(lambda t: not t.freechoice and t.gpa >= 4.0)
-		for all m in S:
+		for m in S:
 			ch = SALst.info(m).choices
 			alloc = False
 			while (not alloc and not ch.end()):
