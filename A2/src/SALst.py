@@ -37,9 +37,15 @@ class SALst:
 
 	@staticmethod
 	def elm(m):
+		is_inside = False
 		for i in SALst.s:
 			if (i[0] == m):
-				return i
+				is_inside = True
+		
+		if (is_inside == True):
+			return True
+		else:
+			return False
 
 	@staticmethod
 	def info(m):
