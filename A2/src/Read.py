@@ -12,53 +12,52 @@ from SALst import *
 #  @return idk yet
 def load_stdnt_data(s):
 
-	SALst.init()
+    SALst.init()
 
-	f = open(s, 'r')
+    f = open(s, 'r')
 
-	for line in f:
-		temp = line.split(', ')
-		student_info = []
-		
-		student_info.append(temp[1])
-		student_info.append(temp[2])
-		student_info.append(GenT[temp[3]])
-		student_info.append(float(temp[4]))
+    for line in f:
+        temp = line.split(', ')
+        student_info = []
+        
+        student_info.append(temp[1])
+        student_info.append(temp[2])
+        student_info.append(GenT[temp[3]])
+        student_info.append(float(temp[4]))
 
-		temp2 = temp[5].replace('[', "")
-		temp3 = temp2.replace(']', "")
-		temp4 = temp3.split(', ')
+        temp2 = temp[5].replace('[', "")
+        temp3 = temp2.replace(']', "")
+        temp4 = temp3.split(', ')
 
-		for i in temp4:
-			i = DeptT[i]
+        for i in temp4:
+            i = DeptT[i]
 
-		student_info.append(SeqADT(temp4))
-		student_info.append(bool(temp[6]))
+        student_info.append(SeqADT(temp4))
+        student_info.append(bool(temp[6]))
 
-		final_info= SInfoT(student_info[0], student_info[1], student_info[2],
-		student_info[3], student_info[4], student_info[5])
+        final_info= SInfoT(student_info[0], student_info[1], student_info[2],
+        student_info[3], student_info[4], student_info[5])
 
-		final_info = SInfoT("first", "last", GenT.male, 12.0, SeqADT([DeptT.civil, DeptT.chemical]), True)
-			
+        #final_info = SInfoT("first", "last", GenT.male, 12.0, SeqADT([DeptT.civil, DeptT.chemical]), True)
 
-	SALst.add(temp[0], final_info)
+    SALst.add(temp[0], final_info)
 
-	f.close()
+    f.close()
 
 ## @brief Loads in the department data and updates the state of the DCapALst module
 #  @param p1 A filename of department data
 #  @return idk yet
 def load_dcap_data(s):
 
-	DCapALst.init()
+    DCapALst.init()
 
-	f = open(s, 'r')
-		
-	for line in f:
-		temp = line.split(', ')
-		DCapALst.add(DeptT[temp[0]], temp[1])
+    f = open(s, 'r')
+    DCapALst.init()
+    for line in f:
+        temp = line.split(', ')
+        DCapALst.add(DeptT[temp[0]], temp[1])
 
-	f.close()
+    f.close()
 
 # Will not use this, use for testing but kick down the road later on
 stdnt_data = "StdntData.txt"
