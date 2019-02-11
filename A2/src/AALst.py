@@ -7,7 +7,7 @@ class AALst:
 	s = []
 
 	@staticmethod
-	def init(self):
+	def init():
 		AALst.s = []
 
 		for Dept in (DepT):

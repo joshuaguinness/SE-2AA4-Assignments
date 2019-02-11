@@ -9,7 +9,7 @@ class SALst:
 	s = []
 
 	@staticmethod
-	def init(self):
+	def init():
 		SALst.s = []
 
 	@staticmethod

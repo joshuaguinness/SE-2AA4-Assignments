@@ -7,11 +7,11 @@ class DCapALst:
 	s = []
 
 	@staticmethod
-	def init(self):
+	def init():
 		DCapALst.s = []
 
 	@staticmethod
-	def add(self, d, n):
+	def add(d, n):
 		is_inside = False
 		for i in DCapALst.s:
 			if (i[0] == d):
