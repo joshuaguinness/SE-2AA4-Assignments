@@ -90,11 +90,12 @@ class SALst:
 			highest = -1
 			element_number = 0
 			for i in range(len(temp)):
-				if (temp[1].gpa > highest):
-					temp[1].gpa > highest
+				if (temp[i][1].gpa > highest):
+					temp[i][1].gpa > highest
 					element_number = i
 
-			L.append(SALst.s[element_number][0])
+			L.append(temp[element_number][0])
+			temp.remove(temp[element_number])
 
 		return L
 				
