@@ -23,5 +23,5 @@ class SInfoT(namedtuple):
 	lname: str
 	gender: GenT
 	gpa: float
-	choices: SeqADT(DepT)
+	choices: SeqADT
 	freechoice: bool

@@ -5,38 +5,46 @@ from AALst import *
 from DCapALst import *
 
 class SALst:
-	def __init__(self):
-		self.s = []
 
+	s = []
+
+	@staticmethod
+	def init(self):
+		SALst.s = []
+
+	@staticmethod
 	def add(m, i):
 		is_inside = False
-		for i in self.s:
+		for i in SALst.s:
 			if (i[0] == m):
 				is_inside = True
 
 		if (is_inside == True):
 			raise KeyError
 		else:
-			self.s.append((m, i))
+			SALst.s.append((m, i))
 
+	@staticmethod
 	def remove(m):
 		is_inside = False
-		for i in self.s:
+		for i in SALst.s:
 			if (i[0] == m)
 				is_inside = True
-				self.s.remove(i)
+				SALst.s.remove(i)
 
 		if (is_inside == False):
 			raise KeyError
 
+	@staticmethod
 	def elm(m):
-		for i in self.s:
+		for i in SALst.s:
 			if (i[0] == m):
 				return i
 
+	@staticmethod
 	def info(m):
 		is_inside = False
-		for i in self.s:
+		for i in SALst.s:
 			if(i[0] == m):
 				is_inside = True
 				return i[1]
@@ -44,11 +52,24 @@ class SALst:
 		if (is_inside == False):
 			raise KeyError
 
+	@staticmethod
 	def sort(f):
+		L = []
+		temp = SALst.s
+		while (len(temp) > 0):
+			for i in range(len(temp)):
+				if (get_gpa(temp[i][0], ))
+				
 
-	def average():
+	@staticmethod
+	def average(f):
 
+	@staticmethod
 	def allocate
 
-	def get_gpa(m, s):
+	def __get_gpa__(m, s):
+		for i in SALst.s:
+			if (i[0] == m):
+				return i[1].gpa
+
 		

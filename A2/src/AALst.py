@@ -2,25 +2,31 @@
 
 from StdntAllocTypes import *
 
-class StdntAllocTypes:
+class AALst:
 
-	def __init__(self):
-		self.s = []
+	s = []
+
+	@staticmethod
+	def init(self):
+		AALst.s = []
 
 		for Dept in (DepT):
-			self.s.append((Dept, []))
+			AALst.s.append((Dept, []))
 
+	@staticmethod
 	def add_stdnt(dep, m):
-		for i in self.s
+		for i in AALst.s
 			if (i[0] == dep):
 				i[1].append(m)
 
+	@staticmethod
 	def lst_alloc(d):
-		for i in self.s:
+		for i in AALst.s:
 			if (i[0] == d):
 				return i[1]
 
+	@staticmethod
 	def num_alloc(d):
-		for i in self.s:
+		for i in AALst.s:
 			if (i[0] == d):
 				return len(i[1])

@@ -1,6 +1,5 @@
 # Coded by Joshua Guinness
 
-@staticmethod
 class SeqADT:
 
 	def __init__ (self, x):
@@ -20,4 +19,6 @@ class SeqADT:
 	def end(self):
 		if (self.i >= len(self.s)):
 			return True
+		else:
+			return False
 
