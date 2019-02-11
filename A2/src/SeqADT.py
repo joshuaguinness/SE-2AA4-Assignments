@@ -1,5 +1,6 @@
 # Coded by Joshua Guinness
 
+@staticmethod
 class SeqADT:
 
 def __init__ (self, x):
