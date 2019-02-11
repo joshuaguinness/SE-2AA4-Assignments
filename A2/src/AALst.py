@@ -10,7 +10,7 @@ class AALst:
 	def init():
 		AALst.s = []
 
-		for Dept in (DepT):
+		for Dept in (DeptT):
 			AALst.s.append((Dept, []))
 
 	@staticmethod

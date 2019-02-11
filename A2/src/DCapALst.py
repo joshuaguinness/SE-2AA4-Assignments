@@ -35,9 +35,15 @@ class DCapALst:
 
 	@staticmethod
 	def elm(d):
+		is_inside = False
 		for i in DCapALst.s:
 			if (i[0] == d):
-				return i
+				is_inside = True
+
+		if (is_inside == True):
+			return True
+		else:
+			return False
 
 	@staticmethod
 	def capacity(d):
