@@ -10,8 +10,6 @@ from DCapALst import *
 ## @brief Students and operations to preform on them
 class SALst:
 
-    s = []
-
     ## @brief Makes the list empty
     @staticmethod
     def init():

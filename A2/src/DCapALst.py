@@ -7,8 +7,6 @@ from StdntAllocTypes import *
 
 ## @brief Departments and their capacities and functions to preform operations on them
 class DCapALst:
-    
-    s = []
 
     ## @brief Makes the list empty
     @staticmethod
@@ -22,7 +20,7 @@ class DCapALst:
     def add(d, n):
 
         if (len(DCapALst.s) == 0):
-            DCapALst.s = DCapALst.s.append((d, n))
+            DCapALst.s.append((d, n))
         else:
             is_inside = False
             for i in DCapALst.s:
@@ -32,7 +30,7 @@ class DCapALst:
             if (is_inside == True):
                 raise KeyError
             else:
-                DCapALst.s = DCapALst.s.append((d, n))
+                DCapALst.s.append((d, n))
     
     ## @brief Removes a department from the set
     #  @param p1 Department of type DeptT

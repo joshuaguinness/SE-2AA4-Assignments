@@ -52,9 +52,9 @@ def load_dcap_data(s):
     DCapALst.init()
 
     f = open(s, 'r')
-    DCapALst.init()
     for line in f:
-        temp = line.split(', ')
+        string = line.rstrip('\n')
+        temp = string.split(', ')
         DCapALst.add(DeptT[temp[0]], temp[1])
 
     f.close()

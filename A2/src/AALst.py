@@ -8,8 +8,6 @@ from StdntAllocTypes import *
 ## @brief Departments and the students allocated to them
 class AALst:
 
-    s = []
-
     ## @brief Makes the list empty
     @staticmethod
     def init():
