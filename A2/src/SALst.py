@@ -1,9 +1,13 @@
-# Created by Joshua Guinness
+## @file SALst.py
+#  @title SALst
+#  @author Joshua Guinness, guinnesj, 400134735
+#  @date Febuary 11, 2019
 
 from StdntAllocTypes import *
 from AALst import *
 from DCapALst import *
 
+## @brief Departments and the students allocated to them
 class SALst:
 
 	s = []

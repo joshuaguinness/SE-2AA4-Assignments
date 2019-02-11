@@ -1,14 +1,18 @@
-# Created by Joshua Guinness
+## @file StdntAllocTypes.py
+#  @title StdntAllocTypes
+#  @author Joshua Guinness, guinnesj, 400134735
+#  @date Febuary 11, 2019
 
 from SeqADT import *
 from collections import namedtuple
 from enum import Enum
-#GenT use an enumerate type
 
+## @brief Enumeration class for gender
 class GenT(Enum):
 	male = 1
 	female = 2
 
+## @brief Enumeration class for engineering departments
 class DeptT(Enum):
 	civil = 1
 	chemical = 2
@@ -18,6 +22,7 @@ class DeptT(Enum):
 	materials = 6
 	engphys = 7
 
+## @brief NamedTuple for info about each student
 class SInfoT(namedtuple):
 	fname: str
 	lname: str

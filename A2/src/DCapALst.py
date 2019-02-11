@@ -1,15 +1,23 @@
-#Created by Joshua Guinness
+## @file DCapALst.py
+#  @title DCapALst
+#  @author Joshua Guinness, guinnesj, 400134735
+#  @date Febuary 11, 2019
 
 from StdntAllocTypes import *
 
+## @brief Departments and their capacities and functions to preform operations on them
 class DCapALst:
 	
 	s = []
 
+	## @brief Makes the list empty
 	@staticmethod
 	def init():
 		DCapALst.s = []
 
+	## @brief Adds a department and its capacity to the list
+	#  @param p1 Department of type DeptT
+	#  @param p2 Capacity of type integer
 	@staticmethod
 	def add(d, n):
 		is_inside = False
@@ -22,6 +30,8 @@ class DCapALst:
 		else:
 			DCapALst.s = DCapALst.s.append((d, n))
 	
+	## @brief Removes a department from the set
+	#  @param p1 Department of type DeptT
 	@staticmethod
 	def remove(d):
 		is_inside = False
@@ -33,6 +43,9 @@ class DCapALst:
 		if (is_inside == False):
 			raise KeyError
 
+	## @brief Checks to see if a department already exists in the set
+	#  @param p1 Department of type DeptT
+	#  @return Boolean value about whether the department already exists
 	@staticmethod
 	def elm(d):
 		is_inside = False
@@ -45,6 +58,9 @@ class DCapALst:
 		else:
 			return False
 
+	## @brief Checks the current capacity of a department
+	#  @param p1 Department of type DeptT
+	#  @return Capacity of the passed department
 	@staticmethod
 	def capacity(d):
 		is_inside = False
