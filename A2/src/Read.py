@@ -17,13 +17,31 @@ def load_stdnt_data(s):
 	f = open(s, 'r')
 
 	for line in f:
-		temp = line.split(',')
-
+		temp = line.split(', ')
 		student_info = []
-		for Info in (SInfoT):
+		
+		student_info.append(temp[1])
+		student_info.append(temp[2])
+		student_info.append(GenT[temp[3]])
+		student_info.append(float(temp[4]))
+
+		temp2 = temp[5].replace('[', "")
+		temp3 = temp2.replace(']', "")
+		temp4 = temp3.split(', ')
+
+		for i in temp4:
+			i = DeptT[i]
+
+		student_info.append(SeqADT(temp4))
+		student_info.append(bool(temp[6]))
+
+		final_info= SInfoT(student_info[0], student_info[1], student_info[2],
+		student_info[3], student_info[4], student_info[5])
+
+		final_info = SInfoT("first", "last", GenT.male, 12.0, SeqADT([DeptT.civil, DeptT.chemical]), True)
 			
 
-	SALst.add(temp[0], student_info)
+	SALst.add(temp[0], final_info)
 
 	f.close()
 
@@ -36,14 +54,13 @@ def load_dcap_data(s):
 
 	f = open(s, 'r')
 		
-
 	for line in f:
-		temp = line.split(',')
-
+		temp = line.split(', ')
+		DCapALst.add(DeptT[temp[0]], temp[1])
 
 	f.close()
 
-
+# Will not use this, use for testing but kick down the road later on
 stdnt_data = "StdntData.txt"
 dept_capacity = "DeptCap.txt"
 

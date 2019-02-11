@@ -4,7 +4,7 @@
 #  @date Febuary 11, 2019
 
 from SeqADT import *
-from collections import namedtuple
+from typing import NamedTuple
 from enum import Enum
 
 ## @brief Enumeration class for gender
@@ -23,7 +23,7 @@ class DeptT(Enum):
 	engphys = 7
 
 ## @brief NamedTuple for info about each student
-class SInfoT(namedtuple):
+class SInfoT(NamedTuple):
 	fname: str
 	lname: str
 	gender: GenT
