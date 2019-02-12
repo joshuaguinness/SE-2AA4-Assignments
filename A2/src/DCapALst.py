@@ -70,7 +70,7 @@ class DCapALst:
         for i in DCapALst.s:
             if (i[0] == d):
                 is_inside = True
-                return i[1]
+                return int(i[1])
 
         if (is_inside == False):
             raise KeyError

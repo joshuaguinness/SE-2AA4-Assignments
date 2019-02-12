@@ -89,6 +89,10 @@ load_dcap_data(dept_capacity)
 
 #print(SALst.sort(lambda t: t.freechoice and t.gpa >= 4.0))
 
-print(SALst.average(lambda x: x.gender == GenT.male))
+#print(SALst.average(lambda x: x.gender == GenT.male))
 #print(SALst.sort(lambda t: t.freechoice and t.gpa >= 4.0))
+
+AALst.init()
+SALst.allocate()
+print(AALst.lst_alloc(DeptT.civil))
 
