@@ -80,15 +80,16 @@ class SALst:
     def sort(f):
         l = []
         temp = SALst.s.copy()
-        #print(temp)
-        #print("test")
+        to_delete = []
+        counter = 0
         for i in temp:
-            print(i)
             if (f(i[1]) == False):
-                #print(i)
-                temp.remove(i)
+                to_delete.append(counter)
+            counter = counter + 1
 
-            
+        to_delete.reverse()
+        for i in to_delete:
+            temp.remove(temp[i])
 
         while (len(temp) > 0):
             highest = -1
@@ -111,10 +112,17 @@ class SALst:
     def average(f):
 
         temp = SALst.s.copy()
-
+		
+        to_delete = []
+        counter = 0
         for i in temp:
             if (f(i[1]) == False):
-                temp.remove(i)
+                to_delete.append(counter)
+            counter = counter + 1
+
+        to_delete.reverse()
+        for i in to_delete:
+            temp.remove(temp[i])
 
         if (len(temp) == 0):
             raise ValueError
