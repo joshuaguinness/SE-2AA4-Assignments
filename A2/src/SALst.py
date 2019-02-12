@@ -75,7 +75,7 @@ class SALst:
 
     ## @brief Sorts the student in decreasing order of GPA
     #  @param p1 lamda function
-    #  @return idk yet
+    #  @return list of macids of sorted students
     @staticmethod
     def sort(f):
         l = []

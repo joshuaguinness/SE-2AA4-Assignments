@@ -10,11 +10,7 @@ from SALst import *
 
 ## @brief Loads in the student data and updates the state of the SALst module
 #  @param A filename of student data
-#  @return idk yet
 def load_stdnt_data(s):
-
-    #for i in range(5, 8):
-     #   print(i)
 
     SALst.init()
 
@@ -23,7 +19,6 @@ def load_stdnt_data(s):
     for line in f:
         temp = line.split(', ')
         student_info = []
-        #print(len(temp))
         student_info.append(temp[1])
         student_info.append(temp[2])
         student_info.append(GenT[temp[3]])
@@ -31,17 +26,12 @@ def load_stdnt_data(s):
 
         list_dept = []
 
-        for i in range(5, len(temp)-1):
+        for i in range(5, len(temp) - 1):
             temp2 = temp[i].replace('[', "")
             temp3 = temp2.replace(']', "")
             temp4 = DeptT[temp3]
-            #print(temp4)
+
             list_dept.append(temp4)
-
-        #print(list_dept)
-
-        #for i in temp4:
-         #   i = DeptT[i]
 
         student_info.append(SeqADT(list_dept))
         string = temp[-1]
@@ -51,19 +41,15 @@ def load_stdnt_data(s):
         else:
             student_info.append(False)
 
-        #print(student_info)
-        #print("")
-
         final_info = SInfoT(student_info[0], student_info[1], student_info[2],
         student_info[3], student_info[4], student_info[5])
-        #print(final_info)
         SALst.add(temp[0], final_info)
 
     f.close()
 
+
 ## @brief Loads in the department data and updates the state of the DCapALst module
 #  @param p1 A filename of department data
-#  @return idk yet
 def load_dcap_data(s):
 
     DCapALst.init()

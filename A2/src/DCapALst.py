@@ -26,13 +26,13 @@ class DCapALst:
             is_inside = False
             for i in DCapALst.s:
                 if (i[0] == d):
-                    is_inside == True
-        
-            if (is_inside == True):
+                    is_inside = True
+
+            if is_inside is True:
                 raise KeyError
             else:
                 DCapALst.s.append((d, n))
-    
+
     ## @brief Removes a department from the set
     #  @param p1 Department of type DeptT
     @staticmethod
@@ -40,10 +40,10 @@ class DCapALst:
         is_inside = False
         for i in DCapALst.s:
             if (i[0] == d):
-                is_inside == True
+                is_inside = True
                 DCapALst.s.remove(i)
 
-        if (is_inside == False):
+        if is_inside is False:
             raise KeyError
 
     ## @brief Checks to see if a department already exists in the set
@@ -56,7 +56,7 @@ class DCapALst:
             if (i[0] == d):
                 is_inside = True
 
-        if (is_inside == True):
+        if is_inside is True:
             return True
         else:
             return False
@@ -72,6 +72,6 @@ class DCapALst:
                 is_inside = True
                 return int(i[1])
 
-        if (is_inside == False):
+        if is_inside is False:
             raise KeyError
         
