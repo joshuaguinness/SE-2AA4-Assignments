@@ -7,6 +7,7 @@ from StdntAllocTypes import *
 from AALst import *
 from DCapALst import *
 
+
 ## @brief Students and operations to preform on them
 class SALst:
 
@@ -21,8 +22,8 @@ class SALst:
     @staticmethod
     def add(m, i):
         is_inside = False
-        for i in SALst.s:
-            if (i[0] == m):
+        for j in SALst.s:
+            if (j[0] == m):
                 is_inside = True
 
         if (is_inside == True):
@@ -77,12 +78,17 @@ class SALst:
     #  @return idk yet
     @staticmethod
     def sort(f):
-        L = []
+        l = []
         temp = SALst.s.copy()
-
+        #print(temp)
+        #print("test")
         for i in temp:
+            print(i)
             if (f(i[1]) == False):
+                #print(i)
                 temp.remove(i)
+
+            
 
         while (len(temp) > 0):
             highest = -1
@@ -93,10 +99,10 @@ class SALst:
                     element_number = i
                     i = i+1
 
-            L.append(temp[element_number][0])
+            l.append(temp[element_number][0])
             temp.remove(temp[element_number])
 
-        return L
+        return l
                 
     ## @brief Checks to see if the end of the sequence is reached
     #  @param p1 The instance of the class

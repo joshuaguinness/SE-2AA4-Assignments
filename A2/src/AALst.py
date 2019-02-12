@@ -5,6 +5,7 @@
 
 from StdntAllocTypes import *
 
+
 ## @brief Departments and the students allocated to them
 class AALst:
 
@@ -13,8 +14,8 @@ class AALst:
     def init():
         AALst.s = []
 
-        for Dept in (DeptT):
-            AALst.s.append((Dept, []))
+        for dept in (DeptT):
+            AALst.s.append((dept, []))
 
     ## @brief Adds a student to a department
     #  @param p1 Department of type DeptT

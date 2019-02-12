@@ -5,6 +5,7 @@
 
 from StdntAllocTypes import *
 
+
 ## @brief Departments and their capacities and functions to preform operations on them
 class DCapALst:
 

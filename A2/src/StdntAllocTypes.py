@@ -7,6 +7,7 @@ from SeqADT import *
 from typing import NamedTuple
 from enum import Enum
 
+
 ## @brief Enumeration class for gender
 class GenT(Enum):
     male = 1
