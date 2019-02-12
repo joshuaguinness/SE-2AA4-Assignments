@@ -28,7 +28,7 @@ class DCapALst:
                 if (i[0] == d):
                     is_inside = True
 
-            if is_inside is True:
+            if (is_inside == True):
                 raise KeyError
             else:
                 DCapALst.s.append((d, n))
@@ -43,7 +43,7 @@ class DCapALst:
                 is_inside = True
                 DCapALst.s.remove(i)
 
-        if is_inside is False:
+        if (is_inside == False):
             raise KeyError
 
     ## @brief Checks to see if a department already exists in the set
@@ -56,7 +56,7 @@ class DCapALst:
             if (i[0] == d):
                 is_inside = True
 
-        if is_inside is True:
+        if (is_inside == True):
             return True
         else:
             return False
@@ -72,6 +72,5 @@ class DCapALst:
                 is_inside = True
                 return int(i[1])
 
-        if is_inside is False:
+        if (is_inside == False):
             raise KeyError
-        

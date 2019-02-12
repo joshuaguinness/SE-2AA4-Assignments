@@ -61,24 +61,3 @@ def load_dcap_data(s):
         DCapALst.add(DeptT[temp[0]], temp[1])
 
     f.close()
-
-# Will not use this, use for testing but kick down the road later on
-stdnt_data = "StdntData.txt"
-dept_capacity = "DeptCap.txt"
-
-load_stdnt_data(stdnt_data)
-load_dcap_data(dept_capacity)
-
-#print(SALst.s)
-
-#print(SALst.elm("smithj"))
-
-#print(SALst.sort(lambda t: t.freechoice and t.gpa >= 4.0))
-
-#print(SALst.average(lambda x: x.gender == GenT.male))
-#print(SALst.sort(lambda t: t.freechoice and t.gpa >= 4.0))
-
-AALst.init()
-SALst.allocate()
-print(AALst.lst_alloc(DeptT.civil))
-
