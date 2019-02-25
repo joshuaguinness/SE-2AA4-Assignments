@@ -16,8 +16,7 @@
 \newcounter{stepnum}
 
 \title{Assignment 2 Solution}
-\author{Joshua Guinness}
-400134735, guinnesj
+\author{Joshua Guinness, guinnesj, 400134735}
 \date{\today}
 
 \begin {document}
@@ -39,7 +38,7 @@ test cases.  Explanation of why it worked, or didn't.
 \section{Critique of Given Design Specification}
 
 This specification was a lot more formal and had a lot less flexibility than
-the previous specification for Assignment #1. This had both disadvantages and
+the previous specification for Assignment 1. This had both disadvantages and
 advantages. 
 
 The main advantage is that the project structure, and implementation were
@@ -91,7 +90,30 @@ behind long statements which is why improvements should be made in that regard.
 
 \begin{enumerate}
 
-\item 
+\item Contrast the natural language of A1 to the formal specification of A2.
+What are the advantages and disadvantages of each approach?
+
+A few of the advantages and disadvantages were talked about the in the previous
+section but they will be repeated here as well as added on to.
+
+The natural language of A1 made is easy to understand what the program was
+trying to accomplish, and how it was going to do that. It was really clear
+how the different modules were going to work together and depend on each
+other. The natural language also made it easy to understand what the purpose
+of each function would be. This is its main advantage, its easy of understand.
+Its disadvntage, however, is its ambiguity and openness. The lack of detail
+in the natural specification leads the reader confused exactly how things
+are supposed to be implemented, forcing many assumptions to be made. A further
+disadvantage is that the natural specification allows one to program without
+technically planning first, leading to wasted time, re-writing code,
+and planning while coding which is not a good idea.
+
+The main advantage of the formal specification of A2 is how clear everything is
+made and the fact that very few, if nothing is left to assumption or guesswork.
+It also further specified how to implement the code, leaving less planning
+in the hands of the programmer, leading to more productivity and a more accurate
+implementation. Its drawback lies in the fact that it can often be hard to read
+and observe how all the modules work together.
 
 \end{enumerate}
 
@@ -139,7 +161,7 @@ behind long statements which is why improvements should be made in that regard.
 
 \newpage
 
-\section{Code for test_All.py}
+\section{Code for testAll.py}
 
 \noindent \lstinputlisting{../src/test_All.py}
 
