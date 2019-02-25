@@ -2,12 +2,59 @@ import pytest
 from StdntAllocTypes import *
 from AALst import *
 from DCapALst import *
+from Read import *
+from SeqADT import *
 
 
-class TestSALst:
+class TestingClass:
 
-	def test_if_element_is_there(self):
-		#sinfo1 = SInfoT("first", "last", GenT.male, 12.0, SeqADT([DeptT.civil, DeptT.chemical]), True)
-		#SALst.init()
-		#SALst.add("stdnt1", sinfo1)
-		assert 1 == 1
+    def setup_method(self, method):
+        load_dcap_data("DeptCap.txt")
+
+    ## Testing the DCapALst modle
+    
+    # Checking to see whether departments correctly exist after reading in the data
+    def test_CivilExists(self):
+        assert DCapALst.elm(DeptT.civil)
+
+    def test_ChemExists(self):
+        assert DCapALst.elm(DeptT.chemical)
+    
+    def test_ElecExists(self):
+        assert DCapALst.elm(DeptT.electrical)
+
+    def test_MechExists(self):
+        assert DCapALst.elm(DeptT.mechanical)
+
+    def test_SoftExists(self):
+        assert DCapALst.elm(DeptT.software)
+
+    def test_MatExists(self):
+        assert DCapALst.elm(DeptT.materials)
+
+    def test_Phys(self):
+        assert DCapALst.elm(DeptT.engphys)
+
+    # Checking to see if getting the current capacity of the department works
+
+    def test_GetCapacityCivil(self):
+        assert DCapALst.capacity(DeptT.civil) == 100
+
+    def test_GetCapacityMech(self):
+        assert DCapALst.capacity(DeptT.mechanical) == 100
+
+    def test_GetCapacityPhys(self):
+        assert DCapALst.capacity(DeptT.engphys) == 100
+
+    # Checking to see if removing a department works
+
+    def test_RemoveDept(self):
+        DCapALst.remove(DeptT.software)
+        assert not DCapALst.elm(DeptT.software)
+
+    # Checking to see if adding a department works
+
+    def test_AddDept(self):
+        DCapALst.remove(DeptT.software)
+        DCapALst.add(DeptT.software, 100)
+        assert DCapALst.elm(DeptT.software)
