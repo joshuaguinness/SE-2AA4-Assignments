@@ -23,17 +23,28 @@
 
 \maketitle
 
-Introductory blurb.
+In this assignments, a program was created to place students into their second year engineering stream
+based on their GPA, free choice, and preference of stream. This assignment was implemented by following a formal
+specification. The results of testing, comments on the specification, as well as answer to other questions are in the below sections.
 
 \section{Testing of the Original Program}
 
-Description of approach to testing.  Rationale for test case selection.  Summary
-of results.  Any problems uncovered through testing.
+The approach to testing that was taken was to first test the basic functionality of each function in each modules
+given the input data in the text files, then test the more boundary and weird cases and ensure everything worked.
+Because of the time constraint, only 15 test cases were created instead of the plethora that were planned. Because of the time
+constraints, the test cases that were implemented, focused on ensuring the basic functionality of the program and checking
+to see whether key functions in certain modules worked correctly and behaved as specified. All 15 test cases passed on the code. There
+were no problems uncovered while testing but that is likely because the testing was not thourough enough to uncover potential errors.
 
 \section{Results of Testing Partner's Code}
 
-Consequences of running partner's code.  Success, or lack of success, running
-test cases.  Explanation of why it worked, or didn't.
+After running the test cases on the partner's code, 11 of the 15 test cases passed and 4 failed. Three of the four that failed
+were just assertions checking the department capacity immediately after reading in the file of department capacities. The reason these
+failed is because the value returned by the partners code is a string, while it is comparing it to an integer. This is an error
+in the partner implementation. The fourth test case failed due to an error in their allocate() function in the SALst module. In their
+code, they tried to see whether an int value was less than a string, an operation obviously not supported therefore raising a TypeError.
+This is again an error in the implementation of their code. However, the 11 that did pass did so because of correct implementation due
+to following the specification. Having more test cases may have exposed more errors in implementation
 
 \section{Critique of Given Design Specification}
 
@@ -119,7 +130,13 @@ and observe how all the modules work together.
 How would you modify the specification to change this assumption to an exception?
 Would you need to modify the specification to replace a record type with a new ADT?
 
-To modify the specification to change this assumption to an exception
+To modify the specification to change this assumption to an exception, it will just specify an exception that when
+a GPA that is not between 0 and 12 occurs, an exception is raised. A good place to implement this would be in
+the add method in SALst as this is when a student is added to a list of students. The GPA of the student can then be
+easily checked, raising an exception if the value is out of bounds. Another place this could possibly be done is in the
+Read module. Although the specification would not need to be changed to replace a record type with a new ADT, it would likely
+be better, and result in a cleaner implementation and would be easier to change in the future. With it implemented as an ADT,
+custom functions could also be added which would benefit the programs as well.
 
 \item If we ignore the functions sort, average and allocate, the two modules SALst and DCapALst
 are very similar. Ignoring the functions mentioned, how could the documentation be modified 
