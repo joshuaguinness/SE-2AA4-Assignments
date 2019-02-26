@@ -10,6 +10,7 @@ class TestingClass:
 
     def setup_method(self, method):
         load_dcap_data("DeptCap.txt")
+        load_stdnt_data("StdntData.txt")
 
     ## Testing the DCapALst modle
     
@@ -58,3 +59,19 @@ class TestingClass:
         DCapALst.remove(DeptT.software)
         DCapALst.add(DeptT.software, 100)
         assert DCapALst.elm(DeptT.software)
+
+    # Checking the SALst module
+
+    def test_StudentExists(self):
+        assert SALst.elm("brownc")
+
+    def test_RemoveStudent(self):
+        SALst.remove("brownc")
+        assert not SALst.elm("brownc")
+
+    # Checking the AALst module
+
+    def test_StudentAdd(self):
+        SALst.allocate()
+        AALst.add_stdnt(DeptT.civil, "brownc")
+        assert AALst.num_alloc(DeptT.civil) == 2
