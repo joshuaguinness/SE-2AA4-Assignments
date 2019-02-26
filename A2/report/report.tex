@@ -23,28 +23,27 @@
 
 \maketitle
 
-In this assignments, a program was created to place students into their second year engineering stream
+In this assignment, a program was created to place students into their second year engineering stream
 based on their GPA, free choice, and preference of stream. This assignment was implemented by following a formal
-specification. The results of testing, comments on the specification, as well as answer to other questions are in the below sections.
+specification. The results of testing, comments on the specification, as well as answers to other questions are in the below sections.
 
 \section{Testing of the Original Program}
 
-The approach to testing that was taken was to first test the basic functionality of each function in each modules
-given the input data in the text files, then test the more boundary and weird cases and ensure everything worked.
-Because of the time constraint, only 15 test cases were created instead of the plethora that were planned. Because of the time
-constraints, the test cases that were implemented, focused on ensuring the basic functionality of the program and checking
-to see whether key functions in certain modules worked correctly and behaved as specified. All 15 test cases passed on the code. There
+The approach to testing that was taken was to first test the basic functionality of each function in each module
+given the input data in the text files to ensure everything worked. Then the more boundary and weird cases would be tested.
+Because of the time constraint, only 15 test cases were created instead of the high amount that were planned. Thus, the test cases that were implemented, focused on ensuring the basic functionality of the program and checking
+to see whether key functions in certain modules worked correctly and behaved as specified. All 15 test cases passed. There
 were no problems uncovered while testing but that is likely because the testing was not thourough enough to uncover potential errors.
 
 \section{Results of Testing Partner's Code}
 
 After running the test cases on the partner's code, 11 of the 15 test cases passed and 4 failed. Three of the four that failed
 were just assertions checking the department capacity immediately after reading in the file of department capacities. The reason these
-failed is because the value returned by the partners code is a string, while it is comparing it to an integer. This is an error
+failed is because the value returned by the partners code is a string, while it is comparing it to an int. This is an error
 in the partner implementation. The fourth test case failed due to an error in their allocate() function in the SALst module. In their
 code, they tried to see whether an int value was less than a string, an operation obviously not supported therefore raising a TypeError.
 This is again an error in the implementation of their code. However, the 11 that did pass did so because of correct implementation due
-to following the specification. Having more test cases may have exposed more errors in implementation
+to following the specification. Having more test cases may have exposed more errors in implementation.
 
 \section{Critique of Given Design Specification}
 
@@ -104,7 +103,7 @@ behind long statements which is why improvements should be made in that regard.
 \item Contrast the natural language of A1 to the formal specification of A2.
 What are the advantages and disadvantages of each approach?
 
-A few of the advantages and disadvantages were talked about the in the previous
+A few of the advantages and disadvantages were talked about in the previous
 section but they will be repeated here as well as added on to.
 
 The natural language of A1 made is easy to understand what the program was
