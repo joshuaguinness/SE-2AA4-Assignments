@@ -9,8 +9,8 @@ from SeqADT import *
 class TestingClass:
 
     def setup_method(self, method):
-        load_dcap_data("DeptCap.txt")
-        load_stdnt_data("StdntData.txt")
+        load_dcap_data("src/DeptCap.txt")
+        load_stdnt_data("src/StdntData.txt")
 
     ## Testing the DCapALst modle
     
