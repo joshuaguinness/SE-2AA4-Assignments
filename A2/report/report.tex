@@ -119,18 +119,46 @@ and observe how all the modules work together.
 How would you modify the specification to change this assumption to an exception?
 Would you need to modify the specification to replace a record type with a new ADT?
 
+To modify the specification to change this assumption to an exception
+
 \item If we ignore the functions sort, average and allocate, the two modules SALst and DCapALst
 are very similar. Ignoring the functions mentioned, how could the documentation be modified 
 to take advantage of the similarities?
 
+The documentation can be modified to take advantage of the similarities between SALst and DCapALst 
+by reusing sections and just identifying which key elements or variables need to change between modules.
+To be more specific, the documentation for one function will be used for both functions, with some additional
+notes about what specifically in the function will change or be different between modules. This is a good idea because 
+it will cut down on the amount of writing and show how similar things are, though it does have the downside of potentially 
+being more confusing.
+
 \item A1 had a question about generality of an interface. In what ways is A2 more general
 than A1?
+
+A2 is more general than A1 in that there is more freedom in the implementation within the functions.
+A1 was pretty specific in regards to exactly how the code in the functions should be written while A2
+has more freedom in that sense. A2 also has less restrictions in the exact data type to use, choosing
+instead to just specify a tuple, but leaving it open how the tuple should be implemented. A1 was much
+more specific in this sense, detailing exactly the data type to use, which was a dictionary in most cases,
+with no leeway.
 
 \item The list of choices for each student is represented by a custom object, SeqADT, instead of a
 Python list. For this specific usage, what are the advantages of using SeqADT over a regular list?
 
+An advantage of representing the list of choices for each student as a custom object, in this case SeqADT,
+is that custom operations can be defined on them, often making them easier to use. For this specific usage,
+SeqADT has the functions start, next, and end, which enable the client to use the object in different ways
+than it would be able to do with just a list. THe next() function is especially helpful because it provides
+iterating through the sequence much easier than trying to iterate through a list on the client side.
+
 \item Many of the strings in A1 have been replaced by enums in A2. For these cases, what advantages do enums provide?
 Why weren't enums also introduced in the specification for macids?
+
+Enums provide the advantage in that there is only a specific set of values that can be chosen, massively reducing 
+the margin of error. Enums are especially useful for constants. In the case for this assignment, enumerated types are used for gender and engineering departments.
+This means that students will have a guarenteed value that has meaning, this also means less error checking has to be in place
+when using enumerated types. Enums were not introduced in the specification for macids because macids are of an infinite
+variety, meaning they are variables. Macids cannot be pre-planned and therefore cannot be enums.
 
 \end{enumerate}
 
