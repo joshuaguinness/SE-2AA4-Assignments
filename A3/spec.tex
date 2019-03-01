@@ -113,9 +113,7 @@ N/A
 
 \subsubsection* {Exported Types}
 
-\wss{What should be written here
-
-Stack = ?
+Stack = ? \wss{What should be written here
 
 \subsubsection* {Exported Constants}
 
@@ -145,8 +143,7 @@ toSeq& & seq of T & \\
 
 \subsubsection* {State Variables}
 
-$S$: \wss{What is the type of the state variable?}
-$S$: stack of T
+$S$: stack of T \wss{What is the type of the state variable?}
 
 \subsubsection* {State Invariant}
 
@@ -184,23 +181,21 @@ new Stack($s$):
 
 \noindent pop():
 \begin{itemize}
-\item output: \wss{What should go here?}
-
-\item exception: \wss{What should go here?}
+\item output: new Stack(S[0..|S|-2]) \wss{What should go here?}
+\item exception: $|S| = 0$ \wss{What should go here?}
 
 \end{itemize}
 
 \noindent top():
 \begin{itemize}
 \item output: $\mathit{out} := S[|S| - 1]$
-
-\item exception: \wss{What should go here?}
+\item exception: $|S| = 0$ \wss{What should go here?}
 
 \end{itemize}
 
 \noindent size():
 \begin{itemize}
-\item output: \wss{What should go here?}
+\item output: $\mathit{out} := |S|$ \wss{What should go here?}
 \item exception: None
 \end{itemize}
 
@@ -217,7 +212,7 @@ new Stack($s$):
 
 \subsection* {Template Module}
 
-CardStackT is \wss{What should go here?}
+CardStackT is a Stack \wss{What should go here?}
 
 \newpage
 
