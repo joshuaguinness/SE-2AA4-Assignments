@@ -113,7 +113,7 @@ N/A
 
 \subsubsection* {Exported Types}
 
-Stack = ? \wss{What should be written here
+Stack = ? \wss{What should be written here}
 
 \subsubsection* {Exported Constants}
 
@@ -143,7 +143,7 @@ toSeq& & seq of T & \\
 
 \subsubsection* {State Variables}
 
-$S$: stack of T \wss{What is the type of the state variable?}
+$S$: sequence of T \wss{What is the type of the state variable?}
 
 \subsubsection* {State Invariant}
 
@@ -181,15 +181,15 @@ new Stack($s$):
 
 \noindent pop():
 \begin{itemize}
-\item output: new Stack(S[0..|S|-2]) \wss{What should go here?}
-\item exception: $|S| = 0$ \wss{What should go here?}
+\item output: new $Stack(S[0..|S|-2])$ \wss{What should go here?}
+\item exception: $|S| = 0 \implies out\_of\_range$  \wss{What should go here?}
 
 \end{itemize}
 
 \noindent top():
 \begin{itemize}
 \item output: $\mathit{out} := S[|S| - 1]$
-\item exception: $|S| = 0$ \wss{What should go here?}
+\item exception: $|S| = 0 \implies out\_of\_range$ \wss{What should go here?}
 
 \end{itemize}
 
@@ -212,7 +212,7 @@ new Stack($s$):
 
 \subsection* {Template Module}
 
-CardStackT is a Stack \wss{What should go here?}
+CardStackT is a Stack(CardT) \wss{What should go here?}
 
 \newpage
 
@@ -275,9 +275,9 @@ $W$: CardStackT \textit{\# Waste}\\
 
 \subsubsection* {State Invariant}
 
-$|T| = \wss{\text{What goes here?}}$\\
-$|F| = \wss{\text{What goes here?}}$\\
-cnt\_cards($T$, $F$, $D$, $W$, \wss{\text{What goes here?}}) = TOTAL\_CARDS\\
+$|T| = 10 \wss{\text{What goes here?}}$\\
+$|F| = 8 \wss{\text{What goes here?}}$\\
+cnt\_cards($T$, $F$, $D$, $W$, $f$ \wss{\text{What goes here?}}) = TOTAL\_CARDS\\
 two\_decks($T$, $F$, $D$, $W$) \textit{\# each card appears twice in the combined deck}
 
 \subsubsection* {Assumptions \& Design Decisions}
@@ -339,9 +339,9 @@ $c = \mbox{Tableau}$ & valid\_tab\_tab($n_0$,$n_1$) \\
 \hhline{|-|-|}
 $c = \mbox{Foundation}$ & valid\_tab\_foundation($n_0$,$n_1$) \\
 \hhline{|-|-|}
-$c = \mbox{Deck}$& \wss{What goes here?}\\
+$c = \mbox{Deck}$& false \wss{What goes here?}\\
 \hhline{|-|-|}
-$c = \mbox{Waste}$ & \wss{What goes here?}\\
+$c = \mbox{Waste}$ & false \wss{What goes here?}\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -372,9 +372,9 @@ $c = \mbox{Tableau}$ & valid\_waste\_tab($n$) \\
 \hhline{|-|-|}
 $c = \mbox{Foundation}$ & valid\_waste\_foundation($n$) \\
 \hhline{|-|-|}
-$c = \mbox{Deck}$& \wss{What goes here?}\\
+$c = \mbox{Deck}$& false \wss{What goes here?}\\
 \hhline{|-|-|}
-$c = \mbox{Waste}$ & \wss{What goes here?}\\
+$c = \mbox{Waste}$ & false \wss{What goes here?}\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -395,7 +395,7 @@ $c = \mbox{Waste}$ & \wss{What goes here?}\\
 
 \noindent is\_valid\_deck\_mv():
 \begin{itemize}
-\item output: \wss{What goes here?  The deck moves involves moving a card from
+\item output: True \wss{What goes here?  The deck moves involves moving a card from
     the deck stack to the waste stack.}
 \item exception: None
 \end{itemize}
@@ -406,7 +406,7 @@ $c = \mbox{Waste}$ & \wss{What goes here?}\\
 
 \begin{tabular}{|p{3cm}|l|}
 \hhline{|-|-|}
-$c = \mbox{Tableau}$ & T[$n_0$], T[$n_1$] := \wss{What goes here?}\\
+$c = \mbox{Tableau}$ & T[$n_0$], T[$n_1$] := T[$n_0$], T[$n_1$] \wss{What goes here?}\\
 \hhline{|-|-|}
 $c = \mbox{Foundation}$ & T[$n_0$], F[$n_1$] := \wss{What goes here?}\\
 \hhline{|-|-|}
