@@ -395,7 +395,7 @@ $c = \mbox{Waste}$ & false \wss{What goes here?}\\
 
 \noindent is\_valid\_deck\_mv():
 \begin{itemize}
-\item output: True \wss{What goes here?  The deck moves involves moving a card from
+\item output: $|D| > 0$ \wss{What goes here?  The deck moves involves moving a card from
     the deck stack to the waste stack.}
 \item exception: None
 \end{itemize}
@@ -406,9 +406,9 @@ $c = \mbox{Waste}$ & false \wss{What goes here?}\\
 
 \begin{tabular}{|p{3cm}|l|}
 \hhline{|-|-|}
-$c = \mbox{Tableau}$ & T[$n_0$], T[$n_1$] := T[$n_0$], T[$n_1$] \wss{What goes here?}\\
+$c = \mbox{Tableau}$ & T[$n_0$], T[$n_1$] := T[$n_0$].pop(), T[$n_1$].push(T[$n_0$].top()) \wss{What goes here?}\\
 \hhline{|-|-|}
-$c = \mbox{Foundation}$ & T[$n_0$], F[$n_1$] := \wss{What goes here?}\\
+$c = \mbox{Foundation}$ & T[$n_0$], F[$n_1$] := T[$n_0$].pop(), F[$n_1$].push(F[$n_0$].top()) \wss{What goes here?}\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -423,9 +423,9 @@ $c = \mbox{Foundation}$ & T[$n_0$], F[$n_1$] := \wss{What goes here?}\\
 
 \begin{tabular}{|p{3cm}|l|}
 \hhline{|-|-|}
-$c = \mbox{Tableau}$ & W, T[$n$] := \wss{What goes here?}\\
+$c = \mbox{Tableau}$ & W, T[$n$] := W.pop(), T[$n$].push(W.top()) \wss{What goes here?}\\
 \hhline{|-|-|}
-$c = \mbox{Foundation}$ & W, F[$n$] := \wss{What goes here?}\\
+$c = \mbox{Foundation}$ & W, F[$n$] := W.pop(), F[$n$].push(W.top()) \wss{What goes here?}\\
 \hhline{|-|-|}
 \end{tabular}
 
@@ -437,7 +437,7 @@ $c = \mbox{Foundation}$ & W, F[$n$] := \wss{What goes here?}\\
 
 \noindent deck\_mv():
 \begin{itemize}
-\item transition: D, W := \wss{What goes here?}
+\item transition: D, W := D.pop(), W.push(D.top()) \wss{What goes here?}
 \item exception:
   $exc := (\neg \text{is\_valid\_deck\_mv}() \Rightarrow \text{invalid\_argument})$
 \end{itemize}
@@ -472,7 +472,7 @@ $c = \mbox{Foundation}$ & W, F[$n$] := \wss{What goes here?}\\
   \text{is\_valid\_deck\_mv()}$ where\\
 
   $\text{valid\_tab\_mv} \equiv (\exists c: \text{CategoryT}, n_0: \mathbb{N},
-  n_1: \mathbb{N} | \wss{\text{What goes here?}}: \text{is\_valid\_tab\_mv}(c, n_0, n_1))$\\
+  n_1: \mathbb{N} | n_0 = 0..|c|-1 \land n_1 = 0..|c|-1 $\\$ \wss{\text{What goes here?}}: \text{is\_valid\_tab\_mv}(c, n_0, n_1))$\\
 
   $\text{valid\_waste\_mv} \equiv (\exists c: \text{CategoryT}, n: \mathbb{N} |
   \wss{\text{What goes here?}} : \text{is\_valid\_waste\_mv}(c, n))$
