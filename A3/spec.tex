@@ -474,8 +474,7 @@ $c = \mbox{Foundation}$ & W, F[$n$] := W.pop(), F[$n$].push(W.top()) \wss{What g
   $\text{valid\_tab\_mv} \equiv (\exists c: \text{CategoryT}, n_0: \mathbb{N},
   n_1: \mathbb{N} | n_0 = 0..|c|-1 \land n_1 = 0..|c|-1 $\\$ \wss{\text{What goes here?}}: \text{is\_valid\_tab\_mv}(c, n_0, n_1))$\\
 
-  $\text{valid\_waste\_mv} \equiv (\exists c: \text{CategoryT}, n: \mathbb{N} |
-  \wss{\text{What goes here?}} : \text{is\_valid\_waste\_mv}(c, n))$
+  $\text{valid\_waste\_mv} \equiv (\exists c: \text{CategoryT}, n: \mathbb{N} | n = 0..|c| \wss{\text{What goes here?}} : \text{is\_valid\_waste\_mv}(c, n))$
 
 \item exception: None
 
@@ -483,9 +482,8 @@ $c = \mbox{Foundation}$ & W, F[$n$] := W.pop(), F[$n$].push(W.top()) \wss{What g
 
 \noindent is\_win\_state():
 \begin{itemize}
-\item output: \wss{What goes here?}
+\item output: $\text{cnt\_cards\_seq}(T, \lambda t \rightarrow True ) = 104$ \wss{What goes here?}
 \item exception: None
-
 \end{itemize}
 
 \subsection*{Local Types}
@@ -500,8 +498,8 @@ SeqCrdStckT = seq of CardStackT
 $\text{two\_decks}(T, F, D, W) \equiv$ \wss{This function returns True if there
   is two of each card in the game}
 $$(\forall \mathit{st}: \text{SuitT}, \mathit{rk}:
-\text{RankT} | \mathit{st} \in \text{SuitT} \wedge \mathit{rk} \in \text{RankT}
-: \wss{\text{What goes here?}})$$
+\text{RankT} | \mathit{st} \in \text{SuitT} \wedge \mathit{rk} \in \text{RankT} :
+\text{cnt\_cards}(T,F,D,W,\lambda t \rightarrow t[0] = st  \land  t[1] = rk) = 2)$$ \wss{\text{What goes here?}})\\
 
 \noindent $\text{cnt\_cards\_seq}: \text{SeqCrdStckT} \times (\text{CardT}
 \rightarrow \mathbb{B}) \rightarrow \mathbb{N}$\\
@@ -510,7 +508,7 @@ $$(\forall \mathit{st}: \text{SuitT}, \mathit{rk}:
 
 \noindent $\text{cnt\_cards\_stack}: \text{CardStackT} \times (\text{CardT}
 \rightarrow \mathbb{B}) \rightarrow \mathbb{N}$\\
-\noindent \wss{What goes here?}\\
+\noindent $\text{cnt\_cards\_stack}(S, f) \equiv (+ t: \text{CardT} | t \in S : f(t))$ \wss{What goes here?}\\
 
 \noindent $\text{cnt\_cards}: \text{SeqCrdStckT} \times \text{SeqCrdStckT}
 \times \text{CardStackT} \times \text{CardStackT} \times (\text{CardT}
@@ -526,7 +524,7 @@ f) + \text{cnt\_cards\_seq}(F, f) + \text{cnt\_cards\_stack}(D, f) +
 \noindent $\text{tab\_deck}: \text{(seq of CardT)} \rightarrow \text{SeqCrdStckT}$\\
 \noindent $\text{tab\_deck} (\mathit{deck}) \equiv T$ such that
 $(\forall i: \mathbb{N} | i \in [0..9] : T[i].\text{toSeq}() =
-\mathit{deck}[\wss{\text{What goes here?}}])$\\
+\mathit{deck}[4*i + 3\wss{\text{What goes here?}}])$\\
 
 \noindent is\_valid\_pos: $ \text{CategoryT} \times \mathbb{N} \rightarrow \mathbb{B}$\\
 \noindent is\_valid\_pos($c, n$) $\equiv (c = \text{Tableau} \Rightarrow n \in
@@ -537,19 +535,30 @@ $(\forall i: \mathbb{N} | i \in [0..9] : T[i].\text{toSeq}() =
 
 \begin{tabular}{|p{4cm}|p{3.5cm}|l|}
 \hhline{|-|-|-|}
-$T[n_0].\text{size}() > 0$ & T[$n_1$].size() $>$ 0 & \wss{What goes here?}\\
+$T[n_0].\text{size}() > 0$ & T[$n_1$].size() $>$ 0 & $tab\_placeable(n_0, n_1)$ \wss{What goes here?}\\
 \hhline{|~|-|-|}
- & T[$n_1$].size() = 0 & \wss{What goes here?}\\
+ & T[$n_1$].size() = 0 & True \wss{What goes here?}\\
 \hhline{|-|-|-|}
-T[$n_0$].size() = 0 & T[$n_1$].size() $>$ 0 & \wss{What goes here?}\\
+T[$n_0$].size() = 0 & T[$n_1$].size() $>$ 0 & False \wss{What goes here?}\\
 \hhline{|~|-|-|}
-& T[$n_1$].size() $=$ 0 & \wss{What goes here?}\\
+& T[$n_1$].size() $=$ 0 & False \wss{What goes here?}\\
 \hhline{|-|-|-|}
 \end{tabular}\\\\
 
 \noindent valid\_tab\_foundation: $\mathbb{N} \times \mathbb{N} \rightarrow \mathbb{B}$\\
 \noindent valid\_tab\_foundation($n_0, n_1$) $\equiv$ \wss{What goes here?  You
   may need a table?}\\
+\begin{tabular}{|p{4cm}|p{3.5cm}|l|}
+\hhline{|-|-|-|}
+$T[n_0].\text{size}() > 0$ & F[$n_1$].size() $>$ 0 & $foundation\_placeable(n_0, n_1)$ \wss{What goes here?}\\
+\hhline{|~|-|-|}
+ & F[$n_1$].size() = 0 & True \wss{What goes here?}\\
+\hhline{|-|-|-|}
+T[$n_0$].size() = 0 & F[$n_1$].size() $>$ 0 & False \wss{What goes here?}\\
+\hhline{|~|-|-|}
+& F[$n_1$].size() $=$ 0 & False \wss{What goes here?}\\
+\hhline{|-|-|-|}
+\end{tabular}\\\\
 
 \noindent valid\_waste\_tab: $\mathbb{N} \rightarrow \mathbb{B}$\\
 \noindent valid\_waste\_tab ($n$) $\equiv$
@@ -573,9 +582,34 @@ F[$n$].size() = 0 & W.top().r = ACE\\
 \hhline{|-|-|}
 \end{tabular}\\\\
 
-\noindent tab\_placeable: \wss{Complete this specification}\\
+\noindent tab\_placeable: $\mathbb{N} \times \mathbb{N} \rightarrow \mathbb{B}$ \wss{Complete this specification}\\
+\noindent tab\_placeable ($n_0$, $n_1$) $\equiv$
 
-\noindent foundation\_placeable: \wss{Complete this specification}
+\begin{tabular}{|p{4cm}|p{3.5cm}|l|}
+\hhline{|-|-|-|}
+$T[n_0].top()[0] = T[n_1].top()[0]$ & T[$n_0$].top()[1] $<$ T[$n_1$].top()[1] & True, T[$n_0$].pop(), T[$n_1$].push(T[$n_0$].pop())\\
+\hhline{|~|-|-|}
+ & $T[n_0].top()[1] \geq T[n_1].top()[1]$ & False\\
+\hhline{|-|-|-|}
+$T[n_0].top()[0] \neq T[n_1].top()[0]$ &  & False\\
+\hhline{|~|-|-|}
+&  & False\\
+\hhline{|-|-|-|}
+\end{tabular}\\\\
+
+\noindent foundation\_placeable: $\mathbb{N} \times \mathbb{N} \rightarrow \mathbb{B}$ \wss{Complete this specification}
+
+\begin{tabular}{|p{4cm}|p{3.5cm}|l|}
+\hhline{|-|-|-|}
+$T[n_0].top()[0] = F[n_1].top()[0]$ & T[$n_0$].top()[1] $>$ F[$n_1$].top()[1] & True, T[$n_0$].pop(), F[$n_1$].push(T[$n_0$].pop())\\
+\hhline{|~|-|-|}
+ & $T[n_0].top()[1] \leq F[n_1].top()[1]$ & False\\
+\hhline{|-|-|-|}
+$T[n_0].top()[0] \neq F[n_1].top()[0]$ &  & False\\
+\hhline{|~|-|-|}
+&  & False\\
+\hhline{|-|-|-|}
+\end{tabular}\\\\
 
 \newpage
 
@@ -583,5 +617,7 @@ F[$n$].size() = 0 & W.top().r = ACE\\
 
 \wss{Write a critique of the interface for the modules in this project.  Is there
 anything missing?  Is there anything you would consider changing?  Why?}\\
+
+I think that the two decks function is unecessary because if the creation of the deck is done properly, there is no need to check again if it was created properly. It seems redundant and not necessary.
 
 \end {document}
