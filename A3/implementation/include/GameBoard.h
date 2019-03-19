@@ -7,9 +7,20 @@
 class BoardT {
 
     private:
+        // Private Variables
+        // https://www.cpp.edu/~elab/ECE114/Array.html
+        CardStackT t [8];
+        CardStack f [10];
+        CardStackT d;
+        CardStack w;
+
+
+        // Private Methods
+        bool two_decks();
 
     protected:
 
+    // Public Methods
     public:
         
         BoartT BoardT (std::vector<T> s);
@@ -19,7 +30,12 @@ class BoardT {
         tab_mv(CategoryT a, unsigned int b, unsigned int c);
         waste_mv(CategoryT a, unsigned int b);
         deck_mv();
-        get_tab
+        CardStackT get_tab(unsigned int a);
+        CardStackT get_foundation(unsigned int a);
+        CardStackT get_deck();
+        CardStackT get_waste();
+        bool valid_mv_exists();
+        bool is_win_state();
 
 
 };
