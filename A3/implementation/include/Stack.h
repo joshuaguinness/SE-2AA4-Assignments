@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-template <class T>
+template <typename T>
 class StackT {
     private:
         std::vector<T> s;
@@ -12,6 +12,7 @@ class StackT {
     protected:
 
     public:
+        template <class T>
         Stack<T> Stack (std::vector<T> s);
 
         Stack<T> push(T a);
