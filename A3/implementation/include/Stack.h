@@ -2,6 +2,7 @@
 #define A3_STACK_H_
 
 #include <vector>
+using namespace std;
 
 template <class T>
 class StackT {
@@ -11,36 +12,18 @@ class StackT {
     protected:
 
     public:
-        Stack<T> Stack (std::vector<T> s)
-        {
+        Stack<T> Stack (std::vector<T> s);
 
-        }
+        Stack<T> push(T a);
 
-        Stack<T> push(T a)
-        {
+        Stack<T> pop ();
 
-        }
+        T top();
 
-        Stack<T> pop ()
-        {
+        unsigned int size();
 
-        }
+        std::vector<T> toSeq();
 
-        T top()
-        {
-
-        }
-
-        unsigned int size()
-        {
-
-        }
-
-        std::vector<T> toSeq()
-        {
-
-        }
-            
 };
 
 #endif
