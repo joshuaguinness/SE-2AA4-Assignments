@@ -10,6 +10,7 @@ class Stack {
 
     public:
         Stack(std::vector<T> s);
+        Stack();
         Stack<T> push(T a);
         Stack<T> pop ();
         T top();
