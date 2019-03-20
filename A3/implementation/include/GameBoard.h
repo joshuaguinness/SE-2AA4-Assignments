@@ -15,12 +15,12 @@ class BoardT {
         CardStackT d;
         CardStack w;
 
-        // Private Methods
+        // Private Local Methods
         //https://www.tutorialspoint.com/cplusplus/cpp_passing_arrays_to_functions.htm
         bool two_decks(CardStackT t[8], CardStack f[10], CardStackT d, CardStackT w);
-        unsigned int cnt_cards_seq(CardStackT S[], LAMBDA func);
-        unsigned int cnt_cards_stack(CardStackT s, LAMBDA func);
-        unsigned int cnt_cards(CardStackT t[8], CardStack f[10], CardStackT d, CardStackT w, LAMBDA func);
+        //unsigned int cnt_cards_seq(CardStackT S[], LAMBDA func);
+        //unsigned int cnt_cards_stack(CardStackT s, LAMBDA func);
+        //unsigned int cnt_cards(CardStackT t[8], CardStack f[10], CardStackT d, CardStackT w, LAMBDA func);
         // https://www.tutorialspoint.com/cplusplus/cpp_return_arrays_from_functions.htm
         CardStackT * init_seq(unsigned int n);
         CardStackT * tab_deck(CardT a);
