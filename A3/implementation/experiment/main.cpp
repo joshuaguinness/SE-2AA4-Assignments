@@ -32,7 +32,7 @@ int main() {
   }
   std::random_shuffle(d.begin(), d.end());
 
-Stack<CardT> test = Stack<CardT>(d);
+CardStackT test = CardStackT(d);
 
   std::cout << "Sequence length: " << test.size() << std::endl;
   std::cout << "Deck size: " << test.size() << std::endl;
