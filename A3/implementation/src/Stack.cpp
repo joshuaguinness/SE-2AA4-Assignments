@@ -1,13 +1,16 @@
 // Implementation here
 
 #include "../include/Stack.h"
+#include "../include/CardTypes.h"
 #include <exception>
+#include <stdexcept>
+#include <iostream>
 
 using std::vector;
 
 // Public Methods
 template <class T>   // Need this in front of every method   
-StackT<T>::Stack(std::vector<T> s)
+Stack<T>::Stack(std::vector<T> s)
 {
     this->s = s;
 }
@@ -15,7 +18,8 @@ StackT<T>::Stack(std::vector<T> s)
 template <class T>
 Stack<T> Stack<T>::push(T a)
 {
-    StackT<T> stack = StackT<T>(this->s.push_back(a));
+    this->s.push_back(a);
+    Stack<T> stack = Stack<T>(this->s);
     return stack;
 }
 
@@ -24,10 +28,11 @@ Stack<T> Stack<T>::pop()
 {
     if (this->s.size() == 0)
     {
-        throw out_of_range();
+        throw std::out_of_range("Out of Range");
     } else
     {
-        StackT<T> stack = StackT<T>(this->s.pop_back());
+        this->s.pop_back();
+        Stack<T> stack = Stack<T>(this->s);
         return stack;
     }
 }
@@ -38,7 +43,7 @@ T Stack<T>::top()
     // https://www.programiz.com/cpp-programming/if-else
     if (this->s.size() == 0)
     {
-        throw out_of_range();
+        throw std::out_of_range("Out of Range");
     } else
     {
         return s.back();
@@ -63,4 +68,3 @@ std::vector<T> Stack<T>::toSeq()
 template class Stack<CardT>;
 
 // Keep this at bottom
-
