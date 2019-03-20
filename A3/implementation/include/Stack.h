@@ -4,12 +4,12 @@
 #include <vector>
 
 template <class T>
-class StackT {
+class Stack {
     private:
         std::vector<T> s;
 
     public:
-        Stack (std::vector<T> s);
+        Stack(std::vector<T> s);
         Stack<T> push(T a);
         Stack<T> pop ();
         T top();
