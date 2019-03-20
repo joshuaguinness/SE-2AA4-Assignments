@@ -7,9 +7,17 @@
 #include <iostream>
 #include <algorithm>
 
-using std::vector;
+//using std::vector;
 
 // Public Methods
+
+template <class T>
+Stack<T>::Stack()
+{
+    std::vector<T> v;
+    this->s = v;
+}
+
 template <class T>   // Need this in front of every method   
 Stack<T>::Stack(std::vector<T> s)
 {
