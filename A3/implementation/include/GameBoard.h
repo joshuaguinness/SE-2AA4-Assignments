@@ -7,6 +7,7 @@
 class BoardT {
 
     private:
+
         // Private Variables
         // https://www.cpp.edu/~elab/ECE114/Array.html
         CardStackT t [8];
@@ -14,11 +15,22 @@ class BoardT {
         CardStackT d;
         CardStack w;
 
-
         // Private Methods
-        bool two_decks();
-
-    protected:
+        //https://www.tutorialspoint.com/cplusplus/cpp_passing_arrays_to_functions.htm
+        bool two_decks(CardStackT t[8], CardStack f[10], CardStackT d, CardStackT w);
+        unsigned int cnt_cards_seq(CardStackT S[], LAMBDA func);
+        unsigned int cnt_cards_stack(CardStackT s, LAMBDA func);
+        unsigned int cnt_cards(CardStackT t[8], CardStack f[10], CardStackT d, CardStackT w, LAMBDA func);
+        // https://www.tutorialspoint.com/cplusplus/cpp_return_arrays_from_functions.htm
+        CardStackT * init_seq(unsigned int n);
+        CardStackT * tab_deck(CardT a);
+        bool is_valid_pos(CategoryT a, unsigned int b);
+        bool valid_tab_tab(unsigned int a, unsigned int b);
+        bool valid_tab_foundation(unsigned int a, unsigned int b);
+        bool valid_waste_tab(unsigned int a);
+        bool valid_waste_foundation(unsigned int a);
+        bool tab_placeable (CardT a, CardT b);
+        bool foundation_placeable(CardT a, CardT b);
 
     // Public Methods
     public:
@@ -36,8 +48,6 @@ class BoardT {
         CardStackT get_waste();
         bool valid_mv_exists();
         bool is_win_state();
-
-
 };
 
 #endif

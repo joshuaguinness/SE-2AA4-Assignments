@@ -8,8 +8,6 @@ class StackT {
     private:
         std::vector<T> s;
 
-    protected:
-
     public:
         Stack (std::vector<T> s);
         Stack<T> push(T a);
