@@ -69,35 +69,3 @@ std::vector<T> Stack<T>::toSeq()
 template class Stack<CardT>;
 
 // Keep this at bottom
-
-int main()
-{
-
-//std::vector<CardT> v = {7, 5, 16, 8};
-
-
-
-  std::vector<CardT> d;
-  for (RankT rank = ACE; rank <= KING; rank++) {
-    for (unsigned int suit = 0; suit < 4; suit++) {
-      CardT n = { static_cast<SuitT>(suit), rank };
-      d.push_back(n);
-      d.push_back(n);
-    }
-  }
-  std::random_shuffle(d.begin(), d.end());
-
-  
-/*
-  std::cout << "Sequence length: " << d.size() << std::endl;
-  std::cout << "Deck size: " << d.size() << std::endl;
-  std::cout << "Deck top: " << d.top().s << " " << d.top().r << std::endl;
-/*
-CardStackT foo(vec);
-  foo = foo.push(d[0]);
-  CardT bar = foo.top();
-  std::cout << "Card: " << bar.s << " " << bar.r << std::endl;
-  foo = foo.pop();
-*/
-    return 0;
-}

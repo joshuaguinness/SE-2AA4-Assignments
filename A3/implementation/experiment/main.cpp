@@ -12,11 +12,42 @@
 
 #include "CardStack.h"
 #include "CardTypes.h"
-#include "GameBoard.h"
+//#include "GameBoard.h"
 #include "Stack.h"
 
 int main() {
   std::cout << "'make experiment' will run this main" << std::endl;
+
+//std::vector<CardT> v = {7, 5, 16, 8};
+
+
+
+  std::vector<CardT> d;
+  for (RankT rank = ACE; rank <= KING; rank++) {
+    for (unsigned int suit = 0; suit < 4; suit++) {
+      CardT n = { static_cast<SuitT>(suit), rank };
+      d.push_back(n);
+      d.push_back(n);
+    }
+  }
+  std::random_shuffle(d.begin(), d.end());
+
+Stack<CardT> test = Stack<CardT>(d);
+
+  std::cout << "Sequence length: " << test.size() << std::endl;
+  std::cout << "Deck size: " << test.size() << std::endl;
+  std::cout << "Deck top: " << test.top().s << " " << test.top().r << std::endl;
+/*
+CardStackT foo(vec);
+  foo = foo.push(d[0]);
+  CardT bar = foo.top();
+  std::cout << "Card: " << bar.s << " " << bar.r << std::endl;
+  foo = foo.pop();
+*/
+
+
+
+
 
   // When you are finished your implementation, uncomment the code
   // below and make sure 'make experiment' compiles and runs.
