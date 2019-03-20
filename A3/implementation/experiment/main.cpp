@@ -37,6 +37,18 @@ Stack<CardT> test = Stack<CardT>(d);
   std::cout << "Sequence length: " << test.size() << std::endl;
   std::cout << "Deck size: " << test.size() << std::endl;
   std::cout << "Deck top: " << test.top().s << " " << test.top().r << std::endl;
+
+ test = test.pop();
+  std::cout << "Most recent: " << test.top().s << " " << test.top().r << std::endl;
+
+CardT x = { static_cast<SuitT>(2), 3};
+
+  test = test.push(x);
+  std::cout << "Most recent blah: " << test.top().s << " " << test.top().r << std::endl;
+
+std::vector<CardT> y  = test.toSeq();
+std::cout << y.size();
+
 /*
 CardStackT foo(vec);
   foo = foo.push(d[0]);
