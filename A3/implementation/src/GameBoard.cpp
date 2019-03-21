@@ -143,14 +143,28 @@ CardStackT BoardT::get_waste()
 // A valid mv actuall exists
 bool BoardT::valid_mv_exists()
 {
-    return valid_tab_mv() || valid_waste_mv || is_valid_deck_mv();
+    return valid_tab_mv() || valid_waste_mv() || is_valid_deck_mv();
 }
 
 // The state is in a win state
 bool BoardT::is_win_state()
 {
-
+    for (int i = 0; i < 8; i++)
+    {
+        if (this->f[i].size() > 0 && this->f[i].top().r == KING)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }s
+        
+    }
 }
+
+
+
+
 
 // Private Methods
 
@@ -171,9 +185,10 @@ SeqCrdStckT BoardT::tab_deck(std::vector<CardT> a)
 
 bool BoardT::is_valid_pos(CategoryT c, unsigned int n)
 {
+    // Got a lil help from sam on this
     if (c == CategoryT::Tableau)
     {
-        if (c >= 0 && c <= 9)
+        if (n >= 0 && n <= 9)
         {
             return true;
         } else
@@ -184,7 +199,7 @@ bool BoardT::is_valid_pos(CategoryT c, unsigned int n)
     }
     else if (c == CategoryT::Foundation)
     {
-        if (c >= 0 && c <= 7)
+        if (n >= 0 && n <= 7)
         {
             return true;
         } else
@@ -329,12 +344,9 @@ bool BoardT::valid_waste_foundation(unsigned int n)
 bool BoardT::valid_tab_mv()
 {
 
-    bool return_boolean = false;
+    bool return_boolean;
+    
 
-    for (int i = 0; i < 2; i++)
-    {
-
-    }
 
     return return_boolean;
 }
@@ -342,5 +354,22 @@ bool BoardT::valid_tab_mv()
 // There is a valid waste mv
 bool BoardT::valid_waste_mv()
 {
+    bool return_boolean;
+    bool valid_pos_boolean = false;
+    bool valid_waste_mv_boolean = false;
 
+    for (int i = 0; i < 10; i++)
+    {
+        valid_pos_boolean |=  is_valid_pos(CategoryT::Tableau, i);
+        valid_waste_mv_boolean |=  is_valid_pos(CategoryT::Tableau, i);
+    }
+
+    for (int i = 0; i < 8; i++)
+    {
+        valid_pos_boolean |=  is_valid_pos(CategoryT::Foundation, i);
+        valid_waste_mv_boolean |=  is_valid_pos(CategoryT::Foundation, i);
+    }
+
+    return_boolean = valid_pos_boolean && valid_waste_mv_boolean;
+    return return_boolean;
 }
