@@ -343,12 +343,22 @@ bool BoardT::valid_waste_foundation(unsigned int n)
 // There is a valid tab mv
 bool BoardT::valid_tab_mv()
 {
-
-    bool return_boolean;
-    
-
-
-    return return_boolean;
+    bool valid_tab_mv_boolean = false;
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            if (is_valid_pos(CategoryT::Tableau, i) &&  is_valid_pos(CategoryT::Tableau, j))    {
+                valid_tab_mv_boolean |= is_valid_tab_mv(CategoryT::Tableau, i, j);
+            }
+        }
+    }
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 8; j++) {}
+            if (is_valid_pos(CategoryT::Tableau, i) &&  is_valid_pos(CategoryT::Foundation, j)){
+                valid_tab_mv_boolean |= is_valid_tab_mv(CategoryT::Foundation, i, j);
+            }
+        }
+    }
+    return valid-tab_mv_boolean;
 }
 
 // There is a valid waste mv
@@ -373,3 +383,10 @@ bool BoardT::valid_waste_mv()
     return_boolean = valid_pos_boolean && valid_waste_mv_boolean;
     return return_boolean;
 }
+
+bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
+{
+
+}
+
+unsigned int BoardT::cnt_cards_seq(SeqCrdStckT S)
