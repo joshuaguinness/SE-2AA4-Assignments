@@ -11,8 +11,8 @@ class BoardT {
     private:
         // Private Variables
         // https://www.cpp.edu/~elab/ECE114/Array.html
-        std::vector<CardStackT> t;
-        std::vector<CardStackT> f;
+        SeqCrdStckT t;
+        SeqCrdStckT f;
         CardStackT d;
         CardStackT w;
 

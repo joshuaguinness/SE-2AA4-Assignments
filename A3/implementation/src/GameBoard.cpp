@@ -1,9 +1,8 @@
 /*
 TODO:
 - Exception for constructor
-- 
-
-
+- Exception for valid tab move
+- Exception for valid waste move
 */
 // May need an initializer list
 
@@ -47,13 +46,32 @@ bool BoardT::is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
         return false;
     }
 }
-bool BoardT::is_valid_waste_mv(CategoryT a, unsigned int b)
+bool BoardT::is_valid_waste_mv(CategoryT c, unsigned int n)
 {
-
+    if (c == 0)
+    {
+        return valid_waste_tab(n);
+    } else if (c == 1)
+    {
+        return valid_waste_foundation(n);
+    } else if (c == 2)
+    {
+        return false;
+    } else if (c == 3)
+    {
+        return false;
+    }
 }
 bool BoardT::is_valid_deck_mv()
 {
-
+    if (this->d.size() > 0)
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+    
 }
 void BoardT::tab_mv(CategoryT a, unsigned int b, unsigned int c)
 {
@@ -183,3 +201,56 @@ bool BoardT::valid_tab_foundation(unsigned int n_0, unsigned int n_1)
     
 }
 
+// Checks to see if a card is placeable on that tab
+bool BoardT::tab_placeable(CardT c, CardT d)
+{
+   //  http://www.cplusplus.com/doc/tutorial/operators/
+    if (c.s == d.s && c.r == (d.r - 1) )
+    {
+        return true;
+    } else 
+    {
+        return false;
+    }
+}
+
+// Legal move to place on foundation
+bool BoardT::foundation_placeable(CardT c, CardT d)
+{
+    if (c.s == d.s && c.r == (d.r + 1) )
+    {
+        return true;
+    } else 
+    {
+        return false;
+    }
+}
+
+// Legal move from waste to tableau
+bool BoardT::valid_waste_tab(unsigned int n)
+{
+    if (this->t[n].size() > 0)
+    {
+        tab_placeable(this->w.top(), this->t[n].top());
+    } else if (this->t[n].size() == 0)
+    {
+        return true;
+    }
+}
+
+// Legal move from waste to foundation
+bool BoardT::valid_waste_foundation(unsigned int n)
+{
+    if (this->f[n].size() > 0)
+    {
+        foundation_placeable(this->w.top(), this->f[n].top());
+    } else if (this->f[n].size() == 0)
+    {
+        if (this->w.top().r == ACE)
+        {
+            return true;
+        } else{
+            return false;
+        }
+    }
+}
