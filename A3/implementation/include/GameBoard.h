@@ -23,8 +23,8 @@ class BoardT {
         //unsigned int cnt_cards_stack(CardStackT s, LAMBDA func);
         //unsigned int cnt_cards(CardStackT t[8], CardStack f[10], CardStackT d, CardStackT w, LAMBDA func);
         // https://www.tutorialspoint.com/cplusplus/cpp_return_arrays_from_functions.htm
-        CardStackT * init_seq(unsigned int n);
-        std::vector<CardStackT> tab_deck(std::vector<CardT> a);
+        SeqCrdStckT init_seq(unsigned int n);
+        SeqCrdStckT tab_deck(std::vector<CardT> a);
         bool is_valid_pos(CategoryT a, unsigned int b);
         bool valid_tab_tab(unsigned int a, unsigned int b);
         bool valid_tab_foundation(unsigned int a, unsigned int b);
