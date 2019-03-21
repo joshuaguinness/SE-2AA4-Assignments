@@ -4,6 +4,7 @@ TODO:
 - Exception for valid tab move
 - Exception for valid waste move
 - Exception for tab_mv
+- Exception for waste_mv
 */
 // May need an initializer list
 
@@ -74,6 +75,8 @@ bool BoardT::is_valid_deck_mv()
     }
     
 }
+
+// Moves it from tableau ...?
 void BoardT::tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
 {
     if (c == 0)
@@ -86,30 +89,57 @@ void BoardT::tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
         this->f[n_1] = this->f[n_1].push(this->t[n_0].top());
     }
 }
-void BoardT::waste_mv(CategoryT a, unsigned int b)
-{
 
+// Moves it from the waste ...?
+void BoardT::waste_mv(CategoryT c, unsigned int n)
+{
+    if (c == 0)
+    {
+        this->w = this->w.pop();
+        this->t[n] = this->t[n].push(this->w.top());
+    } else if (c == 1)
+    {
+        this->w = this->w.pop();
+        this->f[n] = this->f[n].push(this->w.top());
+    }
 }
+
+// Deck move ??
 void BoardT::deck_mv()
 {
-std::vector<CardStackT>
+    // Have to do w first so that by changing d, w isn't affected
+    this->w = this->w.push(this->d.top());
+    this->d = this->d.pop();
 }
-CardStackT BoardT::get_tab(unsigned int a)
-{
 
+// Gets a particular tab
+CardStackT BoardT::get_tab(unsigned int i)
+{
+    CardStackT s = this->t[i];
+    return s;
 }
+
+// Gets a particular foundation
 CardStackT BoardT::get_foundation(unsigned int a)
 {
-
+    CardStackT s = this->f[i];
+    return s;
 }
+
+// Gets the entire deck
 CardStackT BoardT::get_deck()
 {
-
+    CardStackT s = this->d;
+    return s;
 }
+
+// Gets the entire waste
 CardStackT BoardT::get_waste()
 {
-
+    CardStackT s = this->w;s
+    return s;
 }
+
 bool BoardT::valid_mv_exists()
 {
 
