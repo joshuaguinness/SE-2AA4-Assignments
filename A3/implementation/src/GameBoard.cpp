@@ -140,10 +140,13 @@ CardStackT BoardT::get_waste()
     return s;
 }
 
+// A valid mv actuall exists
 bool BoardT::valid_mv_exists()
 {
-
+    return valid_tab_mv() || valid_waste_mv || is_valid_deck_mv();
 }
+
+// The state is in a win state
 bool BoardT::is_win_state()
 {
 
@@ -292,4 +295,16 @@ bool BoardT::valid_waste_foundation(unsigned int n)
             return false;
         }
     }
+}
+
+// There is a valid tab mv
+bool BoardT::valid_tab_mv()
+{
+
+}
+
+// There is a valid waste mv
+bool BoardT::valid_waste_mv()
+{
+
 }

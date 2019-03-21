@@ -32,6 +32,8 @@ class BoardT {
         bool valid_waste_foundation(unsigned int a);
         bool tab_placeable (CardT a, CardT b);
         bool foundation_placeable(CardT a, CardT b);
+        bool valid_tab_mv();
+        bool valid_waste_mv();
 
     // Public Methods
     public:
