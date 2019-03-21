@@ -3,6 +3,7 @@ TODO:
 - Exception for constructor
 - Exception for valid tab move
 - Exception for valid waste move
+- Exception for tab_mv
 */
 // May need an initializer list
 
@@ -73,9 +74,17 @@ bool BoardT::is_valid_deck_mv()
     }
     
 }
-void BoardT::tab_mv(CategoryT a, unsigned int b, unsigned int c)
+void BoardT::tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
 {
-
+    if (c == 0)
+    {
+        this->t[n_0] = this->t[n_0].pop();
+        this->t[n_1] = this->t[n_1].push(this->t[n_0].top());
+    } else if (c == 1)
+    {
+        this->t[n_0] = this->t[n_0].pop();
+        this->f[n_1] = this->f[n_1].push(this->t[n_0].top());
+    }
 }
 void BoardT::waste_mv(CategoryT a, unsigned int b)
 {
