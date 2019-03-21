@@ -169,6 +169,34 @@ SeqCrdStckT BoardT::tab_deck(std::vector<CardT> a)
     return s;
 }
 
+bool BoardT::is_valid_pos(CategoryT c, unsigned int n)
+{
+    if (c == CategoryT::Tableau)
+    {
+        if (c >= 0 && c <= 9)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+        
+    }
+    else if (c == CategoryT::Foundation)
+    {
+        if (c >= 0 && c <= 7)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    } else 
+    {
+        return true;
+    }
+}
+
 // Makes a sequence of CardStacks that are empty. Used for initializing the tableau
 SeqCrdStckT BoardT::init_seq(unsigned int n)
 {
