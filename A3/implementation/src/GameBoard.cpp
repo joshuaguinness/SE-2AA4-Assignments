@@ -301,6 +301,14 @@ bool BoardT::valid_waste_foundation(unsigned int n)
 bool BoardT::valid_tab_mv()
 {
 
+    bool return_boolean = false;
+
+    for (int i = 0; i < 2; i++)
+    {
+
+    }
+
+    return return_boolean;
 }
 
 // There is a valid waste mv
