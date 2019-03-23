@@ -384,9 +384,32 @@ bool BoardT::valid_waste_mv()
     return return_boolean;
 }
 
+// Function which will return true if 104 cards in the deck and each card appears twice
 bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
 {
+    bool total_cards_boolean;
+    bool deck_valid_boolean;
+    unsigned int total_cards = 0;
 
+    for (int i = 0; i < t.size(); i++)
+    {
+        total_cards += t[i].size();
+    }
+
+    for (int j = 0; j < t.size(); j++)
+    {
+        total_cards += j[i].size();
+    }
+
+    total_cards += d.size() + w.size();
+
+    if (total_cards == 104)
+    {
+        total_cards_boolean = true;
+    } else 
+    {
+        total_cards_boolean = false;
+    }
+
+    return total_cards_boolean && deck_valid_boolean;
 }
-
-unsigned int BoardT::cnt_cards_seq(SeqCrdStckT S)
