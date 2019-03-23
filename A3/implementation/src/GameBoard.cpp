@@ -391,6 +391,7 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     bool deck_valid_boolean;
     unsigned int total_cards = 0;
 
+    // Checks to see whether there is 104 cards in the deck
     for (int i = 0; i < t.size(); i++)
     {
         total_cards += t[i].size();
@@ -410,6 +411,22 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     {
         total_cards_boolean = false;
     }
+
+    /* The method for determining whether there are two of each card in the deck would be to 
+    iterate througha ll the cards passed via the paramters, and hash each one to a value in
+    the new array, if all the values in the array are two, then two of each cards exists */
+
+    // Hasing Function: Rank of card - 1 * 4 +  (0 (Heart), 1 (Diamond), 2 (Club), 3 (Spade})
+
+    unsigned int card_exists[104] = { 0 };
+
+
+
+
+
+
+
+
 
     return total_cards_boolean && deck_valid_boolean;
 }
