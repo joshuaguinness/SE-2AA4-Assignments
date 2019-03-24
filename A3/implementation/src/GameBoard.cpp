@@ -1,10 +1,7 @@
 /*
 TODO:
-- Exception for constructor
 - Exception for valid tab move
 - Exception for valid waste move
-- Exception for tab_mv
-- Exception for waste_mv
 */
 // May need an initializer list
 
@@ -19,6 +16,11 @@ TODO:
 BoardT::BoardT(std::vector<CardT> s)
 {
 
+    if (two_decks(init_seq(10), init_seq(8), CardStackT(deck), CardStackT()) == false)
+    {
+        throw std::invalid_argument("Invalid Argument");
+    }
+
     // https://en.cppreference.com/w/cpp/container/vector/vector and got some help from Tim Choy
     std::vector<CardT> front_of_deck(s.begin(), s.begin() + 40);
     std::vector<CardT> end_of_deck(s.begin()+41, s.end());
@@ -30,36 +32,70 @@ BoardT::BoardT(std::vector<CardT> s)
     this->f = init_seq(8);
     this->f = temp;
     this->w = initial_waste;
+
 }
 
 bool BoardT::is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
 {
-    if (c == 0)
+
+    // Exception Handling
+    if (c == CategoryT::Tableau)
+    {
+        if (is_valid_pos(CategoryT::Tableau, n_0) && is_valid_pos(CategoryT::Tableau, n_1) == false)
+        {
+            throw std::out_of_range("Out of Range");
+        }
+    }
+    if (c == CategoryT::Foundation)
+    {
+        if (is_valid_pos(CategoryT::Tableau, n_0) && is_valid_pos(CategoryT::Foundation, n_1) == false)
+        {
+            throw std::out_of_range("Out of Range");
+        }
+    } 
+
+    // What fn is actually supposed to do
+    if (c == CategoryT::Tableau)
     {
         return valid_tab_tab(n_0, n_1);
-    } else if (c == 1)
+    } else if (c == CategoryT::Foundation)
     {
         return valid_tab_foundation(n_0, n_1);
-    } else if (c == 2)
+    } else if (c == CategoryT::Deck)
     {
         return false;
-    } else if (c == 3)
+    } else if (c == CategoryT::Waste)
     {
         return false;
     }
 }
 bool BoardT::is_valid_waste_mv(CategoryT c, unsigned int n)
 {
-    if (c == 0)
+    // Exception handling
+    if (this->w.size() == 0)
+    {
+        throw std::invalid_argument("Invalid Argument");
+    }
+    if (c == CategoryT::Tableau && (is_valid_pos(CategoryT::Tableau, n) == false))
+    {
+        throw std::out_of_range("Out of Range");
+    }
+    if (c == CategoryT::Tableau && (is_valid_pos(CategoryT::Foundation, n) == false))
+    {
+        throw std::out_of_range("Out of Range");
+    }
+
+    // Actual function functionality
+    if (c == CategoryT::Tableau)
     {
         return valid_waste_tab(n);
-    } else if (c == 1)
+    } else if (c == CategoryT::Foundation)
     {
         return valid_waste_foundation(n);
-    } else if (c == 2)
+    } else if (c == CategoryT::Deck)
     {
         return false;
-    } else if (c == 3)
+    } else if (c == CategoryT::Waste)
     {
         return false;
     }
@@ -79,6 +115,13 @@ bool BoardT::is_valid_deck_mv()
 // Moves it from tableau ...?
 void BoardT::tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
 {
+    // Exception handling
+    if (is_valid_tab_mv(c, n_0, n_1) == false)
+    {
+        throw std::invalid_argument("Invalid Argument");
+    }
+
+
     if (c == 0)
     {
         this->t[n_0] = this->t[n_0].pop();
@@ -93,6 +136,12 @@ void BoardT::tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
 // Moves it from the waste ...?
 void BoardT::waste_mv(CategoryT c, unsigned int n)
 {
+    // Exception handling
+    if (is_valid_waste_mv(c, n) == false)
+    {
+        throw std::invalid_argument("Invalid Argument");
+    }
+
     if (c == 0)
     {
         this->w = this->w.pop();
@@ -107,6 +156,12 @@ void BoardT::waste_mv(CategoryT c, unsigned int n)
 // Deck move ??
 void BoardT::deck_mv()
 {
+    // Exception handling
+    if (is_valid_deck_mv() == false)
+    {
+        throw std::invalid_argument("Invalid Argument");
+    }
+
     // Have to do w first so that by changing d, w isn't affected
     this->w = this->w.push(this->d.top());
     this->d = this->d.pop();
@@ -115,13 +170,25 @@ void BoardT::deck_mv()
 // Gets a particular tab
 CardStackT BoardT::get_tab(unsigned int i)
 {
+    // Exception handling
+    if (is_valid_pos(CategoryT::Tableau, i) == false)
+    {
+        throw std::out_of_range("Out of Range");
+    }
+
     CardStackT s = this->t[i];
     return s;
 }
 
 // Gets a particular foundation
-CardStackT BoardT::get_foundation(unsigned int a)
+CardStackT BoardT::get_foundation(unsigned int i)
 {
+    // Exception handling
+    if (is_valid_pos(CategoryT::Foundation, i) == false)
+    {
+        throw std::out_of_range("Out of Range");
+    }
+
     CardStackT s = this->f[i];
     return s;
 }
@@ -388,7 +455,7 @@ bool BoardT::valid_waste_mv()
 bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
 {
     bool total_cards_boolean;
-    bool deck_valid_boolean;
+    bool deck_valid_boolean = true;
     unsigned int total_cards = 0;
 
     // Checks to see whether there is 104 cards in the deck
@@ -419,37 +486,85 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     // Hasing Function: Rank of card - 1 * 4 +  (0 (Heart), 1 (Diamond), 2 (Club), 3 (Spade})
 
     unsigned int card_exists[52] = { 0 };
+    unsigned int current_index;
 
     for (int i = 0; i < t.size(); i++)
     {
         for (int j = 0; j < t[i].size(); j++)
         {
-            
+            current_index = hashing_function(t[i][j]);
+            card_exists[current_index] += 1.;
         }
     }
 
-    for (int j = 0; j < t.size(); j++)
+    for (int i = 0; i < f.size(); i++)
     {
-        total_cards += j[i].size();
+        for (int j = 0; j < f[i].size(); j++)
+        {
+            current_index = hashing_function(t[i][j]);
+            card_exists[current_index] += 1.;
+        }
     }
 
-    for (int i = 0; i < t.size(); i++)
+    for (int i = 0; i < d.size(); i++)
     {
-        total_cards += t[i].size();
+        current_index = hashing_function(d[i]);
+        card_exists[current_index] += 1.;
     }
 
-    for (int j = 0; j < t.size(); j++)
+    for (int i = 0; i < w.size(); i++)
     {
-        total_cards += j[i].size();
+        current_index = hashing_function(w[i]);
+        card_exists[current_index] += 1.;
     }
 
-
+    for (int i = 0; i < card_exists.size(); i++)
+    {
+        if (card_exists[i] == 2)
+        {
+            deck_valid_boolean &= true;
+        }
+        else
+        {
+            deck_valid_boolean &= false;
+        }
+        
+    }
 
     return total_cards_boolean && deck_valid_boolean;
+
 }
 
-unsigned int BoardT::hashing_function()
+// Gets the current index
+unsigned int BoardT::hashing_function(CardT card)
 {
     // Hasing function which will return the index of where to add one, helps with 
     // information hiding
+    unsigned int index;
+
+    // https://www.programiz.com/cpp-programming/switch-case
+    switch (card.s)
+    {
+        case SuitT::Heart:
+            index = (card.r - 1)*4 + 0;
+            break;
+
+        case SuitT::Diamond:
+            index = (card.r - 1)*4 + 1;
+            break;
+
+        case SuitT::Club:
+            index = (card.r - 1)*4 + 2;
+            break;
+
+        case SuitT::Spade:
+            index = (card.r - 1)*4 + 3;
+            break;
+
+        default:
+
+    }
+
+    return index;
+
 }
