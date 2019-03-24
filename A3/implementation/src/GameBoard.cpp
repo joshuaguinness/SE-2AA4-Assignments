@@ -418,15 +418,38 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
 
     // Hasing Function: Rank of card - 1 * 4 +  (0 (Heart), 1 (Diamond), 2 (Club), 3 (Spade})
 
-    unsigned int card_exists[104] = { 0 };
+    unsigned int card_exists[52] = { 0 };
 
+    for (int i = 0; i < t.size(); i++)
+    {
+        for (int j = 0; j < t[i].size(); j++)
+        {
+            
+        }
+    }
 
+    for (int j = 0; j < t.size(); j++)
+    {
+        total_cards += j[i].size();
+    }
 
+    for (int i = 0; i < t.size(); i++)
+    {
+        total_cards += t[i].size();
+    }
 
-
-
+    for (int j = 0; j < t.size(); j++)
+    {
+        total_cards += j[i].size();
+    }
 
 
 
     return total_cards_boolean && deck_valid_boolean;
+}
+
+unsigned int BoardT::hashing_function()
+{
+    // Hasing function which will return the index of where to add one, helps with 
+    // information hiding
 }
