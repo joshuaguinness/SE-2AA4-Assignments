@@ -12,61 +12,18 @@
 
 #include "CardStack.h"
 #include "CardTypes.h"
-//#include "GameBoard.h"
+#include "GameBoard.h"
 #include "Stack.h"
 
 int main() {
   std::cout << "'make experiment' will run this main" << std::endl;
-
-//std::vector<CardT> v = {7, 5, 16, 8};
-
-
-
-  std::vector<CardT> d;
-  for (RankT rank = ACE; rank <= KING; rank++) {
-    for (unsigned int suit = 0; suit < 4; suit++) {
-      CardT n = { static_cast<SuitT>(suit), rank };
-      d.push_back(n);
-      d.push_back(n);
-    }
-  }
-  std::random_shuffle(d.begin(), d.end());
-
-CardStackT test = CardStackT(d);
-
-  std::cout << "Sequence length: " << test.size() << std::endl;
-  std::cout << "Deck size: " << test.size() << std::endl;
-  std::cout << "Deck top: " << test.top().s << " " << test.top().r << std::endl;
-
- test = test.pop();
-  std::cout << "Most recent: " << test.top().s << " " << test.top().r << std::endl;
-
-CardT x = { static_cast<SuitT>(2), 3};
-
-  test = test.push(x);
-  std::cout << "Most recent blah: " << test.top().s << " " << test.top().r << std::endl;
-
-std::vector<CardT> y  = test.toSeq();
-std::cout << y.size();
-
-/*
-CardStackT foo(vec);
-  foo = foo.push(d[0]);
-  CardT bar = foo.top();
-  std::cout << "Card: " << bar.s << " " << bar.r << std::endl;
-  foo = foo.pop();
-*/
-
-
-
-
 
   // When you are finished your implementation, uncomment the code
   // below and make sure 'make experiment' compiles and runs.
   // This will ensure that your interface has the correct syntax and will be
   // compatible with our unit tests that we will run for grading.
 
-  /*
+
   // Produce a new deck (consisting of two standard decks) and shuffle its
   // cards.
   std::vector<CardT> d;
@@ -111,7 +68,7 @@ CardStackT foo(vec);
   CardT bar = foo.top();
   std::cout << "Card: " << bar.s << " " << bar.r << std::endl;
   foo = foo.pop();
-  */
+  
 
   return 0;
 }
