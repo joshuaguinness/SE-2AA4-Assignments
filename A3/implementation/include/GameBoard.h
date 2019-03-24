@@ -4,37 +4,37 @@
 #include "CardTypes.h"
 #include "CardStack.h"
 
+// Use SeqCrdStckT a lot so putting it in a typedef makes the code clearer
 typedef std::vector<CardStackT> SeqCrdStckT;
 
 class BoardT {
 
+    // Private Methods and Variables
     private:
         // Private Variables
-        // https://www.cpp.edu/~elab/ECE114/Array.html
         SeqCrdStckT t;
         SeqCrdStckT f;
         CardStackT d;
         CardStackT w;
-
         // Private Local Methods
-        //https://www.tutorialspoint.com/cplusplus/cpp_passing_arrays_to_functions.htm
         bool two_decks(CardStackT t, CardStackT f, CardStackT d, CardStackT w);
-        // https://www.tutorialspoint.com/cplusplus/cpp_return_arrays_from_functions.htm
         SeqCrdStckT init_seq(unsigned int n);
-        SeqCrdStckT tab_deck(std::vector<CardT> a);
-        bool is_valid_pos(CategoryT a, unsigned int b);
-        bool valid_tab_tab(unsigned int a, unsigned int b);
-        bool valid_tab_foundation(unsigned int a, unsigned int b);
-        bool valid_waste_tab(unsigned int a);
-        bool valid_waste_foundation(unsigned int a);
-        bool tab_placeable (CardT a, CardT b);
-        bool foundation_placeable(CardT a, CardT b);
+        SeqCrdStckT tab_deck(std::vector<CardT> deck);
+        bool is_valid_pos(CategoryT c, unsigned int n);
+        bool valid_tab_tab(unsigned int n_0, unsigned int n_1);
+        bool valid_tab_foundation(unsigned int n_0, unsigned int n_1);
+        bool valid_waste_tab(unsigned int n);
+        bool valid_waste_foundation(unsigned int n);
+        bool tab_placeable (CardT c, CardT d);
+        bool foundation_placeable(CardT c, CardT d);
         bool valid_tab_mv();
         bool valid_waste_mv();
+        unsigned int hasing_function(CardT card);
 
     // Public Methods
     public:
         BoardT(std::vector<CardT> s);
+        BoardT();
         bool is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1);
         bool is_valid_waste_mv(CategoryT c, unsigned int n);
         bool is_valid_deck_mv();
