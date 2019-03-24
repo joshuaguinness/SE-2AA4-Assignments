@@ -1,10 +1,3 @@
-/*
-TODO:
-- Exception for valid tab move
-- Exception for valid waste move
-*/
-// May need an initializer list
-
 #include "../include/GameBoard.h"
 #include <exception>
 #include <stdexcept>
@@ -13,7 +6,7 @@ TODO:
 
 // Public Methods
 
-BoardT::BoardT(std::vector<CardT> s)
+BoardT::BoardT(std::vector<CardT> deck)
 {
 
     if (two_decks(init_seq(10), init_seq(8), CardStackT(deck), CardStackT()) == false)
@@ -22,8 +15,8 @@ BoardT::BoardT(std::vector<CardT> s)
     }
 
     // https://en.cppreference.com/w/cpp/container/vector/vector and got some help from Tim Choy
-    std::vector<CardT> front_of_deck(s.begin(), s.begin() + 40);
-    std::vector<CardT> end_of_deck(s.begin()+41, s.end());
+    std::vector<CardT> front_of_deck(deck.begin(), deck.begin() + 40);
+    std::vector<CardT> end_of_deck(deck.begin()+41, deck.end());
 
     CardStackT initial_deck = CardStackT(end_of_deck);
     CardStackT initial_waste = CardStackT();
@@ -32,6 +25,11 @@ BoardT::BoardT(std::vector<CardT> s)
     this->f = init_seq(8);
     this->f = temp;
     this->w = initial_waste;
+
+}
+
+BoardT::BoardT()
+{
 
 }
 
@@ -236,13 +234,13 @@ bool BoardT::is_win_state()
 // Private Methods
 
 // Take in a sequence of CardT, a deck, then creates the Tableau which is 10 card stacks, each having a stack of 4 cards
-SeqCrdStckT BoardT::tab_deck(std::vector<CardT> a)
+SeqCrdStckT BoardT::tab_deck(std::vector<CardT> deck)
 {
     SeqCrdStckT s(10);
 
     for (int i = 0; i < 10; i++)
     {
-        std::vector<CardT> section_of_cards(s.begin() + 4*i, s.begin() + 4*(i+1)-1);
+        std::vector<CardT> section_of_cards(deck.begin() + 4*i, deck.begin() + 4*(i+1)-1);
         CardStackT stack = CardStackT(section_of_cards);
         s.push_back(stack);
     }
