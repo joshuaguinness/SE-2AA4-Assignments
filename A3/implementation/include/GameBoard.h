@@ -35,14 +35,14 @@ class BoardT {
     // Public Methods
     public:
         BoardT(std::vector<CardT> s);
-        bool is_valid_tab_mv(CategoryT a, unsigned int b, unsigned int c);
-        bool is_valid_waste_mv(CategoryT a, unsigned int b);
+        bool is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1);
+        bool is_valid_waste_mv(CategoryT c, unsigned int n);
         bool is_valid_deck_mv();
-        void tab_mv(CategoryT a, unsigned int b, unsigned int c);
-        void waste_mv(CategoryT a, unsigned int b);
+        void tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1);
+        void waste_mv(CategoryT c, unsigned int n);
         void deck_mv();
-        CardStackT get_tab(unsigned int a);
-        CardStackT get_foundation(unsigned int a);
+        CardStackT get_tab(unsigned int i);
+        CardStackT get_foundation(unsigned int i);
         CardStackT get_deck();
         CardStackT get_waste();
         bool valid_mv_exists();
