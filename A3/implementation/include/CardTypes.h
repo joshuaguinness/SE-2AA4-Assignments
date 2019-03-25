@@ -31,12 +31,19 @@ typedef unsigned short int RankT;
  */
 #define KING   13
 
+/**
+ * \brief  Enumerated type of Suits (Heart, Diamond, Club, Spade)
+ */
 enum SuitT {Heart, Diamond, Club, Spade};
 
+/**
+ * \brief Enumerated type of game elements (Tableau, Foundation, Deck, Waste)
+ */
 enum CategoryT {Tableau, Foundation, Deck, Waste};
 
-// int RankT = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13];
-
+/**
+ * \brief Struct for each card, contains a suit and a rank.
+ */
 struct CardT
 {
     SuitT s;

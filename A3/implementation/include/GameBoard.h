@@ -34,7 +34,6 @@ class BoardT {
     // Public Methods
     public:
         BoardT(std::vector<CardT> s);
-        BoardT();
         bool is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1);
         bool is_valid_waste_mv(CategoryT c, unsigned int n);
         bool is_valid_deck_mv();

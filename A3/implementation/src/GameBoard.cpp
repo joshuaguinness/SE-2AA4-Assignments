@@ -28,11 +28,6 @@ BoardT::BoardT(std::vector<CardT> deck)
 
 }
 
-BoardT::BoardT()
-{
-
-}
-
 bool BoardT::is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
 {
 
