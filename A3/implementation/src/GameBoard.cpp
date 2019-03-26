@@ -23,7 +23,7 @@ BoardT::BoardT(std::vector<CardT> deck)
 
     this->t = tab_deck(front_of_deck);
     this->f = init_seq(8);
-    this->f = temp;
+    this->d = initial_deck;
     this->w = initial_waste;
 
 }
@@ -196,7 +196,7 @@ CardStackT BoardT::get_deck()
 // Gets the entire waste
 CardStackT BoardT::get_waste()
 {
-    CardStackT s = this->w;s
+    CardStackT s = this->w;
     return s;
 }
 
@@ -217,7 +217,7 @@ bool BoardT::is_win_state()
         } else
         {
             return false;
-        }s
+        }
         
     }
 }
@@ -292,7 +292,7 @@ SeqCrdStckT BoardT::init_seq(unsigned int n)
 }
 
 // Checks to see if it is a valid tab to tab move
-bool BoardT::valid_tab_tab(unsigned int n_0, unsinged int n_1)
+bool BoardT::valid_tab_tab(unsigned int n_0, unsigned int n_1)
 {
     // https://www.geeksforgeeks.org/decision-making-c-c-else-nested-else/
     if (this->t[n_0].size() > 0)
@@ -412,13 +412,13 @@ bool BoardT::valid_tab_mv()
         }
     }
     for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 8; j++) {}
+        for (int j = 0; j < 8; j++) {
             if (is_valid_pos(CategoryT::Tableau, i) &&  is_valid_pos(CategoryT::Foundation, j)){
                 valid_tab_mv_boolean |= is_valid_tab_mv(CategoryT::Foundation, i, j);
             }
         }
     }
-    return valid-tab_mv_boolean;
+    return valid_tab_mv_boolean;
 }
 
 // There is a valid waste mv
@@ -452,17 +452,17 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     unsigned int total_cards = 0;
 
     // Checks to see whether there is 104 cards in the deck
-    for (int i = 0; i < t.size(); i++)
+    for (int i = 0; i < this->t.size(); i++)
     {
-        total_cards += t[i].size();
+        total_cards += this->t[i].size();
     }
 
-    for (int j = 0; j < t.size(); j++)
+    for (int j = 0; j < this->t.size(); j++)
     {
-        total_cards += j[i].size();
+        total_cards += this->t[j].size();
     }
 
-    total_cards += d.size() + w.size();
+    total_cards += this->d.size() + this->w.size();
 
     if (total_cards == 104)
     {
@@ -481,33 +481,33 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     unsigned int card_exists[52] = { 0 };
     unsigned int current_index;
 
-    for (int i = 0; i < t.size(); i++)
+    for (int i = 0; i < this->t.size(); i++)
     {
-        for (int j = 0; j < t[i].size(); j++)
+        for (int j = 0; j < this->t[i].size(); j++)
         {
-            current_index = hashing_function(t[i][j]);
+            current_index = hashing_function(this->t[i][j]);
             card_exists[current_index] += 1.;
         }
     }
 
-    for (int i = 0; i < f.size(); i++)
+    for (int i = 0; i < this->f.size(); i++)
     {
-        for (int j = 0; j < f[i].size(); j++)
+        for (int j = 0; j < this->f[i].size(); j++)
         {
-            current_index = hashing_function(t[i][j]);
+            current_index = hashing_function(this->f[i][j]);
             card_exists[current_index] += 1.;
         }
     }
 
-    for (int i = 0; i < d.size(); i++)
+    for (int i = 0; i < this->d.size(); i++)
     {
-        current_index = hashing_function(d[i]);
+        current_index = hashing_function(this->d[i]);
         card_exists[current_index] += 1.;
     }
 
-    for (int i = 0; i < w.size(); i++)
+    for (int i = 0; i < this->w.size(); i++)
     {
-        current_index = hashing_function(w[i]);
+        current_index = hashing_function(this->w[i]);
         card_exists[current_index] += 1.;
     }
 

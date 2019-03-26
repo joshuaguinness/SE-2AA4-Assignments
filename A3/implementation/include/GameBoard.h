@@ -17,7 +17,7 @@ class BoardT {
         CardStackT d;
         CardStackT w;
         // Private Local Methods
-        bool two_decks(CardStackT t, CardStackT f, CardStackT d, CardStackT w);
+        bool two_decks(SeqCrdStckT, SeqCrdStckT f, CardStackT d, CardStackT w);
         SeqCrdStckT init_seq(unsigned int n);
         SeqCrdStckT tab_deck(std::vector<CardT> deck);
         bool is_valid_pos(CategoryT c, unsigned int n);

@@ -17,6 +17,7 @@ class Stack {
 
         /**
          *  \brief  Constructs a new stack
+         */
         Stack(std::vector<T> s);
         Stack();
         Stack<T> push(T a);
