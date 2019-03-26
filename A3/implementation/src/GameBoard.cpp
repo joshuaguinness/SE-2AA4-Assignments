@@ -115,11 +115,11 @@ void BoardT::tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
     }
 
 
-    if (c == 0)
+    if (c == CategoryT::Tableau)
     {
         this->t[n_0] = this->t[n_0].pop();
         this->t[n_1] = this->t[n_1].push(this->t[n_0].top());
-    } else if (c == 1)
+    } else if (c == CategoryT::Foundation)
     {
         this->t[n_0] = this->t[n_0].pop();
         this->f[n_1] = this->f[n_1].push(this->t[n_0].top());
@@ -135,11 +135,11 @@ void BoardT::waste_mv(CategoryT c, unsigned int n)
         throw std::invalid_argument("Invalid Argument");
     }
 
-    if (c == 0)
+    if (c == CategoryT::Tableau)
     {
         this->w = this->w.pop();
         this->t[n] = this->t[n].push(this->w.top());
-    } else if (c == 1)
+    } else if (c == CategoryT::Foundation)
     {
         this->w = this->w.pop();
         this->f[n] = this->f[n].push(this->w.top());
@@ -209,7 +209,7 @@ bool BoardT::valid_mv_exists()
 // The state is in a win state
 bool BoardT::is_win_state()
 {
-    for (int i = 0; i < 8; i++)
+    for (unsigned int i = 0; i < 8; i++)
     {
         if (this->f[i].size() > 0 && this->f[i].top().r == KING)
         {
@@ -233,7 +233,7 @@ SeqCrdStckT BoardT::tab_deck(std::vector<CardT> deck)
 {
     SeqCrdStckT s(10);
 
-    for (int i = 0; i < 10; i++)
+    for (unsigned int i = 0; i < 10; i++)
     {
         std::vector<CardT> section_of_cards(deck.begin() + 4*i, deck.begin() + 4*(i+1)-1);
         CardStackT stack = CardStackT(section_of_cards);
@@ -282,7 +282,7 @@ SeqCrdStckT BoardT::init_seq(unsigned int n)
     // Creates an empty CardStackT
     CardStackT empty_stack = CardStackT();
 
-    for (int i = 0; i < n; i++)
+    for (unsigned int i = 0; i < n; i++)
     {
         s.push_back(empty_stack);
     }
@@ -404,15 +404,15 @@ bool BoardT::valid_waste_foundation(unsigned int n)
 bool BoardT::valid_tab_mv()
 {
     bool valid_tab_mv_boolean = false;
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
+    for (unsigned int i = 0; i < 10; i++) {
+        for (unsigned int j = 0; j < 10; j++) {
             if (is_valid_pos(CategoryT::Tableau, i) &&  is_valid_pos(CategoryT::Tableau, j))    {
                 valid_tab_mv_boolean |= is_valid_tab_mv(CategoryT::Tableau, i, j);
             }
         }
     }
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 8; j++) {
+    for (unsigned int i = 0; i < 10; i++) {
+        for (unsigned int j = 0; j < 8; j++) {
             if (is_valid_pos(CategoryT::Tableau, i) &&  is_valid_pos(CategoryT::Foundation, j)){
                 valid_tab_mv_boolean |= is_valid_tab_mv(CategoryT::Foundation, i, j);
             }
@@ -428,13 +428,13 @@ bool BoardT::valid_waste_mv()
     bool valid_pos_boolean = false;
     bool valid_waste_mv_boolean = false;
 
-    for (int i = 0; i < 10; i++)
+    for (unsigned int i = 0; i < 10; i++)
     {
         valid_pos_boolean |=  is_valid_pos(CategoryT::Tableau, i);
         valid_waste_mv_boolean |=  is_valid_pos(CategoryT::Tableau, i);
     }
 
-    for (int i = 0; i < 8; i++)
+    for (unsigned int i = 0; i < 8; i++)
     {
         valid_pos_boolean |=  is_valid_pos(CategoryT::Foundation, i);
         valid_waste_mv_boolean |=  is_valid_pos(CategoryT::Foundation, i);
@@ -452,12 +452,12 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     unsigned int total_cards = 0;
 
     // Checks to see whether there is 104 cards in the deck
-    for (int i = 0; i < this->t.size(); i++)
+    for (unsigned int i = 0; i < this->t.size(); i++)
     {
         total_cards += this->t[i].size();
     }
 
-    for (int j = 0; j < this->t.size(); j++)
+    for (unsigned int j = 0; j < this->t.size(); j++)
     {
         total_cards += this->t[j].size();
     }
@@ -478,40 +478,50 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
 
     // Hasing Function: Rank of card - 1 * 4 +  (0 (Heart), 1 (Diamond), 2 (Club), 3 (Spade})
 
-    unsigned int card_exists[52] = { 0 };
+    int card_exists[52] = { 0 };
     unsigned int current_index;
 
-    for (int i = 0; i < this->t.size(); i++)
+    SeqCrdStckT t_temp = this->t;
+    SeqCrdStckT f_temp = this->f;
+    CardStackT d_temp = this->d;
+    CardStackT w_temp = this->w;
+
+    for (unsigned int i = 0; i < this->t.size(); i++)
     {
-        for (int j = 0; j < this->t[i].size(); j++)
+        for (unsigned int j = 0; j < this->t[i].size(); j++)
         {
-            current_index = hashing_function(this->t[i][j]);
-            card_exists[current_index] += 1.;
+            current_index = hashing_function(t_temp.at(i).top());
+            card_exists[current_index] += 1;
+            t_temp.at(i) = t_temp.at(i).pop();
         }
     }
 
-    for (int i = 0; i < this->f.size(); i++)
+    for (unsigned int i = 0; i < this->f.size(); i++)
     {
-        for (int j = 0; j < this->f[i].size(); j++)
+        for (unsigned int j = 0; j < this->f[i].size(); j++)
         {
-            current_index = hashing_function(this->f[i][j]);
-            card_exists[current_index] += 1.;
+            current_index = hashing_function(f_temp.at(i).top());
+            card_exists[current_index] += 1;
+            f_temp.at(i) = f_temp.at(i).pop();
         }
     }
 
-    for (int i = 0; i < this->d.size(); i++)
+    for (unsigned int i = 0; i < this->d.size(); i++)
     {
-        current_index = hashing_function(this->d[i]);
-        card_exists[current_index] += 1.;
+        current_index = hashing_function(d_temp.top());
+        card_exists[current_index] += 1;
+        d_temp = d_temp.pop();
+
     }
 
-    for (int i = 0; i < this->w.size(); i++)
+    for (unsigned int i = 0; i < this->w.size(); i++)
     {
-        current_index = hashing_function(this->w[i]);
-        card_exists[current_index] += 1.;
+        current_index = hashing_function(w_temp.top());
+        card_exists[current_index] += 1;
+        w_temp = w_temp.pop();
     }
 
-    for (int i = 0; i < card_exists.size(); i++)
+    for (unsigned int i = 0; i < 52; i++)
     {
         if (card_exists[i] == 2)
         {
@@ -553,9 +563,6 @@ unsigned int BoardT::hashing_function(CardT card)
         case SuitT::Spade:
             index = (card.r - 1)*4 + 3;
             break;
-
-        default:
-
     }
 
     return index;

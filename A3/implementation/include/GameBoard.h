@@ -29,7 +29,7 @@ class BoardT {
         bool foundation_placeable(CardT c, CardT d);
         bool valid_tab_mv();
         bool valid_waste_mv();
-        unsigned int hasing_function(CardT card);
+        unsigned int hashing_function(CardT card);
 
     // Public Methods
     public:
