@@ -14,8 +14,7 @@
 template <class T>
 Stack<T>::Stack()
 {
-    std::vector<T> v;
-    this->s = v;
+    this->s = std::vector<T>();
 }
 
 template <class T>   // Need this in front of every method   
@@ -55,7 +54,7 @@ T Stack<T>::top()
         throw std::out_of_range("Out of Range");
     } else
     {
-        return s.back();
+        return this->s.back();
     }
 }
 

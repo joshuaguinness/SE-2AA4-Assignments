@@ -9,7 +9,9 @@
 BoardT::BoardT(std::vector<CardT> deck)
 {
 
-    if (two_decks(init_seq(10), init_seq(8), CardStackT(deck), CardStackT()) == false)
+    //std::cout << "Deck Size 2" << CardStackT(deck).size() << "\n";
+
+    if (!two_decks(init_seq(10), init_seq(8), CardStackT(deck), CardStackT()))
     {
         throw std::invalid_argument("Invalid Argument");
     }
@@ -57,11 +59,12 @@ bool BoardT::is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
     } else if (c == CategoryT::Deck)
     {
         return false;
-    } else if (c == CategoryT::Waste)
+    } else  // If it is waste
     {
         return false;
     }
 }
+
 bool BoardT::is_valid_waste_mv(CategoryT c, unsigned int n)
 {
     // Exception handling
@@ -88,11 +91,12 @@ bool BoardT::is_valid_waste_mv(CategoryT c, unsigned int n)
     } else if (c == CategoryT::Deck)
     {
         return false;
-    } else if (c == CategoryT::Waste)
+    } else // Waste
     {
         return false;
     }
 }
+
 bool BoardT::is_valid_deck_mv()
 {
     if (this->d.size() > 0)
@@ -137,12 +141,12 @@ void BoardT::waste_mv(CategoryT c, unsigned int n)
 
     if (c == CategoryT::Tableau)
     {
-        this->w = this->w.pop();
         this->t[n] = this->t[n].push(this->w.top());
+        this->w = this->w.pop();
     } else if (c == CategoryT::Foundation)
     {
-        this->w = this->w.pop();
         this->f[n] = this->f[n].push(this->w.top());
+        this->w = this->w.pop();
     }
 }
 
@@ -209,17 +213,21 @@ bool BoardT::valid_mv_exists()
 // The state is in a win state
 bool BoardT::is_win_state()
 {
+
+    bool return_statement = true;
+
     for (unsigned int i = 0; i < 8; i++)
     {
         if (this->f[i].size() > 0 && this->f[i].top().r == KING)
         {
-            return true;
+            return_statement &= true;
         } else
         {
             return false;
         }
-        
     }
+
+    return return_statement;
 }
 
 
@@ -277,14 +285,12 @@ SeqCrdStckT BoardT::init_seq(unsigned int n)
 {
     // https://en.cppreference.com/w/cpp/container/vector
     // Creates a sequence of length n of card stacks
-    SeqCrdStckT s(n);
-
-    // Creates an empty CardStackT
-    CardStackT empty_stack = CardStackT();
+    SeqCrdStckT s;
 
     for (unsigned int i = 0; i < n; i++)
     {
-        s.push_back(empty_stack);
+        // Adds an empty Card Stack
+        s.push_back(CardStackT());
     }
 
     return s;
@@ -314,6 +320,8 @@ bool BoardT::valid_tab_tab(unsigned int n_0, unsigned int n_1)
             return false;
         }
     }
+
+    return false;
 }
 
 // Checks to see if it is a valid tab to foundation move
@@ -343,6 +351,8 @@ bool BoardT::valid_tab_foundation(unsigned int n_0, unsigned int n_1)
             return false;
         }
     }
+
+    return false;
     
 }
 
@@ -377,7 +387,7 @@ bool BoardT::valid_waste_tab(unsigned int n)
     if (this->t[n].size() > 0)
     {
         tab_placeable(this->w.top(), this->t[n].top());
-    } else if (this->t[n].size() == 0)
+    } else // if (this->t[n].size() == 0)
     {
         return true;
     }
@@ -389,12 +399,13 @@ bool BoardT::valid_waste_foundation(unsigned int n)
     if (this->f[n].size() > 0)
     {
         foundation_placeable(this->w.top(), this->f[n].top());
-    } else if (this->f[n].size() == 0)
+    } else //if (this->f[n].size() == 0)
     {
         if (this->w.top().r == ACE)
         {
             return true;
-        } else{
+        } else
+        {
             return false;
         }
     }
@@ -452,17 +463,17 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     unsigned int total_cards = 0;
 
     // Checks to see whether there is 104 cards in the deck
-    for (unsigned int i = 0; i < this->t.size(); i++)
+    for (unsigned int i = 0; i < t.size(); i++)
     {
-        total_cards += this->t[i].size();
+        total_cards += t[i].size();
     }
 
-    for (unsigned int j = 0; j < this->t.size(); j++)
+    for (unsigned int j = 0; j < f.size(); j++)
     {
-        total_cards += this->t[j].size();
+        total_cards += f[j].size();
     }
 
-    total_cards += this->d.size() + this->w.size();
+    total_cards += d.size() + w.size();
 
     if (total_cards == 104)
     {
@@ -481,14 +492,14 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     int card_exists[52] = { 0 };
     unsigned int current_index;
 
-    SeqCrdStckT t_temp = this->t;
-    SeqCrdStckT f_temp = this->f;
-    CardStackT d_temp = this->d;
-    CardStackT w_temp = this->w;
+    SeqCrdStckT t_temp = t;
+    SeqCrdStckT f_temp = f;
+    CardStackT d_temp = d;
+    CardStackT w_temp = w;
 
-    for (unsigned int i = 0; i < this->t.size(); i++)
+    for (unsigned int i = 0; i < t.size(); i++)
     {
-        for (unsigned int j = 0; j < this->t[i].size(); j++)
+        for (unsigned int j = 0; j < t[i].size(); j++)
         {
             current_index = hashing_function(t_temp.at(i).top());
             card_exists[current_index] += 1;
@@ -496,9 +507,9 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
         }
     }
 
-    for (unsigned int i = 0; i < this->f.size(); i++)
+    for (unsigned int i = 0; i < f.size(); i++)
     {
-        for (unsigned int j = 0; j < this->f[i].size(); j++)
+        for (unsigned int j = 0; j < f[i].size(); j++)
         {
             current_index = hashing_function(f_temp.at(i).top());
             card_exists[current_index] += 1;
@@ -506,7 +517,7 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
         }
     }
 
-    for (unsigned int i = 0; i < this->d.size(); i++)
+    for (unsigned int i = 0; i < d.size(); i++)
     {
         current_index = hashing_function(d_temp.top());
         card_exists[current_index] += 1;
@@ -514,7 +525,7 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
 
     }
 
-    for (unsigned int i = 0; i < this->w.size(); i++)
+    for (unsigned int i = 0; i < w.size(); i++)
     {
         current_index = hashing_function(w_temp.top());
         card_exists[current_index] += 1;

@@ -10,22 +10,23 @@
 #include <iostream>
 #include <vector>
 
-#include "CardStack.h"
-#include "CardTypes.h"
-#include "GameBoard.h"
-#include "Stack.h"
+#include "../include/CardStack.h"
+#include "../include/CardTypes.h"
+#include "../include/GameBoard.h"
+#include "../include/Stack.h"
 
 int main() {
   std::cout << "'make experiment' will run this main" << std::endl;
+
 
   // When you are finished your implementation, uncomment the code
   // below and make sure 'make experiment' compiles and runs.
   // This will ensure that your interface has the correct syntax and will be
   // compatible with our unit tests that we will run for grading.
 
-
   // Produce a new deck (consisting of two standard decks) and shuffle its
   // cards.
+
   std::vector<CardT> d;
   for (RankT rank = ACE; rank <= KING; rank++) {
     for (unsigned int suit = 0; suit < 4; suit++) {
@@ -34,6 +35,7 @@ int main() {
       d.push_back(n);
     }
   }
+
   std::random_shuffle(d.begin(), d.end());
 
   BoardT board(d);
@@ -53,6 +55,8 @@ int main() {
   try {
     board.waste_mv(Tableau, 0);
   } catch (std::invalid_argument &e) {}
+
+
   CardStackT tableau = board.get_tab(0);
   CardStackT foundation = board.get_foundation(0);
   CardStackT deck = board.get_deck();

@@ -33,7 +33,22 @@ class BoardT {
 
     // Public Methods
     public:
+
+        /**
+         * /brief Construct a new Board T object
+         * 
+         * /param s 
+         */
         BoardT(std::vector<CardT> s);
+        /**
+         * /brief 
+         * 
+         * /param c 
+         * /param n_0 
+         * /param n_1 
+         * /return true 
+         * /return false 
+         */
         bool is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1);
         bool is_valid_waste_mv(CategoryT c, unsigned int n);
         bool is_valid_deck_mv();
