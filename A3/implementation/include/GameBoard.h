@@ -4,14 +4,19 @@
 #include "CardTypes.h"
 #include "CardStack.h"
 
-// Use SeqCrdStckT a lot so putting it in a typedef makes the code clearer
+// SeqCrdStckT is just a vector of objects of type CardStackT
+// Done to increase clarity in code
 typedef std::vector<CardStackT> SeqCrdStckT;
 
+/**
+ * @brief Class representing a Gameboard
+ * 
+ */
 class BoardT {
 
-    // Private Methods and Variables
+    /// Private Methods and Variables
     private:
-        // Private Variables
+        /// Private Variables
         SeqCrdStckT t;
         SeqCrdStckT f;
         CardStackT d;
@@ -31,23 +36,22 @@ class BoardT {
         bool valid_waste_mv();
         unsigned int hashing_function(CardT card);
 
-    // Public Methods
+    /// Public Methods
     public:
-
         /**
-         * /brief Construct a new Board T object
+         * \brief Construct a new Board T object
          * 
-         * /param s 
+         * \param vector of type CardT, meant to be the deck
          */
         BoardT(std::vector<CardT> s);
         /**
-         * /brief 
+         * \brief 
          * 
-         * /param c 
-         * /param n_0 
-         * /param n_1 
-         * /return true 
-         * /return false 
+         * \param c 
+         * \param n_0 
+         * \param n_1 
+         * \return true 
+         * \return false 
          */
         bool is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1);
         bool is_valid_waste_mv(CategoryT c, unsigned int n);
