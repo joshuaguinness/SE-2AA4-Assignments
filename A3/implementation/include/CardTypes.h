@@ -1,11 +1,11 @@
 /**
- * @file CardTypes.h
- * @author Joshua Guinness, guinnesj
- * @brief Module for defining card types and constants
- * @version 0.1
- * @date 2019-03-26
+ * \file CardTypes.h
+ * \author Joshua Guinness, guinnesj
+ * \brief Module for defining card types and constants
+ * \version 0.1
+ * \date 2019-03-26
  * 
- * @copyright Copyright (c) 2019
+ * \copyright Copyright (c) 2019
  * 
  */
 

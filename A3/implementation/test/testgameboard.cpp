@@ -33,4 +33,13 @@ TEST_CASE( "Tests for GameBoard", "[GameBoard]" )
         REQUIRE(board.is_valid_deck_mv());
     }
 
+    SECTION( "Testing for valid_mv_exists" )
+    {
+        REQUIRE(board.valid_mv_exists());
+    }
+
+    SECTION( "Testing for is_win_state" )
+    {
+        REQUIRE(board.is_win_state() == false);
+    }
 }

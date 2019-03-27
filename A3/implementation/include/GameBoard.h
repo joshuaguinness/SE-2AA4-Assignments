@@ -1,11 +1,11 @@
 /**
- * @file GameBoard.h
- * @author Joshua Guinness, guinnesj
- * @brief Module for defining a GameBoard class
- * @version 0.1
- * @date 2019-03-26
+ * \file GameBoard.h
+ * \author Joshua Guinness, guinnesj
+ * \brief Module for defining a GameBoard class
+ * \version 0.1
+ * \date 2019-03-26
  * 
- * @copyright Copyright (c) 2019
+ * \copyright Copyright (c) 2019
  * 
  */
 

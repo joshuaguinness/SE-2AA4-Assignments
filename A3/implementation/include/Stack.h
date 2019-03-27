@@ -1,11 +1,11 @@
 /**
- * @file Stack.h
- * @author Joshua Guinness, guinnesj
- * @brief Module for a generic stack class
- * @version 0.1
- * @date 2019-03-26
+ * \file Stack.h
+ * \author Joshua Guinness, guinnesj
+ * \brief Module for a generic stack class
+ * \version 0.1
+ * \date 2019-03-26
  * 
- * @copyright Copyright (c) 2019
+ * \copyright Copyright (c) 2019
  * 
  */
 
