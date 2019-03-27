@@ -17,6 +17,7 @@ TEST_CASE( "Tests for Stack", "[Stack]" )
     }
 
     CardStackT deck = CardStackT(d);
+    CardStackT empty_deck = CardStackT();
 
     SECTION( "Testing Top - Normal" )
     {
@@ -54,22 +55,23 @@ TEST_CASE( "Tests for Stack", "[Stack]" )
 
     SECTION( "Testing Top - Empty Stack" )
     {
-
+        REQUIRE_THROWS(empty_deck.top());
     }
 
     SECTION( "Testing Pop - Empty Stack" )
     {
-
+        REQUIRE_THROWS(empty_deck.pop());
     }
 
     SECTION( "Testing Size - Empty Stack" )
     {
-
+        REQUIRE(empty_deck.size() == 0);
     }
 
     SECTION( "Testing toSeq - Empty Stack" )
     {
-
+        std::vector<CardT> d = empty_deck.toSeq();
+        REQUIRE(d.size() == 0);
     }
 
 }
