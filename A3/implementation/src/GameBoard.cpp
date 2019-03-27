@@ -9,13 +9,13 @@
 BoardT::BoardT(std::vector<CardT> deck)
 {
 
-    //std::cout << "Deck Size 2" << CardStackT(deck).size() << "\n";
-
+    // Exception checking
     if (!two_decks(init_seq(10), init_seq(8), CardStackT(deck), CardStackT()))
     {
         throw std::invalid_argument("Invalid Argument");
     }
 
+    // Got help from this website for the following lines of code:
     // https://en.cppreference.com/w/cpp/container/vector/vector and got some help from Tim Choy
     std::vector<CardT> front_of_deck(deck.begin(), deck.begin() + 40);
     std::vector<CardT> end_of_deck(deck.begin()+41, deck.end());
@@ -27,7 +27,6 @@ BoardT::BoardT(std::vector<CardT> deck)
     this->f = init_seq(8);
     this->d = initial_deck;
     this->w = initial_waste;
-
 }
 
 bool BoardT::is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
@@ -49,7 +48,7 @@ bool BoardT::is_valid_tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
         }
     } 
 
-    // What fn is actually supposed to do
+    // Actual function functionality below
     if (c == CategoryT::Tableau)
     {
         return valid_tab_tab(n_0, n_1);
@@ -109,7 +108,6 @@ bool BoardT::is_valid_deck_mv()
     
 }
 
-// Moves it from tableau ...?
 void BoardT::tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
 {
     // Exception handling
@@ -130,7 +128,6 @@ void BoardT::tab_mv(CategoryT c, unsigned int n_0, unsigned int n_1)
     }
 }
 
-// Moves it from the waste ...?
 void BoardT::waste_mv(CategoryT c, unsigned int n)
 {
     // Exception handling
@@ -150,7 +147,6 @@ void BoardT::waste_mv(CategoryT c, unsigned int n)
     }
 }
 
-// Deck move ??
 void BoardT::deck_mv()
 {
     // Exception handling
@@ -164,7 +160,6 @@ void BoardT::deck_mv()
     this->d = this->d.pop();
 }
 
-// Gets a particular tab
 CardStackT BoardT::get_tab(unsigned int i)
 {
     // Exception handling
@@ -177,7 +172,6 @@ CardStackT BoardT::get_tab(unsigned int i)
     return s;
 }
 
-// Gets a particular foundation
 CardStackT BoardT::get_foundation(unsigned int i)
 {
     // Exception handling
@@ -190,27 +184,23 @@ CardStackT BoardT::get_foundation(unsigned int i)
     return s;
 }
 
-// Gets the entire deck
 CardStackT BoardT::get_deck()
 {
     CardStackT s = this->d;
     return s;
 }
 
-// Gets the entire waste
 CardStackT BoardT::get_waste()
 {
     CardStackT s = this->w;
     return s;
 }
 
-// A valid mv actuall exists
 bool BoardT::valid_mv_exists()
 {
     return valid_tab_mv() || valid_waste_mv() || is_valid_deck_mv();
 }
 
-// The state is in a win state
 bool BoardT::is_win_state()
 {
 
@@ -229,10 +219,6 @@ bool BoardT::is_win_state()
 
     return return_statement;
 }
-
-
-
-
 
 // Private Methods
 
@@ -253,7 +239,7 @@ SeqCrdStckT BoardT::tab_deck(std::vector<CardT> deck)
 
 bool BoardT::is_valid_pos(CategoryT c, unsigned int n)
 {
-    // Got a lil help from sam on this
+    // Sam Crawford suggested I do CategoryT::Tableau to refer to my enumerated types
     if (c == CategoryT::Tableau)
     {
         if (n >= 0 && n <= 9)
@@ -263,7 +249,6 @@ bool BoardT::is_valid_pos(CategoryT c, unsigned int n)
         {
             return false;
         }
-        
     }
     else if (c == CategoryT::Foundation)
     {
@@ -283,7 +268,7 @@ bool BoardT::is_valid_pos(CategoryT c, unsigned int n)
 // Makes a sequence of CardStacks that are empty. Used for initializing the tableau
 SeqCrdStckT BoardT::init_seq(unsigned int n)
 {
-    // https://en.cppreference.com/w/cpp/container/vector
+    // Got a little help from this website: https://en.cppreference.com/w/cpp/container/vector
     // Creates a sequence of length n of card stacks
     SeqCrdStckT s;
 
@@ -300,7 +285,7 @@ SeqCrdStckT BoardT::init_seq(unsigned int n)
 // Checks to see if it is a valid tab to tab move
 bool BoardT::valid_tab_tab(unsigned int n_0, unsigned int n_1)
 {
-    // https://www.geeksforgeeks.org/decision-making-c-c-else-nested-else/
+    // Got a little help from this website: https://www.geeksforgeeks.org/decision-making-c-c-else-nested-else/
     if (this->t[n_0].size() > 0)
     {
         if (this->t[n_1].size() > 0)
@@ -359,7 +344,7 @@ bool BoardT::valid_tab_foundation(unsigned int n_0, unsigned int n_1)
 // Checks to see if a card is placeable on that tab
 bool BoardT::tab_placeable(CardT c, CardT d)
 {
-   //  http://www.cplusplus.com/doc/tutorial/operators/
+   //  Got a little help from this website: http://www.cplusplus.com/doc/tutorial/operators/
     if (c.s == d.s && c.r == (d.r - 1) )
     {
         return true;
@@ -484,10 +469,10 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
     }
 
     /* The method for determining whether there are two of each card in the deck would be to 
-    iterate througha ll the cards passed via the paramters, and hash each one to a value in
-    the new array, if all the values in the array are two, then two of each cards exists */
+    iterate through all the cards passed via the paramters, and hash each one to a value in
+    a new array of size 52. If all the values in the array are two, then two of each cards exists */
 
-    // Hasing Function: Rank of card - 1 * 4 +  (0 (Heart), 1 (Diamond), 2 (Club), 3 (Spade})
+    // Hashing Function: Rank of card - 1 * 4 +  (0 (Heart), 1 (Diamond), 2 (Club), 3 (Spade})
 
     int card_exists[52] = { 0 };
     unsigned int current_index;
@@ -549,13 +534,14 @@ bool BoardT::two_decks(SeqCrdStckT t, SeqCrdStckT f, CardStackT d, CardStackT w)
 
 }
 
-// Gets the current index
+// Gets the index to add one to
 unsigned int BoardT::hashing_function(CardT card)
 {
     // Hasing function which will return the index of where to add one, helps with 
     // information hiding
     unsigned int index;
 
+    // Learned switch statements from this website:
     // https://www.programiz.com/cpp-programming/switch-case
     switch (card.s)
     {
@@ -575,7 +561,5 @@ unsigned int BoardT::hashing_function(CardT card)
             index = (card.r - 1)*4 + 3;
             break;
     }
-
     return index;
-
 }

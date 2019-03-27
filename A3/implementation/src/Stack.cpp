@@ -14,7 +14,7 @@ Stack<T>::Stack()
     this->s = std::vector<T>();
 }
 
-template <class T>   // Need this in front of every method   
+template <class T>
 Stack<T>::Stack(std::vector<T> s)
 {
     this->s = s;
@@ -45,6 +45,7 @@ Stack<T> Stack<T>::pop()
 template <class T>
 T Stack<T>::top()
 {
+    // Got help from this website for the following lines of code:
     // https://www.programiz.com/cpp-programming/if-else
     if (this->s.size() == 0)
     {
