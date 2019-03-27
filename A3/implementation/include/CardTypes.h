@@ -1,8 +1,14 @@
 /**
- * \file CardTypes.h
- * \author
- * \brief
+ * @file CardTypes.h
+ * @author Joshua Guinness, guinnesj
+ * @brief Module for defining card types and constants
+ * @version 0.1
+ * @date 2019-03-26
+ * 
+ * @copyright Copyright (c) 2019
+ * 
  */
+
 #ifndef A3_CARD_TYPES_H_
 #define A3_CARD_TYPES_H_
 

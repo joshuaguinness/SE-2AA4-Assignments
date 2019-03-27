@@ -1,16 +1,13 @@
 // Implementation here
 
-#include "../include/Stack.h"
-#include "../include/CardTypes.h"
+#include "Stack.h"
+#include "CardTypes.h"
 #include <exception>
 #include <stdexcept>
 #include <iostream>
 #include <algorithm>
 
-//using std::vector;
-
 // Public Methods
-
 template <class T>
 Stack<T>::Stack()
 {

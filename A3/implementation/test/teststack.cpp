@@ -1,8 +1,8 @@
 #include "catch.h"
 
-#include "../include/Stack.h"
-#include "../include/CardTypes.h"
-#include "../include/CardStack.h"
+#include "Stack.h"
+#include "CardTypes.h"
+#include "CardStack.h"
 
 TEST_CASE( "Tests for Stack", "[Stack]" )
 {

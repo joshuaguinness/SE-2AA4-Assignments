@@ -10,10 +10,10 @@
 #include <iostream>
 #include <vector>
 
-#include "../include/CardStack.h"
-#include "../include/CardTypes.h"
-#include "../include/GameBoard.h"
-#include "../include/Stack.h"
+#include "CardStack.h"
+#include "CardTypes.h"
+#include "GameBoard.h"
+#include "Stack.h"
 
 int main() {
   std::cout << "'make experiment' will run this main" << std::endl;

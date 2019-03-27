@@ -1,3 +1,14 @@
+/**
+ * @file GameBoard.h
+ * @author Joshua Guinness, guinnesj
+ * @brief Module for defining a GameBoard class
+ * @version 0.1
+ * @date 2019-03-26
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
+
 #ifndef A3_GAME_BOARD_H_
 #define A3_GAME_BOARD_H_
 
@@ -128,7 +139,7 @@ class BoardT {
          * 
          * \return CardStackT 
          */
-        CardStackT get_deck();\
+        CardStackT get_deck();
 
         /**
          * \brief Gets the stack of waste cards

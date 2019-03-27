@@ -1,4 +1,4 @@
-#include "../include/GameBoard.h"
+#include "GameBoard.h"
 #include <exception>
 #include <stdexcept>
 #include <iostream>

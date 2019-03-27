@@ -1,3 +1,14 @@
+/**
+ * @file Stack.h
+ * @author Joshua Guinness, guinnesj
+ * @brief Module for a generic stack class
+ * @version 0.1
+ * @date 2019-03-26
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
+
 #ifndef A3_STACK_H_
 #define A3_STACK_H_
 
@@ -57,7 +68,7 @@ class Stack {
          * \return unsigned int representing the number of elements on the stack
          */
         unsigned int size();
-        
+
         /**
          * \brief Converts the stack to a vector
          * 
