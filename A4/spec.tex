@@ -60,11 +60,11 @@ value of the expression is undefined.
 
 \newpage
 
-\section* {Card Types Module}
+\section* {Cell Module}
 
 \subsection*{Module}
 
-CardTypes
+Cell
 
 \subsection* {Uses}
 
@@ -74,32 +74,93 @@ N/A
 
 \subsubsection* {Exported Constants}
 
-TOTAL\_CARDS = 104\\
-ACE = 1\\
-JACK = 11\\
-QUEEN = 12\\
-KING = 13
+None
 
 \subsubsection* {Exported Types}
 
-SuitT = \{Heart, Diamond, Club, Spade\}\\ 
-RankT = [1..13]\\
-CategoryT = \{Tableau, Foundation, Deck, Waste\}\\
-CardT = tuple of (s: SuitT, r: RankT)
+Cell = ?
 
 \subsubsection* {Exported Access Programs}
 
-None
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+new Cell & & Cell & none\\
+\hline
+new Cell & boolean & Cell & none\\
+\hline
+get\_life & & boolean & none\\
+\hline
+get\_neighbours & & int & none\\
+\hline
+set\_life & boolean & & none\\
+\hline
+set\_neighbours & int & & out\_of\_range\\
+\hline
+\end{tabular}
 
 \subsection* {Semantics}
 
 \subsubsection* {State Variables}
 
-None
+$S$: boolean \textit{\# Alive or Dead}\\
+$N$: int \textit{\# Number of neighbors}
 
 \subsubsection* {State Invariant}
 
-None
+$n \leq 8$
+
+\subsubsection* {Assumptions and Design Decisions}
+
+None so far.
+
+\subsubsection* {Access Routine Semantics}
+
+new Cell():
+\begin{itemize}
+    \item $S, N := false, 0$
+    \item output: $\mathit{out := self}$
+    \item exception: none
+\end{itemize}
+
+\noindent
+new Cell($s$):
+\begin{itemize}
+    \item $S, N := s, 0$
+    \item output: $\mathit{out := self}$
+    \item exception: none
+\end{itemize}
+
+\noindent
+get\_life():
+\begin{itemize}
+    \item output: $\mathit{out := S}$
+    \item exception: none
+\end{itemize}
+
+\noindent
+get\_neighbours():
+\begin{itemize}
+    \item output: $\mathit{out := N}$
+    \item exception: none
+\end{itemize}
+
+\noindent
+set\_life(s):
+\begin{itemize}
+    \item transition: $\mathit{S := s}$
+    \item output: none
+    \item exception: none
+\end{itemize}
+
+\noindent
+set\_neighbours(n):
+\begin{itemize}
+    \item transition: $\mathit{N := n}$
+    \item output: none
+    \item exception: $\mathit{exc := (n > 6} \Rightarrow out\_of\_range)$
+\end{itemize}6
 
 \newpage
 
