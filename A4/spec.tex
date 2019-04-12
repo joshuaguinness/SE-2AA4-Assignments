@@ -60,7 +60,7 @@ value of the expression is undefined.
 
 \newpage
 
-\section* {Cell Module}
+\section* {Cell ADT Module}
 
 \subsection*{Module}
 
@@ -113,7 +113,9 @@ $n \leq 8$
 
 \subsubsection* {Assumptions and Design Decisions}
 
-None so far.
+\begin{itemize}
+    \item The Cell(S) or Cell() constructor is called for each object instance before any other access routine is called for that object. The constructor can only be called once.
+\end{itemize}
 
 \subsubsection* {Access Routine Semantics}
 
@@ -160,126 +162,7 @@ set\_neighbours(n):
     \item transition: $\mathit{N := n}$
     \item output: none
     \item exception: $\mathit{exc := (n > 6} \Rightarrow out\_of\_range)$
-\end{itemize}6
-
-\newpage
-
-\section* {Generic Stack Module}
-
-\subsection* {Generic Template Module}
-
-Stack(T)
-
-\subsection* {Uses}
-
-N/A
-
-\subsection* {Syntax}
-
-\subsubsection* {Exported Types}
-
-Stack(T) = ?
-
-\subsubsection* {Exported Constants}
-
-None
-
-\subsubsection* {Exported Access Programs}
-
-\begin{tabular}{| l | l | l | p{5cm} |}
-\hline
-\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
-\hline
-new Stack & seq of T & Stack & none\\
-\hline
-push & T & Stack & none\\
-\hline
-pop & & Stack & out\_of\_range\\
-\hline
-top & & T & out\_of\_range\\
-\hline
-size & & $\mathbb{N}$ & \\
-\hline
-toSeq& & seq of T & \\
-\hline
-\end{tabular}
-
-\subsection* {Semantics}
-
-\subsubsection* {State Variables}
-
-$S$: seq of T
-
-\subsubsection* {State Invariant}
-
-None
-
-\subsubsection* {Assumptions \& Design Decisions}
-
-\begin{itemize}
-\item The Stack(T) constructor is called for each object instance before any
-  other access routine is called for that object.  The constructor can only be
-  called once.
-\item Though the toSeq() method violates the essential property of the stack
-  object, since this could be achieved by calling top and pop many times, this
-  method is provided as a convenience to the client. In fact, it increases the
-  property of separation of concerns since this means that the client does not
-  have to worry about details of building their own sequence from the sequence
-  of pops.
 \end{itemize}
-
-\subsubsection* {Access Routine Semantics}
-
-new Stack($s$):
-\begin{itemize}
-\item transition: $S := s$
-
-\item output: $\mathit{out} := \mathit{self}$
-\item exception: none
-\end{itemize}
-
-\noindent push($e$):
-\begin{itemize}
-\item output: $out := \text{new Stack}(S\ ||\ \langle e \rangle)$
-\item exception: none
-\end{itemize}
-
-\noindent pop():
-\begin{itemize}
-\item output: $out := \text{new Stack}(S[0..|S| - 2])$
-
-\item exception: $exc := (|S| = 0 \Rightarrow \text{out\_of\_range})$
-
-\end{itemize}
-
-\noindent top():
-\begin{itemize}
-\item output: $\mathit{out} := S[|S| - 1]$
-
-\item exception: $exc := (|S| = 0 \Rightarrow \text{out\_of\_range})$
-
-\end{itemize}
-
-\noindent size():
-\begin{itemize}
-\item output: $\mathit{out} := |S|$
-\item exception: None
-\end{itemize}
-
-\noindent toSeq():
-\begin{itemize}
-\item output: $\mathit{out} := S$
-\item exception: None
-
-\end{itemize}
-
-\newpage
-
-\section* {CardStack Module}
-
-\subsection* {Template Module}
-
-CardStackT is Stack(CardT)
 
 \newpage
 
