@@ -174,10 +174,18 @@ BoardT
 
 \subsection* {Uses}
 
-\noindent CardTypes\\
-\noindent CardStack
+\noindent Cell\\
+\noindent View
 
 \subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+BoardT
 
 \subsubsection* {Exported Access Programs}
 
@@ -187,41 +195,13 @@ BoardT
 \hline
 new BoardT  & seq of CardT & BoardT & invalid\_argument\\
 \hline
-is\_valid\_tab\_mv & CategoryT, $\mathbb{N}$, $\mathbb{N}$ & $\mathbb{B}$ & out\_of\_range\\
-\hline
-is\_valid\_waste\_mv & CategoryT, $\mathbb{N}$ & $\mathbb{B}$ &
-                                                                invalid\_argument, out\_of\_range\\
-\hline
-is\_valid\_deck\_mv &  &  $\mathbb{B}$ & \\
-\hline
-tab\_mv & CategoryT, $\mathbb{N}$, $\mathbb{N}$ & & invalid\_argument\\
-\hline
-waste\_mv & CategoryT, $\mathbb{N}$ & & invalid\_argument\\
-\hline
-deck\_mv &  & & invalid\_argument\\
-\hline
-get\_tab & $\mathbb{N}$ & CardStackT & out\_of\_range\\
-\hline
-get\_foundation & $\mathbb{N}$ & CardStackT & out\_of\_range\\
-\hline
-get\_deck &  & CardStackT & \\
-\hline
-get\_waste &  & CardStackT & \\
-\hline
-valid\_mv\_exists & & $\mathbb{B}$ &\\
-\hline
-is\_win\_state & & $\mathbb{B}$ & \\
-\hline
 \end{tabular}
 
 \subsection* {Semantics}
 
 \subsubsection* {State Variables}
 
-$T$: SeqCrdStckT \textit{\# Tableau}\\
-$F$: SeqCrdStckT \textit{\# Foundation}\\
-$D$: CardStackT \textit{\# Deck}\\
-$W$: CardStackT \textit{\# Waste}\\
+$S$: $ Cells \mathit{\# 2D Array of Cells}$
 
 \subsubsection* {State Invariant}
 
@@ -546,17 +526,6 @@ F[$n$].size() = 0 & W.top().r = ACE\\
 \newpage
 
 \section*{Critique of Design}
-
-\wss{Write a critique of the interface for the modules in this project.  Is there
-anything missing?  Is there anything you would consider changing?  Why?}\\
-
-\noindent Potential discussion points:
-
-\begin{itemize}
-\item The stack module provides a toSeq module that violates essentiality.  To
-  address this, another module could be built to provide the toSeq service
-  through a function that takes a stack as input and return a sequence.
-\end{itemize}
 
 \end {document}
 
