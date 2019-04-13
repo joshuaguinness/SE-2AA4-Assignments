@@ -1,5 +1,5 @@
 #include "../src/Cell.h"
-#include "catch.h"
+#include "../catch/catch.h"
 #include <stdexcept>
 
 
