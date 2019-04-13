@@ -126,7 +126,7 @@ $n \leq 8$
 
 new Cell():
 \begin{itemize}
-    \item $S, N := false, 0$
+    \item transition: $S, N := false, 0$
     \item output: $\mathit{out := self}$
     \item exception: none
 \end{itemize}
@@ -134,7 +134,7 @@ new Cell():
 \noindent
 new Cell($s$):
 \begin{itemize}
-    \item $S, N := s, 0$
+    \item transition: $S, N := s, 0$
     \item output: $\mathit{out := self}$
     \item exception: none
 \end{itemize}
@@ -198,8 +198,6 @@ BoardT
 \hline
 \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
 \hline
-new BoardT & & BoardT &\\
-\hline
 new BoardT  & seq of (seq of C) & BoardT & invalid\_argument\\
 \hline
 next & & &\\
@@ -239,6 +237,29 @@ that both sequences are of the same length.
 \end{itemize}
 
 \subsubsection* {Access Routine Semantics}
+
+new BoardT(c):
+\begin{itemize}
+    \item transition: $C := c$
+    \item output: $out := self$
+    \item exception: invalid\_argument
+\end{itemize}
+
+\noindent
+next():
+\begin{itemize}
+    \item transition:
+    \item output: none
+    \item exception: none
+\end{itemize}
+
+\noindent
+view():
+\begin{itemize}
+    \item transition: none
+    \item output: none
+    \item exception: none
+\end{itemize}
 
 \subsection*{Local Types}
 
