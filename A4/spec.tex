@@ -240,12 +240,109 @@ that both sequences are of the same length.
 
 \subsubsection* {Access Routine Semantics}
 
-
-
 \subsection*{Local Types}
 
-
 \subsection*{Local Functions}
+
+
+
+\newpage
+
+\section* {Read Module}
+
+\subsection*{Module}
+
+Read
+
+\subsection* {Uses}
+
+BoardT
+Cell
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+read\_state & String & seq of (seq of Cell) & filesystem\_error\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions and Design Decisions}
+
+\begin{itemize}
+    \item The contents of the file are in the right format
+\end{itemize}
+
+\subsubsection* {Access Routine Semantics}
+
+\newpage
+
+\section* {View Module}
+
+\subsection*{Module}
+
+View
+
+\subsection* {Uses}
+
+BoardT
+Cell
+
+\subsection* {Syntax}
+
+\subsubsection* {Exported Constants}
+
+None
+
+\subsubsection* {Exported Types}
+
+None
+
+\subsubsection* {Exported Access Programs}
+
+\begin{tabular}{| l | l | l | p{5cm} |}
+\hline
+\textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
+\hline
+view\_state & seq of (seq of Cell) & &\\
+\hline
+\end{tabular}
+
+\subsection* {Semantics}
+
+\subsubsection* {State Variables}
+
+None
+
+\subsubsection* {State Invariant}
+
+None
+
+\subsubsection* {Assumptions and Design Decisions}
+
+\subsubsection* {Access Routine Semantics}
 
 \newpage
 
