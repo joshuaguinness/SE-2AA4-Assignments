@@ -1,3 +1,14 @@
+/**
+ * \file Cell.h
+ * \author Joshua Guinness, guinnesj, 400134735
+ * \brief Module for a Cell ADT
+ * \version 0.1
+ * \date 2019-04-13
+ * 
+ * \copyright Copyright (c) 2019
+ * 
+ */
+
 #ifndef A4_CELL_H_
 #define A4_CELL_H_
 
