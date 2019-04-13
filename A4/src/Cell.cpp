@@ -1,4 +1,4 @@
-#include "Cell.h"
+#include "../include/Cell.h"
 #include <exception>
 #include <stdexcept>
 #include <iostream>
