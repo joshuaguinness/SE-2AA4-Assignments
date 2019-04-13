@@ -3,10 +3,12 @@
 #include <stdexcept>
 
 
-TEST_CASE("Tests for Cell". "[Cell]"){
+TEST_CASE("Tests for Cell", "[Cell]") {
 
-    SECTION("test"){
-        REQUIRE(1 == 1);
+    SECTION("Testing Cell ADT created properly using default constructor") {
+        Cell cell;
+        REQUIRE(cell.get_life() == false);
+        REQUIRE(cell.get_neighbours() == 0);
     }
 
 
