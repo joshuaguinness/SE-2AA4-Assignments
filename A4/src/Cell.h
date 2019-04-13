@@ -12,7 +12,7 @@
 #ifndef A4_CELL_H_
 #define A4_CELL_H_
 
-class Cell{
+class Cell {
     private:
 
         /// State - Alive or Dead
@@ -57,14 +57,14 @@ class Cell{
          * 
          * \param s new state
          */
-        set_life(bool s);
+        void set_life(bool s);
 
         /**
          * \brief Set the number of alive neighbours the cell has
          * 
          * \param n Number of neighbours
          */
-        set_neighbours(int n);
+        void set_neighbours(int n);
 };
 
 #endif

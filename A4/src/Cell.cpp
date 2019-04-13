@@ -25,12 +25,12 @@ int Cell::get_neighbours()
     return this->N;
 }
 
-Cell::set_life(bool s)
+void Cell::set_life(bool s)
 {
     this->S = s;
 }
 
-Cell::set_neighbours(int n)
+void Cell::set_neighbours(int n)
 {
     this->N = n;
 }
