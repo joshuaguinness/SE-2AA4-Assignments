@@ -233,6 +233,8 @@ that both sequences are of the same length.
 \item For better scalability, this module is specified as an Abstract Data Type
   (ADT) instead of an Abstract Object. This would allow multiple games to be
   created and tracked at once by a client.
+  
+\item The view() function calls the view module which displays the current state of the game.
 
 \end{itemize}
 
@@ -248,7 +250,10 @@ new BoardT(c):
 \noindent
 next():
 \begin{itemize}
-    \item transition:
+    \item transition: $C := update\_neighbours\_middle(), update\_neighbours\_leftside(), \\ update\_neighbours\_rightside(),
+    update\_neighbours\_top(), update\_neighbours\_bottom(), update\_corners()\\
+    update\_cells()$
+    
     \item output: none
     \item exception: none
 \end{itemize}
@@ -269,27 +274,42 @@ None
 
 \noindent
 update\_neighbours\_middle: \\
-update\_neighbours\_middle() $\equiv$ \\
+update\_neighbours\_middle() $\equiv$ $\forall i : \mathbb{N} \ | \ i \in [1..|seq \ of \ C|] \ : \ (\forall j : \mathbb{N} \ | \ j \in [1..|seq \ of \ C|] \ : \ C[i][j].set\_neighbours(C[i-1][j-1] + C[i-1][j] + C[i-1][j+1] + C[i][j-1] + C[i][j+1] + C[i+1][j-1] + C[i+1][j] + C[i+1][j+1]))$ \\
 
 \noindent
 update\_neighbours\_leftside: \\
-update\_neighbours\_leftside() $\equiv$ \\
+update\_neighbours\_leftside() $\equiv$ $\forall i : \mathbb{N} | i \in [1..|seq \ of \ C|-2] : C[i][0].set\_neighbours(C[i-1][0] + C[i-1][1] + C[i][1] + C[i+1][1] + C[i+1][0])$ \\
 
 \noindent
 update\_neighbours\_rightside: \\
-update\_neighbours\_rightside() $\equiv$ \\
+update\_neighbours\_rightside() $\equiv$ $\forall i : \mathbb{N} | i \in [1..|seq \ of \ C|-2] : C[i][|seq \ of \ C|-2].set\_neighbours(C[i-1][|seq \ of \ C|-2] + C[i-1][|seq \ of \ C|-3] + C[i][|seq \ of \ C|-3] + C[i+1][|seq \ of \ C|-3] + C[i+1][|seq \ of \ C|-2])$ \\
 
 \noindent
 update\_neighbours\_top\\
-update\_neighbours\_bottom() $\equiv$ \\ 
+update\_neighbours\_top() $\equiv$ $\forall i : \mathbb{N} | j \in [1..|seq \ of \ C|-2] : C[0][j].set\_neighbours(C[0][j-1] + C[1][j-1] + C[1][j] + C[1][j+1] + C[0][j+1|])$ \\
 
 \noindent
-update\_neighbours\_middle: \\
-update\_neighbours\_middle() $\equiv$ \\
+update\_neighbours\_bottom: \\
+update\_neighbours\_bottom() $\equiv$ $\forall i : \mathbb{N} | j \in [1..|seq \ of \ C|-2] : C[|seq \ of \ C|-2][j].set\_neighbours(C[|seq \ of \ C|-2][j-1] + C[|seq \ of \ C|-3][j-1] + C[|seq \ of \ C|-3][j] + C[|seq \ of \ C|-3][j+1] + C[|seq \ of \ C|-2][j+1|])$ \\
 
+\noindent
+update\_corners: \\
+update\_corners() $\equiv$ \\
+$C[0][0].set\_neighbours(C[0][1] + C[1][1] + C[1][0])$\\
+$C[0][|seq \ of \ C|-1].set\_neighbours(C[0][|seq \ of \ C|-2] + C[1][|seq \ of \ C|-2] + C[1][|seq \ of \ C|-1])$\\
+$C[|seq \ of \ C|-1][0].set\_neighbours(C[|seq \ of \ C|-2][0] + C[|seq \ of \ C|-2][1] + C[|seq \ of \ C|-1][1])$\\
+$C[|seq \ of \ C|-1][|seq \ of \ C|-1].set\_neighbours(C[|seq \ of \ C|-1][|seq \ of \ C|-2] + C[|seq \ of \ C|-2][|seq \ of \ C|-2] + C[|seq \ of \ C|-2][|seq \ of \ C|-1])$\\
 
+\noindent
+update\_cells:\\
+update\_cells() $\equiv$ \\
+$\forall x : Cell \ . \ x \in C \land x.get\_life = true\ | \ ((x.get\_neighbours \leq 1 \Rightarrow x.set\_life := false) \lor 
+(x.get\_neighbours \ge 4 \Rightarrow x.set\_life := false) \lor
+(x.get\_neighbours > 1 \land x.get\_neighbours < 4 \Rightarrow x.set\_life := true))$ \\
 
-
+$\forall x : Cell \ . \ x \in C \land x.get\_life = False \ | \ 
+((x.get\_neighbours = 3 \Rightarrow x.set\_life := alive) \lor
+(x.get\_neighbours() > 3 \lor x.get\_neighbours < 3 \Rightarrow x.set\_life() := false))$
 
 \newpage
 
