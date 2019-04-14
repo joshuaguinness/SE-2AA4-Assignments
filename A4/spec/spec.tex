@@ -457,5 +457,31 @@ view\_state(s)
 
 \section*{Critique of Design}
 
+To begin, the spec was designed to uphold and enforce the software engineering principles and best practises that have been learned over the term. Although there is room for improvement within the spec, care was taken when designing it as well as time constraints. Below is a more in depth analysis on six of these components.\\
+
+\noindent
+\textbf{Essentiality:} \\
+This refers to omitting unnecessary features from the spec and the implementation. As a whole, this was decently done in the spec but there are a few cases where a little more care to uphold this principle could have been taken. In each module, the methods solely exist to implement the secret of that module. However, there are two cases where this could have been improved. For one, the way the spec and implementation is done is to have a seq of (seq of Cell). This game could also have been implemented by having a seq of (seq of bool), and not needing a Cell ADT at all. To me, having a cell ADT make the most sense and I think makes certain things easier and simpler, like transitioning to the next iteration, but the program could definitly have been implemented without it. The second case is the local functions used to help the public method next. There are multiple location functions for updating the number of neighbours each Cell has in the seq of (seq of Cell). This could have been done within the next function, or in a single local function, but I felt splitting it up makes it easier to understand what is happening, and easier to implement.\\
+
+\noindent
+\textbf{Generality:} \\
+This software engineering principle is about solving a more general problem if possible than a specific one. The spec I created, while still sufficiently general is lacking in one main area. It is general in the fact that any number of iterations can be run. However, the main aspect that is affecting the specs generality is that the input has to be a perfect square, that is same number of rows and columns. This would be very easy to modify in the spec and program however due to time constraints, this was the quickest thing to do.\\
+
+\noindent
+\textbf{Minimality:} \\
+Minimality is the idea that each method only does one thing and does not do two independent services. In this spec, care was taken to ensure each method completes only its specific task. This was aided in the fact that the game being designed isn't particularly complicated. For example, in the Cell module, each method is either a constructor, getter, or a setter and does only that function. The methods in the Read and View modules exist only to read in data, or output. In the Game Board module, the public three methods also only preform one task which is to create an instance, get the next iteration, or view the output. The local functions help the public ones, yet also uphold minimality as they are split further into even more specific tasks to make implementation and planning easier, as well as preserve the concept.\\
+
+\noindent
+\textbf{Consistency:} \\
+Consistency refers to whether the language and terminology throughout the spec is the same. In the spec I created, symbols and terminology used are the exact same throughout the entire spec. For example, Cell is known as the ADT that describes a single cell or pixel. That is used constantly throughout the spec and is not referred to by something else.\\
+
+\noindent
+\textbf{Cohesion:} \\
+Cohesion refers to the fact that components inside a module are closely related together. The spec and implementation definitely uphold this software principle because all components within a module work to perform one goal. In the case of Cell, each method is needed to be able to work with the ADT. All the methods within this module do nothing else besides that. In the other modules, the various items exclusively implement the secret for the module.\\
+
+\noindent
+\textbf{Information Hiding:} \\
+This principle for dividing up modules refers to the fact that the implementation is hidden from other modules, information secrets are hidden to clients, and there is one secret per module. This is one of the most important object oriented concepts. The spec written enforces information hiding because each module only contains one secret or does one thing. The Cell module is just an ADT for a pixel or cell, Read and View just read in the input and output it, respectively, and the Game Board controls the state of the game. The way the modules are designed, the implementation of everything is hidden to the client, and the only way the client can use the modules features is through the interface. This is done through public and private methods as outline in the MIS. This allows the implementation to change without affecting the input or output. \\
+
 \end {document}
 
