@@ -250,9 +250,8 @@ new BoardT(c):
 \noindent
 next():
 \begin{itemize}
-    \item transition: $C := update\_neighbours\_middle(), update\_neighbours\_leftside(), \\ update\_neighbours\_rightside(),
-    update\_neighbours\_top(), update\_neighbours\_bottom(), update\_corners()\\
-    update\_cells()$
+    \item transition: $C := update\_neighbours\_middle(), update\_neighbours\_leftside(), \\ update\_neighbours\_rightside(),update\_neighbours\_top(), \\
+    update\_neighbours\_bottom(), update\_corners(), update\_cells()$
     
     \item output: none
     \item exception: none
@@ -321,7 +320,7 @@ Read
 
 \subsection* {Uses}
 
-BoardT
+BoardT\\
 Cell
 
 \subsection* {Syntax}
@@ -340,11 +339,15 @@ None
 \hline
 \textbf{Routine name} & \textbf{In} & \textbf{Out} & \textbf{Exceptions}\\
 \hline
-read\_state & String & seq of (seq of Cell) & filesystem\_error\\
+read\_state & s : String & seq of (seq of Cell) & \\
 \hline
 \end{tabular}
 
 \subsection* {Semantics}
+
+\subsubsection* {Environment Variables}
+
+initial\_state.txt: File which will be the initial state of game
 
 \subsubsection* {State Variables}
 
@@ -357,10 +360,29 @@ None
 \subsubsection* {Assumptions and Design Decisions}
 
 \begin{itemize}
-    \item The contents of the file are in the right format
+    \item The contents of the file are in the right format and will match the given specification.
 \end{itemize}
 
 \subsubsection* {Access Routine Semantics}
+
+read\_state(s)
+\begin{itemize}
+    \item transition: Read data from the file initial\_state associated with the string s. Use this data to create a seq of (seq of Cell). It will then return the seq of (seq of Cell).\\
+    The text file will be in the form:\\
+    \\
+    symbol, symbol, symbol, symbol. symbol\\
+    symbol, symbol, symbol, symbol. symbol\\
+    symbol, symbol, symbol, symbol. symbol\\
+    symbol, symbol, symbol, symbol. symbol\\
+    symbol, symbol, symbol, symbol. symbol\\
+    \\
+    Symbol corresponds to either a -, or a +. - in this case refers to a cell that is "dead" or "unpopulated" while + refers to a cell that is "alive" or "populated." The symbols will be separated by comma's and there will be a new line character at the end of each row. Each row will be of length m, and each column of lenth m, that is they are the same size making a perfect square.\\
+    
+    The function will create a seq of (seq of Cell), and as it reads each line, if the symbol is a -, it will set the life to be false, and if the symbol is +, it will set the life to be +.
+    
+    \item output: seq of (seq of Cell)
+    \item exception: none
+\end{itemize}
 
 \newpage
 
@@ -372,7 +394,7 @@ View
 
 \subsection* {Uses}
 
-BoardT
+BoardT\\
 Cell
 
 \subsection* {Syntax}
@@ -407,7 +429,29 @@ None
 
 \subsubsection* {Assumptions and Design Decisions}
 
+\begin{itemize}
+    \item The seq of (seq of Cell) is proper.
+\end{itemize}
+
 \subsubsection* {Access Routine Semantics}
+
+view\_state(s)
+\begin{itemize}
+    \item transition: Out data from the seq of (seq of Cell) to text file view\_state.txt. The text file will be in the form:\\
+    \\
+    symbol, symbol, symbol, symbol. symbol\\
+    symbol, symbol, symbol, symbol. symbol\\
+    symbol, symbol, symbol, symbol. symbol\\
+    symbol, symbol, symbol, symbol. symbol\\
+    symbol, symbol, symbol, symbol. symbol\\
+    \\
+    Symbol corresponds to either a -, or a +. - in this case refers to a cell that is "dead" or "unpopulated" while + refers to a cell that is "alive" or "populated." The symbols will be separated by comma's and there will be a new line character at the end of each row. Each row will be of length m, and each column of length m, that is they are the same size making a perfect square.\\
+    
+    The function will go through each row in the seq of (seq of Cell), and if the get\_life() is false, it will output a "-, " and if it is true, it will output a "+, ". If it is the last element in the row the output will be either "-\textbackslash n" or "+\textbackslash n". It will do this for every row in the seq of (seq of Cell).
+    
+    \item output: none
+    \item exception: none
+\end{itemize}
 
 \newpage
 
