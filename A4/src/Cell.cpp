@@ -32,5 +32,12 @@ void Cell::set_life(bool s)
 
 void Cell::set_neighbours(int n)
 {
-    this->N = n;
+    if (n > 8)
+    {
+        throw std::out_of_range("Our of Range. Can't have more than 8 neighbours!");
+    }
+    else
+    {
+        this->N = n;
+    }
 }
